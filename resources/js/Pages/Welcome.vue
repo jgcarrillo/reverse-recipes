@@ -1,5 +1,5 @@
 <template>
-    <Head title="Welcome" />
+    <Head title="Reverse recipes" />
 
     <Navbar />
     <Jumbo />
