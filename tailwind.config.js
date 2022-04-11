@@ -13,9 +13,13 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                lora: "'Lora', serif",
+                mono: ["'DM Mono'", ...defaultTheme.fontFamily.mono],
+                monse: "'Montserrat', serif",
             },
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    // Evitar usar los formularios de TailwindCSS, se mezclan estos estilos con los nuestros
+    // plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
