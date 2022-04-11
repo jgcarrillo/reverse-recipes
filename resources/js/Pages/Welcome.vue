@@ -5,6 +5,7 @@
     <Jumbo />
     <Services />
     <Contact />
+    <Footer />
 
 </template>
 
@@ -18,6 +19,7 @@ import Navbar from '@/Pages/Navbar';
 import Jumbo from '@/Pages/Jumbo';
 import Services from '@/Pages/Services';
 import Contact from '@/Pages/Contact';
+import Footer from '@/Pages/Footer';
 
 export default defineComponent({
     components: {
@@ -26,7 +28,8 @@ export default defineComponent({
         Navbar,
         Jumbo,
         Services,
-        Contact
+        Contact,
+        Footer
     },
 })
 </script>
