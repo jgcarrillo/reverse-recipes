@@ -7,7 +7,7 @@ A basic web app to manage a database of recipes.
 - [✨ How to install](#-how-to-install)
 - [🚀 Git Workflow](#-git-workflow)
 - [🕸️ How to contribute](#-how-to-contribute)
-- [🚩 cheatsheet](#-cheatsheet)
+- [🚩 Cheatsheet](#-cheatsheet)
 
 ## ✨ How to install
 
