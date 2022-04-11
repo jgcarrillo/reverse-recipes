@@ -4,6 +4,7 @@
     <Navbar />
     <Jumbo />
     <Services />
+    <Contact />
 
 </template>
 
@@ -16,6 +17,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 import Navbar from '@/Pages/Navbar';
 import Jumbo from '@/Pages/Jumbo';
 import Services from '@/Pages/Services';
+import Contact from '@/Pages/Contact';
 
 export default defineComponent({
     components: {
@@ -23,7 +25,8 @@ export default defineComponent({
         Link,
         Navbar,
         Jumbo,
-        Services
+        Services,
+        Contact
     },
 })
 </script>
