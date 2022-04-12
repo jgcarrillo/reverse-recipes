@@ -58,8 +58,8 @@
             <!-- NAV -->
             <div  :class="open ? 'block' : 'hidden'" class="w-full text-xl flex-grow md:flex md:items-center md:w-auto">
                 <div class="md:flex-grow md:text-center md:space-x-3">
-                    <a href="" class="text-white block mt-4 md:inline-block md:mt-0 hover:text-gray-300 duration-300">Explore </a>
-                    <a href="" class="text-white block mt-4 md:inline-block md:mt-0 hover:text-gray-300 duration-300"> About </a>
+                    <Link href="" class="text-white block mt-4 md:inline-block md:mt-0 hover:text-gray-300 duration-300">Explore </Link>
+                    <Link :href="route('about')" class="text-white block mt-4 md:inline-block md:mt-0 hover:text-gray-300 duration-300"> About </Link>
                     <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 underline">
                         Dashboard
                     </Link>
