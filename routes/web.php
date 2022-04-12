@@ -19,6 +19,10 @@ Route::get('/', function() {
     return Inertia::render('Welcome');
 })->name('home');
 
+Route::get('/explore', function() {
+    return Inertia::render('Explore');
+})->name('explore');
+
 Route::get('/about', function() {
     return Inertia::render('About');
 })->name('about');
