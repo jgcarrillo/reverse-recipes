@@ -22,7 +22,7 @@
                     <base-input
                         type="text"
                         id="name"
-                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-300 transition duration-500 px-3 pb-3" v-model="form.name" required autofocus autocomplete="name"
+                         v-model="form.name" required autofocus autocomplete="name"
                     />
                 </div>
                 <div class="mb-6 pt-3 rounded bg-gray-200">
@@ -30,7 +30,7 @@
                     <base-input
                         type="email"
                         id="email"
-                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-300 transition duration-500 px-3 pb-3" v-model="form.email" required
+                         v-model="form.email" required
                     />
                 </div>
                 <div class="mb-6 pt-3 rounded bg-gray-200">
@@ -38,7 +38,7 @@
                     <base-input
                         type="password"
                         id="password"
-                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-400 transition duration-500 px-3 pb-3" v-model="form.password" required autocomplete="new-password"
+                         v-model="form.password" required autocomplete="new-password"
                     />
                 </div>
                 <div class="mb-6 pt-3 rounded bg-gray-200">
@@ -46,12 +46,11 @@
                     <base-input
                         type="password"
                         id="password_confirmation"
-                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-400 transition duration-500 px-3 pb-3" v-model="form.password_confirmation" required autocomplete="new-password"
+                        v-model="form.password_confirmation" required autocomplete="new-password"
                     />
                 </div>
 
                 <base-button
-                    class="bg-yellow-400 hover:bg-yellow-300 font-bold py-2 rounded shadow-md hover:shadow-lg active:shadow-lg transition duration-500 uppercase"
                     type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                 >
                     Create Account

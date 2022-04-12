@@ -37,7 +37,6 @@
                     <Link v-if="canResetPassword" :href="route('password.request')" class="font-monse text-sm text-gray-800 hover:underline mb-6">Forgot your password?</Link>
                 </div>
                 <base-button
-                    class="bg-yellow-400 hover:bg-yellow-300 font-bold py-2 rounded shadow-md hover:shadow-lg active:shadow-lg transition duration-500 uppercase"
                     :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                 >
                     Sign In
