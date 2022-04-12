@@ -2,7 +2,11 @@
     <Head title="About" />
 
     <the-navbar></the-navbar>
-    <h1>Example</h1>
+
+    <div class="text-center text-gray-800 p-5 md:pt-14">
+        <h1 class="font-lora text-7xl font-bold mt-0 mb-6">About</h1>
+        <h3 class="font-lora text-4xl font-bold mb-8">Know more about the project</h3>
+    </div>
 
     <the-footer></the-footer>
 </template>
