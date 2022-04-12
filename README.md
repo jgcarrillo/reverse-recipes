@@ -15,9 +15,10 @@ A basic web app to manage a database of recipes.
 2. Execute `npm install and composer install`.
 3. Copy *.env.example* file to *.env* on the root folder.
 4. Change database name to `laravel_vue_reverse_recipes`.
-5. Run `php artisan key:generate`. 
-6. Run `php artisan migrate`.
-7. Run `php artisan serve`.
+5. Create a file `.env` in the root and copy the content of `.env.example` inside it.
+6. Run `php artisan key:generate`. 
+7. Run `php artisan migrate`.
+8. Run `php artisan serve`.
 
 To run scripts from package.json when files change (TailwindCSS) execute `npm run watch` in another terminal. **Don't close it.**
 
