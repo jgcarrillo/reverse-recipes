@@ -1,89 +1,112 @@
-<script setup>
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetCheckbox from '@/Jetstream/Checkbox.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
-
-defineProps({
-    canResetPassword: Boolean,
-    status: String,
-});
-
-const form = useForm({
-    email: '',
-    password: '',
-    remember: false,
-});
-
-const submit = () => {
-    form.transform(data => ({
-        ...data,
-        remember: form.remember ? 'on' : '',
-    })).post(route('login'), {
-        onFinish: () => form.reset('password'),
-    });
-};
-</script>
-
 <template>
     <Head title="Log in" />
 
-    <JetAuthenticationCard>
-        <template #logo>
-            <JetAuthenticationCardLogo />
-        </template>
+    <the-navbar></the-navbar>
 
-        <JetValidationErrors class="mb-4" />
+    <header class="text-center text-4xl font-bold mt-14">
+        <h1 class="font-lora text-7xl font-bold">Recipes</h1>
+    </header>
+    <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-lora font-bold text-2xl">Welcome to Recipes</h3>
+            <p class="font-lora text-gray-800 pt-2">Sign in to your account.</p>
+        </section>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
+        <section class="mt-10">
 
-        <form @submit.prevent="submit">
-            <div>
-                <JetLabel for="email" value="Email" />
-                <JetInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                />
-            </div>
+            <jet-validation-errors class="mb-4" />
 
-            <div class="mt-4">
-                <JetLabel for="password" value="Password" />
-                <JetInput
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="current-password"
-                />
-            </div>
+            <form class="flex flex-col" @submit.prevent="submit">
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="email">Email</jet-label>
+                    <base-input
+                        type="email"
+                        id="email"
+                        v-model="form.email" required autofocus
+                    />
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="password">Password</jet-label>
+                    <base-input
+                        type="password"
+                        id="password"
+                        v-model="form.password" required autocomplete="current-password"
+                    />
+                </div>
+                <div class="flex justify-end">
+                    <Link v-if="canResetPassword" :href="route('password.request')" class="font-monse text-sm text-gray-800 hover:underline mb-6">Forgot your password?</Link>
+                </div>
+                <base-button
+                    class="bg-yellow-400 hover:bg-yellow-300 font-bold py-2 rounded shadow-md hover:shadow-lg active:shadow-lg transition duration-500 uppercase"
+                    :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+                >
+                    Sign In
+                </base-button>
+            </form>
+        </section>
+    </main>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <JetCheckbox v-model:checked="form.remember" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
+    <div class="max-w-lg mx-auto text-center mb-6 font-monse">
+        <p>Don't have an account? <Link :href="route('register')" class="font-bold hover:underline">Sign up</Link>.</p>
+    </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </Link>
+    <the-footer></the-footer>
 
-                <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </JetButton>
-            </div>
-        </form>
-    </JetAuthenticationCard>
 </template>
+
+<script>
+    import { defineComponent } from 'vue'
+    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
+    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
+    import JetLabel from '@/Jetstream/Label.vue'
+    import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
+    import { Head, Link } from '@inertiajs/inertia-vue3';
+    import TheNavbar from "@/Pages/TheNavbar";
+    import TheFooter from "@/Pages/TheFooter";
+    import BaseButton from "../../UI/BaseButton";
+    import BaseInput from "../../UI/BaseInput";
+
+
+    export default defineComponent({
+        components: {
+            Head,
+            JetAuthenticationCard,
+            JetAuthenticationCardLogo,
+            JetLabel,
+            JetValidationErrors,
+            Link,
+            TheNavbar,
+            TheFooter,
+            BaseButton,
+            BaseInput
+        },
+
+        props: {
+            canResetPassword: Boolean,
+            status: String
+        },
+
+        data() {
+            return {
+                form: this.$inertia.form({
+                    email: '',
+                    password: '',
+                    remember: false
+                })
+            }
+        },
+
+        methods: {
+            submit() {
+                this.form
+                    .transform(data => ({
+                        ... data,
+                        remember: this.form.remember ? 'on' : ''
+                    }))
+                    .post(this.route('login'), {
+                        onFinish: () => this.form.reset('password'),
+                    })
+            }
+        }
+    })
+</script>

@@ -1,108 +1,116 @@
-<script setup>
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetCheckbox from '@/Jetstream/Checkbox.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
-
-const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    terms: false,
-});
-
-const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    });
-};
-</script>
-
 <template>
     <Head title="Register" />
 
-    <JetAuthenticationCard>
-        <template #logo>
-            <JetAuthenticationCardLogo />
-        </template>
+    <the-navbar></the-navbar>
 
-        <JetValidationErrors class="mb-4" />
+    <header class="text-center text-4xl font-bold mt-14">
+        <h1 class="text-7xl font-lora">Recipes</h1>
+    </header>
+    <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-lora font-bold text-2xl">Singup</h3>
+            <p class="font-lora text-gray-800 pt-2">Start here the exploration</p>
+        </section>
 
-        <form @submit.prevent="submit">
-            <div>
-                <JetLabel for="name" value="Name" />
-                <JetInput
-                    id="name"
-                    v-model="form.name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
-            </div>
+        <section class="mt-10">
 
-            <div class="mt-4">
-                <JetLabel for="email" value="Email" />
-                <JetInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    required
-                />
-            </div>
+            <jet-validation-errors class="mb-4" />
 
-            <div class="mt-4">
-                <JetLabel for="password" value="Password" />
-                <JetInput
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
-            </div>
+            <form class="flex flex-col" @submit.prevent="submit">
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="name">Name</jet-label>
+                    <base-input
+                        type="text"
+                        id="name"
+                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-300 transition duration-500 px-3 pb-3" v-model="form.name" required autofocus autocomplete="name"
+                    />
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="email">Email</jet-label>
+                    <base-input
+                        type="email"
+                        id="email"
+                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-300 transition duration-500 px-3 pb-3" v-model="form.email" required
+                    />
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="password">Password</jet-label>
+                    <base-input
+                        type="password"
+                        id="password"
+                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-400 transition duration-500 px-3 pb-3" v-model="form.password" required autocomplete="new-password"
+                    />
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="password_confirmation">Confirm Password</jet-label>
+                    <base-input
+                        type="password"
+                        id="password_confirmation"
+                        class="font-monse bg-gray-200 rounded w-full text-gray-800 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-400 transition duration-500 px-3 pb-3" v-model="form.password_confirmation" required autocomplete="new-password"
+                    />
+                </div>
 
-            <div class="mt-4">
-                <JetLabel for="password_confirmation" value="Confirm Password" />
-                <JetInput
-                    id="password_confirmation"
-                    v-model="form.password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
-            </div>
+                <base-button
+                    class="bg-yellow-400 hover:bg-yellow-300 font-bold py-2 rounded shadow-md hover:shadow-lg active:shadow-lg transition duration-500 uppercase"
+                    type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+                >
+                    Create Account
+                </base-button>
+            </form>
+        </section>
+    </main>
 
-            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
-                <JetLabel for="terms">
-                    <div class="flex items-center">
-                        <JetCheckbox id="terms" v-model:checked="form.terms" name="terms" />
+    <div class="max-w-lg mx-auto text-center mb-6 font-monse">
+        <p>Already have an account? <Link :href="route('login')" class="font-bold hover:underline">Log in</Link>.</p>
+    </div>
 
-                        <div class="ml-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
-                        </div>
-                    </div>
-                </JetLabel>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
-                </Link>
-
-                <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
-                </JetButton>
-            </div>
-        </form>
-    </JetAuthenticationCard>
+    <the-footer></the-footer>
 </template>
+
+<script>
+    import { defineComponent } from 'vue'
+    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
+    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
+    import JetLabel from '@/Jetstream/Label.vue'
+    import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
+    import { Head, Link } from '@inertiajs/inertia-vue3';
+    import TheNavbar from "@/Pages/TheNavbar";
+    import TheFooter from "@/Pages/TheFooter";
+    import BaseButton from "../../UI/BaseButton";
+    import BaseInput from "../../UI/BaseInput";
+
+    export default defineComponent({
+        components: {
+            Head,
+            JetAuthenticationCard,
+            JetAuthenticationCardLogo,
+            JetLabel,
+            JetValidationErrors,
+            Link,
+            TheNavbar,
+            TheFooter,
+            BaseButton,
+            BaseInput
+        },
+
+        data() {
+            return {
+                form: this.$inertia.form({
+                    name: '',
+                    email: '',
+                    password: '',
+                    password_confirmation: '',
+                    terms: false,
+                })
+            }
+        },
+
+        methods: {
+            submit() {
+                this.form.post(this.route('register'), {
+                    onFinish: () => this.form.reset('password', 'password_confirmation'),
+                })
+            }
+        }
+    })
+</script>
