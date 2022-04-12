@@ -4,11 +4,11 @@
     <the-navbar></the-navbar>
 
     <header class="text-center text-4xl font-bold mt-14">
-        <h1 class="text-7xl font-lora">Recipes</h1>
+        <h1 class="text-7xl font-lora">Sing Up</h1>
     </header>
     <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
         <section>
-            <h3 class="font-lora font-bold text-2xl">Singup</h3>
+            <h3 class="font-lora font-bold text-2xl">Register for free</h3>
             <p class="font-lora text-gray-800 pt-2">Start here the exploration</p>
         </section>
 
