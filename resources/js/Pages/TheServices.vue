@@ -1,5 +1,8 @@
 <template>
     <base-three-grid>
+        <template #header>
+            What we offer
+        </template>
         <template #default>
             <base-card></base-card>
 

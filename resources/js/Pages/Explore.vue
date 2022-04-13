@@ -8,6 +8,57 @@
         <h3 class="font-lora text-4xl font-bold mb-8">Type something and press <span class="italic">Enter</span></h3>
     </div>
 
+    <base-three-grid>
+        <template #header>
+            See these examples
+        </template>
+        <template #default>
+            <base-recipe-card></base-recipe-card>
+
+            <base-recipe-card>
+                <template #image>
+                    <img
+                        class="lg:h-72 md:h-48 w-full object-cover object-center"
+                        src="https://picsum.photos/id/425/959/635"
+                        alt="blog"
+                    />
+                </template>
+                <template #type>Drinks • Easy</template>
+                <template #recipe>Creative Coffee</template>
+                <template #time>10 minutes</template>
+
+                <template #ing>1</template>
+                <template #people>1</template>
+
+                <template #user-img>
+                    <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://picsum.photos/id/433/4752/3168)"></div>
+                </template>
+                <template #user>Fernando Domingo</template>
+            </base-recipe-card>
+
+            <base-recipe-card>
+                <template #image>
+                    <img
+                        class="lg:h-72 md:h-48 w-full object-cover object-center"
+                        src="https://picsum.photos/id/488/1772/1181"
+                        alt="blog"
+                    />
+                </template>
+                <template #type>Fast Food • Medium</template>
+                <template #recipe>Vegetarian Bowl</template>
+                <template #time>15 minutes</template>
+
+                <template #ing>5</template>
+                <template #people>2</template>
+
+                <template #user-img>
+                    <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://picsum.photos/id/447/1280/853)"></div>
+                </template>
+                <template #user>Carlos Fuentes</template>
+            </base-recipe-card>
+        </template>
+    </base-three-grid>
+
     <!-- Search -->
     <div class="flex text-sm md:text-base mx-10 md:mx-36 my-5 font-monse">
         <div class="relative bg-gray-300 p-2 rounded-full border w-full">
@@ -40,11 +91,15 @@ import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import TheNavbar from "./TheNavbar";
 import TheFooter from "./TheFooter";
+import BaseThreeGrid from "../UI/BaseThreeGrid";
+import BaseRecipeCard from "../UI/BaseRecipeCard";
 
 export default defineComponent({
     components: {
         Head,
         Link,
+        BaseThreeGrid,
+        BaseRecipeCard,
         TheNavbar,
         TheFooter
     },

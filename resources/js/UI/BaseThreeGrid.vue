@@ -4,7 +4,7 @@
             <div class="container mx-auto px-5 py-25 text-gray-800">
                 <div class="text-center mb-12">
                     <h1 class="font-lora text-4xl md:text-5xl text-gray-800 font-bold pt-8">
-                        <slot name="header">What we offer</slot>
+                        <slot name="header"></slot>
                     </h1>
                 </div>
                 <div class="flex flex-wrap -m-4">
