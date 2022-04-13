@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import TheNavbar from "./TheNavbar";
 import TheFooter from "./TheFooter";

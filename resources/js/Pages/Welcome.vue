@@ -12,7 +12,7 @@
 </style>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import TheNavbar from '@/Pages/TheNavbar';
 import TheJumbo from '@/Pages/TheJumbo';
