@@ -12,18 +12,19 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import TheNavbar from "./TheNavbar";
 import TheFooter from "./TheFooter";
 
-export default {
+export default defineComponent({
     components: {
         Head,
         Link,
         TheNavbar,
         TheFooter
     }
-}
+});
 </script>
 
 <style></style>
