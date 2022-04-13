@@ -1,6 +1,8 @@
-# Reverse recipes 🍕🍔🍟
+![image](docs/images/banner.JPG)
 
-A basic web app to manage a database of recipes.
+<div align="center">
+    <b>🍕🍔🍟 Reverse recipes. A basic web app to manage a database of recipes.</b>
+</div>
 
 ## Table of contents 👇
 
