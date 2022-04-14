@@ -47,24 +47,31 @@
                 <div class="md:flex-grow md:text-center md:space-x-3">
                     <Link :href="route('explore')" class="text-white block mt-4 md:inline-block md:mt-0 hover:text-gray-300 duration-300" :class="isExplore">Explore</Link>
                     <Link :href="route('about')" class="text-white block mt-4 md:inline-block md:mt-0 hover:text-gray-300 duration-300" :class="isAbout">About</Link>
-                    <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 underline">
+                </div>
+                <div v-if="$page.props.user" class="flex">
+                    <Link :href="route('dashboard')" class="w-full text-center inline-block px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0 md:mr-2">
                         Dashboard
                     </Link>
+                    <form @submit.prevent="logout">
+                        <button class="w-full text-center inline-block px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black duration-500 mt-4 md:mt-0">Logout</button>
+                    </form>
                 </div>
-                <div class="flex">
-                    <Link
-                        :href="route('login')"
-                        class="w-full text-center inline-block px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black duration-500 mt-4 md:mt-0 md:mr-2"
-                    >Login</Link
-                    >
-                </div>
-                <div class="flex">
-                    <Link
-                        :href="route('register')"
-                        class="w-full text-center inline-block px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0"
-                    >Signup</Link
-                    >
-                </div>
+                <template v-else>
+                    <div class="flex">
+                        <Link
+                            :href="route('login')"
+                            class="w-full text-center inline-block px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black duration-500 mt-4 md:mt-0 md:mr-2"
+                        >Login</Link
+                        >
+                    </div>
+                    <div class="flex">
+                        <Link
+                            :href="route('register')"
+                            class="w-full text-center inline-block px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0"
+                        >Signup</Link
+                        >
+                    </div>
+                </template>
             </div>
         </nav>
     </div>
@@ -72,6 +79,7 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 
 export default defineComponent(
@@ -102,6 +110,9 @@ export default defineComponent(
             toggle() {
                 this.open = !this.open;
             },
+            logout(){
+                Inertia.post(route('logout'));
+            }
         },
     }
 )
