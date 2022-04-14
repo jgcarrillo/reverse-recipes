@@ -4,7 +4,7 @@
     <the-navbar></the-navbar>
 
     <header class="text-center text-4xl font-bold mt-14">
-        <h1 class="text-7xl font-lora">Sing Up</h1>
+        <h1 class="text-7xl font-lora">Sign Up</h1>
     </header>
     <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
         <section>

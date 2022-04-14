@@ -62,7 +62,7 @@
                     <Link
                         :href="route('register')"
                         class="w-full text-center inline-block px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0"
-                    >Singup</Link
+                    >Signup</Link
                     >
                 </div>
             </div>
