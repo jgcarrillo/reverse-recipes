@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Receta;
 
 class User extends Authenticatable
 {
@@ -58,4 +59,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //Relacion ManyToMany
+    public function recetas(){
+        return $this->belongsToMany(Receta::class, 'user_id', 'receta_id');
+    }
 }
