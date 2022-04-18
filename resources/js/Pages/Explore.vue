@@ -89,9 +89,9 @@
 <script>
 import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import BaseThreeGrid from "../Shared/BaseThreeGrid";
-import BaseRecipeCard from "../Shared/BaseRecipeCard";
-import Layout from "../Shared/Layout";
+import BaseThreeGrid from "@/Shared/BaseThreeGrid";
+import BaseRecipeCard from "@/Shared/BaseRecipeCard";
+import Layout from "@/Shared/Layout";
 
 export default defineComponent({
     components: {

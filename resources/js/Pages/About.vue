@@ -20,8 +20,8 @@
 <script>
 import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import ThePricing from "../Shared/ThePricing";
-import Layout from "../Shared/Layout";
+import ThePricing from "@/Shared/ThePricing";
+import Layout from "@/Shared/Layout";
 
 export default defineComponent({
     components: {

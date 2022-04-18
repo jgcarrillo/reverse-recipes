@@ -16,10 +16,10 @@
 <script>
 import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import TheServices from '../Shared/TheServices';
-import TheContact from '../Shared/TheContact';
-import TheJumbo from "../Shared/TheJumbo";
-import Layout from "../Shared/Layout";
+import TheServices from '@/Shared/TheServices';
+import TheContact from '@/Shared/TheContact';
+import TheJumbo from "@/Shared/TheJumbo";
+import Layout from "@/Shared/Layout";
 
 export default defineComponent({
     components: {

@@ -9,8 +9,8 @@
 
 <script>
 import { defineComponent } from 'vue';
-import TheNavbar from "./TheNavbar";
-import TheFooter from "./TheFooter";
+import TheNavbar from "@/Shared/TheNavbar";
+import TheFooter from "@/Shared/TheFooter";
 
 export default defineComponent({
     components: {
