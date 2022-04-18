@@ -20,9 +20,9 @@
 <script>
 import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import TheNavbar from "./TheNavbar";
-import TheFooter from "./TheFooter";
-import ThePricing from "./ThePricing";
+import TheNavbar from "../Shared/TheNavbar";
+import TheFooter from "../Shared/TheFooter";
+import ThePricing from "../Shared/ThePricing";
 
 export default defineComponent({
     components: {

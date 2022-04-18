@@ -14,11 +14,11 @@
 <script>
 import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-import TheNavbar from '@/Pages/TheNavbar';
-import TheJumbo from '@/Pages/TheJumbo';
-import TheServices from '@/Pages/TheServices';
-import TheContact from '@/Pages/TheContact';
-import TheFooter from '@/Pages/TheFooter';
+import TheServices from '../Shared/TheServices';
+import TheContact from '../Shared/TheContact';
+import TheNavbar from "../Shared/TheNavbar"
+import TheFooter from "../Shared/TheFooter";
+import TheJumbo from "../Shared/TheJumbo";
 
 export default defineComponent({
     components: {

@@ -73,10 +73,10 @@
     import JetLabel from '@/Jetstream/Label.vue'
     import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
-    import TheNavbar from "@/Pages/TheNavbar";
-    import TheFooter from "@/Pages/TheFooter";
-    import BaseButton from "../../UI/BaseButton";
-    import BaseInput from "../../UI/BaseInput";
+    import TheNavbar from "../../Shared/TheNavbar"
+    import TheFooter from "../../Shared/TheFooter";
+    import BaseButton from "../../Shared/BaseButton";
+    import BaseInput from "../../Shared/BaseInput";
 
     export default defineComponent({
         components: {

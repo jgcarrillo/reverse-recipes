@@ -52,8 +52,8 @@
 
 <script>
 import { defineComponent } from 'vue';
-import BaseCard from "../UI/BaseCard";
-import BaseThreeGrid from "../UI/BaseThreeGrid";
+import BaseCard from "./BaseCard";
+import BaseThreeGrid from "./BaseThreeGrid";
 
 export default defineComponent({
     components: { BaseCard, BaseThreeGrid }
