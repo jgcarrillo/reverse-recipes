@@ -1,11 +1,13 @@
 <template>
     <Head title="Home" />
 
-    <the-navbar></the-navbar>
-    <the-jumbo></the-jumbo>
-    <the-services></the-services>
-    <the-contact></the-contact>
-    <the-footer></the-footer>
+    <layout>
+        <template #default>
+            <the-jumbo></the-jumbo>
+            <the-services></the-services>
+            <the-contact></the-contact>
+        </template>
+    </layout>
 </template>
 
 <style>
@@ -16,19 +18,17 @@ import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import TheServices from '../Shared/TheServices';
 import TheContact from '../Shared/TheContact';
-import TheNavbar from "../Shared/TheNavbar"
-import TheFooter from "../Shared/TheFooter";
 import TheJumbo from "../Shared/TheJumbo";
+import Layout from "../Shared/Layout";
 
 export default defineComponent({
     components: {
         Head,
         Link,
-        TheNavbar,
         TheJumbo,
         TheServices,
         TheContact,
-        TheFooter
+        Layout
     },
 })
 </script>
