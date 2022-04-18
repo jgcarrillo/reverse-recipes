@@ -26,7 +26,7 @@
             <!-- LOGO -->
             <Link :href="route('home')">
                 <div class="flex items-center flex-no-shrink text-white mr-6">
-                    <img src="../../assets/img/logo.png" alt="Reverse recipes logo" class="h-7 w-7 md:h-12 md:w-12 md:mr-1 rotate-12">
+                    <img src="/logo.png" alt="Reverse recipes logo" class="h-7 w-7 md:h-12 md:w-12 md:mr-1 rotate-12">
                     <span class="hidden md:block text-xl font-bold text-white hover:text-gray-300 duration-300 ">Reverse Recipes</span>
                 </div>
             </Link>
