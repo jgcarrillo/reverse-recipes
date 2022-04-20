@@ -33,6 +33,10 @@ Route::middleware([
     Route::get('dashboard/favorites', function() {
         return Inertia::render('Recipes/Favorites');
     })->name('favorites');
+
+    Route::get('dashboard/admin/users', function() {
+        return Inertia::render('Users/Index');
+    })->name('users');
 });
 
 Route::get('/', function() {
