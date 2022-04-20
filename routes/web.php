@@ -15,6 +15,26 @@ use Inertia\Inertia;
 |
 */
 
+// Auth
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard/Index');
+    })->name('dashboard');
+
+    Route::get('dashboard/recipes', function() {
+        return Inertia::render('Recipes/Index');
+    })->name('recipes');
+
+    Route::get('dashboard/favorites', function() {
+        return Inertia::render('Recipes/Favorites');
+    })->name('favorites');
+});
+
 Route::get('/', function() {
     return Inertia::render('Welcome');
 })->name('home');
@@ -26,13 +46,3 @@ Route::get('/explore', function() {
 Route::get('/about', function() {
     return Inertia::render('About');
 })->name('about');
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard/Index');
-    })->name('dashboard');
-});

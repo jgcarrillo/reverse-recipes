@@ -22,6 +22,7 @@
 <script>
 import { Head } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Shared/AppLayout';
+
 export default {
     components: {
         Head,

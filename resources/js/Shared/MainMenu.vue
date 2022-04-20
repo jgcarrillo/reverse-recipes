@@ -1,18 +1,18 @@
 <template>
-    <div class="font-monse">
+    <div class="font-monse text-indigo-300">
         <div class="mb-4">
-            <Link class="group flex items-center py-3" :href="route('dashboard')">
-                <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
+            <Link class="group flex items-center py-3 hover:text-white" :class="isDashboard" :href="route('dashboard')">
+                Dashboard
             </Link>
         </div>
         <div class="mb-4">
-            <Link class="group flex items-center py-3" href="">
-                <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Recipes</div>
+            <Link class="group flex items-center py-3 hover:text-white" :href="route('recipes')" :class="isRecipes">
+                Recipes
             </Link>
         </div>
         <div class="mb-4">
-            <Link class="group flex items-center py-3" href="">
-                <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Favorites</div>
+            <Link class="group flex items-center py-3 hover:text-white" :href="route('favorites')" :class="isFavorite">
+                Favorites
             </Link>
         </div>
     </div>
@@ -34,5 +34,16 @@ export default {
             return urls.filter((url) => currentUrl.startsWith(url)).length
         },
     },
+    computed: {
+        isDashboard() {
+            return { 'text-white': this.$page.url === '/dashboard' }
+        },
+        isRecipes(){
+            return { 'text-white': this.$page.url === '/dashboard/recipes' }
+        },
+        isFavorite(){
+            return { 'text-white': this.$page.url === '/dashboard/favorites' }
+        },
+    }
 }
 </script>
