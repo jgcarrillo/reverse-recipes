@@ -9,7 +9,7 @@
             </div>
 
             <div class="text-center text-gray-800 bg-gray-50 p-10 md:py-14">
-                <p class="text-sm font-lora md:text-3xl md:px-24">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A sequi suscipit vel! Beatae consequuntur delectus dolore dolorem error, et expedita itaque minima nostrum officia quibusdam quis, reiciendis sapiente similique temporibus?</p>
+                <p class="font-lora text-3xl md:px-24">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A sequi suscipit vel! Beatae consequuntur delectus dolore dolorem error, et expedita itaque minima nostrum officia quibusdam quis, reiciendis sapiente similique temporibus?</p>
             </div>
 
             <the-pricing></the-pricing>
