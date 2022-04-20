@@ -1,23 +1,18 @@
 <template>
     <div class="font-monse">
         <div class="mb-4">
-            <Link class="group flex items-center py-3" href="/">
+            <Link class="group flex items-center py-3" :href="route('dashboard')">
                 <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
             </Link>
         </div>
         <div class="mb-4">
             <Link class="group flex items-center py-3" href="">
-                <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Organizations</div>
+                <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Recipes</div>
             </Link>
         </div>
         <div class="mb-4">
             <Link class="group flex items-center py-3" href="">
-                <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Contacts</div>
-            </Link>
-        </div>
-        <div class="mb-4">
-            <Link class="group flex items-center py-3" href="">
-                <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Reports</div>
+                <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Favorites</div>
             </Link>
         </div>
     </div>
@@ -25,6 +20,7 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3';
+
 export default {
     components: {
         Link,

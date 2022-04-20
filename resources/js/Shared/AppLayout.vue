@@ -4,7 +4,7 @@
         <div class="md:flex md:flex-col">
             <div class="md:flex md:flex-col md:h-screen">
                 <div class="md:flex md:flex-shrink-0">
-                    <div class="flex items-center justify-between px-6 py-4 bg-slate-800 md:flex-shrink-0 md:justify-center md:w-56 border-b border-slate-500 font-monse">
+                    <div class="flex items-center justify-between px-6 py-4 bg-slate-800 md:flex-shrink-0 md:justify-center md:w-56 border-b border-slate-500">
                         <Link class="mt-1" :href="route('home')">
                             <img src="/logo.png" alt="Reverse recipes logo" class="h-10 w-10 rotate-12">
                         </Link>
@@ -19,12 +19,12 @@
                             </template>
                         </dropdown>
                     </div>
-                    <div class="md:text-md flex items-center justify-between p-4 w-full text-sm bg-slate-800 text-white md:px-12 md:py-0 font-monse">
+                    <div class="md:text-md flex items-center justify-between p-4 w-full text-sm bg-slate-800 text-white md:px-12 md:py-0 border-b border-slate-500 font-monse">
                         <div class="mr-4 mt-1">{{ $page.props.user.email }}</div>
                         <dropdown class="mt-1" placement="bottom-end">
                             <template #default>
                                 <div class="group flex items-center cursor-pointer select-none">
-                                    <div class="mr-1 text-white group-hover:text-indigo-600 focus:text-indigo-600 whitespace-nowrap">
+                                    <div class="mr-2 text-white group-hover:text-indigo-600 focus:text-indigo-600 whitespace-nowrap">
                                         <span>{{ $page.props.user.name }}</span>
                                     </div>
                                     <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
