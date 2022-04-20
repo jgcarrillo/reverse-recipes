@@ -24,6 +24,14 @@
                 Favorites
             </Link>
         </div>
+        <div class="mb-4">
+            <Link class="group flex items-center py-3 hover:text-white" :href="route('profile.show')" :class="isProfile">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                My profile
+            </Link>
+        </div>
     </div>
 </template>
 
@@ -34,15 +42,6 @@ export default {
     components: {
         Link,
     },
-    methods: {
-        isUrl(...urls) {
-            let currentUrl = this.$page.url.substr(1)
-            if (urls[0] === '') {
-                return currentUrl === ''
-            }
-            return urls.filter((url) => currentUrl.startsWith(url)).length
-        },
-    },
     computed: {
         isDashboard() {
             return { 'text-white': this.$page.url === '/dashboard' }
@@ -52,6 +51,9 @@ export default {
         },
         isFavorite(){
             return { 'text-white': this.$page.url === '/dashboard/favorites' }
+        },
+        isProfile(){
+            return { 'text-white': this.$page.url === '/user/profile' }
         },
     }
 }
