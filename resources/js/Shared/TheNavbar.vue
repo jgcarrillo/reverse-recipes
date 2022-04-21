@@ -62,7 +62,7 @@
                     <div class="flex">
                         <Link
                             :href="route('login')"
-                            class="w-full text-center inline-block px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black duration-500 mt-4 md:mt-0 md:mr-2"
+                            class="w-full text-center inline-block px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black transition duration-500 mt-4 md:mt-0 md:mr-2"
                         >Login</Link
                         >
                     </div>

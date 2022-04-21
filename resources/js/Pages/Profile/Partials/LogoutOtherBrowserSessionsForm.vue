@@ -45,11 +45,11 @@ const closeModal = () => {
 <template>
     <JetActionSection>
         <template #title>
-            Browser Sessions
+            <span class="text-white font-lora">Browser Sessions</span>
         </template>
 
         <template #description>
-            Manage and log out your active sessions on other browsers and devices.
+            <span class="text-white font-monse">Manage and log out your active sessions on other browsers and devices.</span>
         </template>
 
         <template #content>

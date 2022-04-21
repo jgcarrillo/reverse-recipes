@@ -1,12 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
-import JetActionMessage from '@/Jetstream/ActionMessage.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetFormSection from '@/Jetstream/FormSection.vue';
-import JetInput from '@/Jetstream/Input.vue';
 import JetInputError from '@/Jetstream/InputError.vue';
-import JetLabel from '@/Jetstream/Label.vue';
+import ProfileButton from '@/Shared/ProfileButton.vue';
+import CustomFormSection from '@/Shared/FormSection.vue';
+import ProfileInput from '@/Shared/ProfileInput.vue';
+import CustomLabel from '@/Shared/CustomLabel.vue';
+import CustomActionMessage from '@/Shared/CustomActionMessage.vue';
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -38,19 +38,19 @@ const updatePassword = () => {
 </script>
 
 <template>
-    <JetFormSection @submitted="updatePassword">
+    <custom-form-section @submitted="updatePassword">
         <template #title>
-            Update Password
+            <span class="text-white font-lora">Update Password</span>
         </template>
 
         <template #description>
-            Ensure your account is using a long, random password to stay secure.
+            <span class="text-white font-monse">Ensure your account is using a long, random password to stay secure.</span>
         </template>
 
         <template #form>
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="current_password" value="Current Password" />
-                <JetInput
+                <custom-label for="current_password" value="Current Password" />
+                <profile-input
                     id="current_password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
@@ -62,8 +62,8 @@ const updatePassword = () => {
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="password" value="New Password" />
-                <JetInput
+                <custom-label for="password" value="New Password" />
+                <profile-input
                     id="password"
                     ref="passwordInput"
                     v-model="form.password"
@@ -75,8 +75,8 @@ const updatePassword = () => {
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="password_confirmation" value="Confirm Password" />
-                <JetInput
+                <custom-label for="password_confirmation" value="Confirm Password" />
+                <profile-input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -88,13 +88,13 @@ const updatePassword = () => {
         </template>
 
         <template #actions>
-            <JetActionMessage :on="form.recentlySuccessful" class="mr-3">
+            <custom-action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
-            </JetActionMessage>
+            </custom-action-message>
 
-            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <profile-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </JetButton>
+            </profile-button>
         </template>
-    </JetFormSection>
+    </custom-form-section>
 </template>

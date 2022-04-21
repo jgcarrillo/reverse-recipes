@@ -2,13 +2,13 @@
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3';
-import JetButton from '@/Jetstream/Button.vue';
-import JetFormSection from '@/Jetstream/FormSection.vue';
-import JetInput from '@/Jetstream/Input.vue';
 import JetInputError from '@/Jetstream/InputError.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetActionMessage from '@/Jetstream/ActionMessage.vue';
-import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
+import ProfileButton from '@/Shared/ProfileButton.vue';
+import CustomFormSection from '@/Shared/FormSection.vue';
+import ProfileInput from '@/Shared/ProfileInput.vue';
+import CustomLabel from '@/Shared/CustomLabel.vue';
+import CustomActionMessage from '@/Shared/CustomActionMessage.vue';
+import SecondaryProfileButton from '@/Shared/SecondaryProfileButton.vue';
 
 const props = defineProps({
     user: Object,
@@ -72,13 +72,13 @@ const clearPhotoFileInput = () => {
 </script>
 
 <template>
-    <JetFormSection @submitted="updateProfileInformation">
+    <custom-form-section @submitted="updateProfileInformation">
         <template #title>
-            Profile Information
+            <span class="text-white font-lora">Profile Information</span>
         </template>
 
         <template #description>
-            Update your account's profile information and email address.
+            <span class="text-white font-monse">Update your account's profile information and email address.</span>
         </template>
 
         <template #form>
@@ -92,7 +92,7 @@ const clearPhotoFileInput = () => {
                     @change="updatePhotoPreview"
                 >
 
-                <JetLabel for="photo" value="Photo" />
+                <custom-label for="photo" value="Photo"></custom-label>
 
                 <!-- Current Profile Photo -->
                 <div v-show="! photoPreview" class="mt-2">
@@ -107,26 +107,26 @@ const clearPhotoFileInput = () => {
                     />
                 </div>
 
-                <JetSecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
+                <secondary-profile-button class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
                     Select A New Photo
-                </JetSecondaryButton>
+                </secondary-profile-button>
 
-                <JetSecondaryButton
+                <secondary-profile-button
                     v-if="user.profile_photo_path"
                     type="button"
                     class="mt-2"
                     @click.prevent="deletePhoto"
                 >
                     Remove Photo
-                </JetSecondaryButton>
+                </secondary-profile-button>
 
                 <JetInputError :message="form.errors.photo" class="mt-2" />
             </div>
 
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="name" value="Name" />
-                <JetInput
+                <custom-label for="name" value="Name"></custom-label>
+                <profile-input
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -138,8 +138,8 @@ const clearPhotoFileInput = () => {
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="email" value="Email" />
-                <JetInput
+                <custom-label for="email" value="Email"></custom-label>
+                <profile-input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -150,13 +150,13 @@ const clearPhotoFileInput = () => {
         </template>
 
         <template #actions>
-            <JetActionMessage :on="form.recentlySuccessful" class="mr-3">
+            <custom-action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
-            </JetActionMessage>
+            </custom-action-message>
 
-            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <profile-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </JetButton>
+            </profile-button>
         </template>
-    </JetFormSection>
+    </custom-form-section>
 </template>
