@@ -24,8 +24,9 @@
                         <dropdown class="mt-1" placement="bottom-end">
                             <template #default>
                                 <div class="group flex items-center cursor-pointer select-none">
-                                    <div class="mr-2 text-white group-hover:text-indigo-600 focus:text-indigo-600 whitespace-nowrap">
+                                    <div class="mr-2 text-white group-hover:text-indigo-300 focus:text-indigo-600 whitespace-nowrap">
                                         <span>{{ $page.props.user.name }}</span>
+                                        <span class="hidden md:inline">&nbsp;{{ $page.props.user.last_name }}</span>
                                     </div>
                                     <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
                                 </div>
