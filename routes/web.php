@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,9 +36,13 @@ Route::middleware([
         return Inertia::render('Recipes/Favorites');
     })->name('favorites');
 
-    Route::get('dashboard/admin/users', function() {
-        return Inertia::render('Users/Index');
-    })->name('users');
+    // Users
+    Route::get('dashboard/admin/users', [UsersController::class, 'index'])->name('users');
+
+    // Images
+    Route::get('/storage/{path}', [ImagesController::class, 'show'])
+        ->where('path', '.*')
+        ->name('image');
 });
 
 Route::get('/', function() {
