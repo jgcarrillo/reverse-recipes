@@ -56,5 +56,7 @@ If you want to make changes into the project, do the following:
 - List tags: `git tag -l`
 - Push tag to Github: `git push origin <tag>`
 
+To create the **storage link** you need to type `php artisan storage:link` and then change the current `APP_URL` inside `.env` file to `APP_URL=http://localhost:8000` or whatever you use.
+
 
 
