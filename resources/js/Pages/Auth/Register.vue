@@ -26,6 +26,14 @@
                             />
                         </div>
                         <div class="mb-6 pt-3 rounded bg-gray-200">
+                            <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="last_name">Last Name</jet-label>
+                            <base-input
+                                type="text"
+                                id="last_name"
+                                v-model="form.last_name" required autofocus autocomplete="last-name"
+                            />
+                        </div>
+                        <div class="mb-6 pt-3 rounded bg-gray-200">
                             <jet-label class="font-monse block text-gray-800 text-sm font-bold mb-2 ml-3" for="email">Email</jet-label>
                             <base-input
                                 type="email"
@@ -73,9 +81,9 @@
     import JetLabel from '@/Jetstream/Label.vue'
     import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
-    import BaseButton from "../../Shared/BaseButton";
-    import BaseInput from "../../Shared/BaseInput";
-    import Layout from "../../Shared/Layout";
+    import BaseButton from "@/Shared/BaseButton";
+    import BaseInput from "@/Shared/BaseInput";
+    import Layout from "@/Shared/Layout";
 
     export default defineComponent({
         components: {
@@ -94,6 +102,7 @@
             return {
                 form: this.$inertia.form({
                     name: '',
+                    last_name: '',
                     email: '',
                     password: '',
                     password_confirmation: '',
