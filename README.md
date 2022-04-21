@@ -1,7 +1,7 @@
-![image](docs/images/banner.JPG)
+![image](docs/images/cover.JPG)
 
 <div align="center">
-    <b>🍕🍔🍟 Reverse recipes. A basic web app to manage a database of recipes.</b>
+    <b>🍕🍔🍟 Reverse recipes. A basic web app to manage a database of recipes 🍕🍔🍟.</b>
 </div>
 
 ## Table of contents 👇
