@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
-import JetActionMessage from '@/Jetstream/ActionMessage.vue';
-import JetActionSection from '@/Jetstream/ActionSection.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetDialogModal from '@/Jetstream/DialogModal.vue';
-import JetInput from '@/Jetstream/Input.vue';
+import CustomActionMessage from '@/Shared/CustomActionMessage.vue';
+import CustomActionSection from '@/Shared/CustomActionSection.vue';
+import ProfileButton from '@/Shared/ProfileButton.vue';
+import CustomDialogModal from '@/Shared/CustomDialogModal.vue';
+import ProfileInput from '@/Shared/ProfileInput.vue';
 import JetInputError from '@/Jetstream/InputError.vue';
-import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
+import SecondaryProfileButton from '@/Shared/SecondaryProfileButton.vue';
 
 defineProps({
     sessions: Array,
@@ -43,7 +43,7 @@ const closeModal = () => {
 </script>
 
 <template>
-    <JetActionSection>
+    <custom-action-section>
         <template #title>
             <span class="text-white font-lora">Browser Sessions</span>
         </template>
@@ -53,7 +53,7 @@ const closeModal = () => {
         </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-gray-600">
+            <div class="max-w-xl text-sm text-white font-monse">
                 If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.
             </div>
 
@@ -69,7 +69,7 @@ const closeModal = () => {
                             stroke-width="2"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
-                            class="w-8 h-8 text-gray-500"
+                            class="w-8 h-8 text-yellow-400"
                         >
                             <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
@@ -83,7 +83,7 @@ const closeModal = () => {
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                            class="w-8 h-8 text-gray-500"
+                            class="w-8 h-8 text-yellow-400"
                         >
                             <path d="M0 0h24v24H0z" stroke="none" /><rect
                                 x="7"
@@ -96,12 +96,12 @@ const closeModal = () => {
                     </div>
 
                     <div class="ml-3">
-                        <div class="text-sm text-gray-600">
+                        <div class="text-sm text-white font-lora">
                             {{ session.agent.platform ? session.agent.platform : 'Unknown' }} - {{ session.agent.browser ? session.agent.browser : 'Unknown' }}
                         </div>
 
                         <div>
-                            <div class="text-xs text-gray-500">
+                            <div class="text-xs text-white font-monse">
                                 {{ session.ip_address }},
 
                                 <span v-if="session.is_current_device" class="text-green-500 font-semibold">This device</span>
@@ -113,17 +113,17 @@ const closeModal = () => {
             </div>
 
             <div class="flex items-center mt-5">
-                <JetButton @click="confirmLogout">
+                <profile-button @click="confirmLogout">
                     Log Out Other Browser Sessions
-                </JetButton>
+                </profile-button>
 
-                <JetActionMessage :on="form.recentlySuccessful" class="ml-3">
+                <custom-action-message :on="form.recentlySuccessful" class="ml-3">
                     Done.
-                </JetActionMessage>
+                </custom-action-message>
             </div>
 
             <!-- Log Out Other Devices Confirmation Modal -->
-            <JetDialogModal :show="confirmingLogout" @close="closeModal">
+            <custom-dialog-modal :show="confirmingLogout" @close="closeModal">
                 <template #title>
                     Log Out Other Browser Sessions
                 </template>
@@ -132,7 +132,7 @@ const closeModal = () => {
                     Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.
 
                     <div class="mt-4">
-                        <JetInput
+                        <profile-input
                             ref="passwordInput"
                             v-model="form.password"
                             type="password"
@@ -146,20 +146,20 @@ const closeModal = () => {
                 </template>
 
                 <template #footer>
-                    <JetSecondaryButton @click="closeModal">
+                    <secondary-profile-button @click="closeModal">
                         Cancel
-                    </JetSecondaryButton>
+                    </secondary-profile-button>
 
-                    <JetButton
+                    <profile-button
                         class="ml-3"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="logoutOtherBrowserSessions"
                     >
                         Log Out Other Browser Sessions
-                    </JetButton>
+                    </profile-button>
                 </template>
-            </JetDialogModal>
+            </custom-dialog-modal>
         </template>
-    </JetActionSection>
+    </custom-action-section>
 </template>

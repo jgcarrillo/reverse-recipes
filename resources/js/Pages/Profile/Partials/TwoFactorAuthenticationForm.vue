@@ -4,10 +4,10 @@ import { Inertia } from '@inertiajs/inertia';
 import { useForm, usePage } from '@inertiajs/inertia-vue3';
 import CustomActionSection from '@/Shared/CustomActionSection.vue';
 import ProfileButton from '@/Shared/ProfileButton.vue';
-import JetConfirmsPassword from '@/Jetstream/ConfirmsPassword.vue';
+import CustomConfirmsPassword from '@/Shared/CustomConfirmsPassword.vue';
 import JetDangerButton from '@/Jetstream/DangerButton.vue';
 import ProfileInput from '@/Shared/ProfileInput.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
+import CustomInputError from '@/Shared/CustomInputError.vue';
 import CustomLabel from '@/Shared/CustomLabel.vue';
 import SecondaryProfileButton from '@/Shared/SecondaryProfileButton.vue';
 
@@ -168,7 +168,7 @@ const disableTwoFactorAuthentication = () => {
                             @keyup.enter="confirmTwoFactorAuthentication"
                         />
 
-                        <JetInputError :message="confirmationForm.errors.code" class="mt-2" />
+                        <custom-input-error :message="confirmationForm.errors.code" class="mt-2" />
                     </div>
                 </div>
 
@@ -189,15 +189,15 @@ const disableTwoFactorAuthentication = () => {
 
             <div class="mt-5">
                 <div v-if="! twoFactorEnabled">
-                    <JetConfirmsPassword @confirmed="enableTwoFactorAuthentication">
+                    <custom-confirms-password @confirmed="enableTwoFactorAuthentication">
                         <profile-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">
                             Enable
                         </profile-button>
-                    </JetConfirmsPassword>
+                    </custom-confirms-password>
                 </div>
 
                 <div v-else>
-                    <JetConfirmsPassword @confirmed="confirmTwoFactorAuthentication">
+                    <custom-confirms-password @confirmed="confirmTwoFactorAuthentication">
                         <profile-button
                             v-if="confirming"
                             type="button"
@@ -207,27 +207,27 @@ const disableTwoFactorAuthentication = () => {
                         >
                             Confirm
                         </profile-button>
-                    </JetConfirmsPassword>
+                    </custom-confirms-password>
 
-                    <JetConfirmsPassword @confirmed="regenerateRecoveryCodes">
+                    <custom-confirms-password @confirmed="regenerateRecoveryCodes">
                         <secondary-profile-button
                             v-if="recoveryCodes.length > 0 && ! confirming"
                             class="mr-3"
                         >
                             Regenerate Recovery Codes
                         </secondary-profile-button>
-                    </JetConfirmsPassword>
+                    </custom-confirms-password>
 
-                    <JetConfirmsPassword @confirmed="showRecoveryCodes">
+                    <custom-confirms-password @confirmed="showRecoveryCodes">
                         <secondary-profile-button
                             v-if="recoveryCodes.length === 0 && ! confirming"
                             class="mr-3"
                         >
                             Show Recovery Codes
                         </secondary-profile-button>
-                    </JetConfirmsPassword>
+                    </custom-confirms-password>
 
-                    <JetConfirmsPassword @confirmed="disableTwoFactorAuthentication">
+                    <custom-confirms-password @confirmed="disableTwoFactorAuthentication">
                         <secondary-profile-button
                             v-if="confirming"
                             :class="{ 'opacity-25': disabling }"
@@ -235,9 +235,9 @@ const disableTwoFactorAuthentication = () => {
                         >
                             Cancel
                         </secondary-profile-button>
-                    </JetConfirmsPassword>
+                    </custom-confirms-password>
 
-                    <JetConfirmsPassword @confirmed="disableTwoFactorAuthentication">
+                    <custom-confirms-password @confirmed="disableTwoFactorAuthentication">
                         <JetDangerButton
                             v-if="! confirming"
                             :class="{ 'opacity-25': disabling }"
@@ -245,7 +245,7 @@ const disableTwoFactorAuthentication = () => {
                         >
                             Disable
                         </JetDangerButton>
-                    </JetConfirmsPassword>
+                    </custom-confirms-password>
                 </div>
             </div>
         </template>
