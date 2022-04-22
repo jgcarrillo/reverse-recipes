@@ -15,6 +15,7 @@ class UsersController extends Controller
     {
         return Inertia::render('Users/Index', [
             'users' => User::all()->map(fn ($user) => [
+                'id' => $user->id,
                 'name' => $user->name,
                 'last_name' => $user->last_name,
                 'email' => $user->email,
@@ -38,9 +39,17 @@ class UsersController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return Inertia::render('Users/Edit', [
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'last_name' => $user->last_name,
+                'email' => $user->email,
+                'photo' => $user->profile_photo_path ? URL::route('image', ['path' => $user->profile_photo_path, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
+            ],
+        ]);
     }
 
     public function update(Request $request, $id)

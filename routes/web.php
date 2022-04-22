@@ -38,6 +38,7 @@ Route::middleware([
 
     // Users
     Route::get('dashboard/admin/users', [UsersController::class, 'index'])->name('users');
+    Route::get('dashboard/admin/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
 
     // Images
     Route::get('/storage/{path}', [ImagesController::class, 'show'])

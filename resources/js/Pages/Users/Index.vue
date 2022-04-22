@@ -18,24 +18,24 @@
             </tr>
             <tr v-for="user in users" :key="user.id" class="hover:bg-slate-600 focus-within:bg-gray-100 font-monse">
                 <td class="border-t border-gray-900">
-                    <Link class="flex items-center px-6 py-4 focus:text-indigo-500" href="">
-                        <img v-if="user.photo" class="block -my-2 mr-2 w-5 h-5 rounded-full" :src="user.photo" />
+                    <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/dashboard/admin/users/${user.id}/edit`">
+                        <img v-if="user.photo" alt="user photo" class="block -my-2 mr-2 w-5 h-5 rounded-full" :src="user.photo" />
                         {{ user.name }} {{ user.last_name }}
                     </Link>
                 </td>
                 <td class="border-t border-gray-900">
-                    <Link class="flex items-center px-6 py-4" href="" tabindex="-1">
+                    <Link class="flex items-center px-6 py-4" :href="`/dashboard/admin/users/${user.id}/edit`" tabindex="-1">
                         {{ user.email }}
                     </Link>
                 </td>
                 <td class="border-t border-gray-900">
-                    <Link class="flex items-center px-6 py-4" href="" tabindex="-1">
+                    <Link class="flex items-center px-6 py-4" :href="`/dashboard/admin/users/${user.id}/edit`" tabindex="-1">
                         User
                         <!-- {{ user.owner ? 'Owner' : 'User' }} -->
                     </Link>
                 </td>
                 <td class="w-px border-t border-gray-900">
-                    <Link class="flex items-center px-4" href="" tabindex="-1">
+                    <Link class="flex items-center px-4" :href="`/dashboard/admin/users/${user.id}/edit`" tabindex="-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
