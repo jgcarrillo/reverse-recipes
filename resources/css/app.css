@@ -2,6 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import 'form';
+
 @layer base {
     @font-face {
         font-family: 'Lora';

@@ -18,9 +18,9 @@
                     <text-input v-model="form.password" class="pb-8 pr-6 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Password" />
                     <file-input v-model="form.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" />
                 </div>
-                <div class="flex items-center px-8 py-4 bg-gray-50 border-t border-gray-100">
-                    <button class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete User</button>
-                    <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Update User</loading-button>
+                <div class="flex items-center px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
+                    <button class="px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black transition duration-500 hover:underline" tabindex="-1" type="button" @click="destroy">Delete User</button>
+                    <loading-button :loading="form.processing" class="px-4 py-2 ml-auto rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Update User</loading-button>
                 </div>
             </form>
         </div>
