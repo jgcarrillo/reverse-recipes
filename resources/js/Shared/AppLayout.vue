@@ -20,15 +20,17 @@
                         </dropdown>
                     </div>
                     <div class="md:text-md flex items-center justify-between p-4 w-full text-sm bg-slate-800 text-white md:px-12 md:py-0 border-b border-slate-500 font-monse">
-                        <div class="mr-4 mt-1">{{ $page.props.user.email }}</div>
+                        <div class="mr-4 mt-1">{{ auth.user.email }}</div>
                         <dropdown class="mt-1" placement="bottom-end">
                             <template #default>
                                 <div class="group flex items-center cursor-pointer select-none">
                                     <div class="mr-2 text-white group-hover:text-indigo-300 focus:text-indigo-600 whitespace-nowrap">
-                                        <span>{{ $page.props.user.name }}</span>
-                                        <span class="hidden md:inline">&nbsp;{{ $page.props.user.last_name }}</span>
+                                        <span>{{ auth.user.name }}</span>
+                                        <span class="hidden md:inline">&nbsp;{{ auth.user.last_name }}</span>
                                     </div>
-                                    <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:text-indigo-300 focus:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </div>
                             </template>
                             <template #dropdown>
@@ -62,6 +64,9 @@ const logout = () => {
 };
 
 export default {
+    props: {
+        auth: Object
+    },
     components: {
         Dropdown,
         Link,
