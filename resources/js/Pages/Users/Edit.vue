@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { Head, Link } from '@inertiajs/inertia-vue3'
+import { Head, Link } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Shared/AppLayout.vue';
 import TextInput from '@/Shared/TextInput.vue';
 import FileInput from '@/Shared/FileInput.vue';
@@ -61,13 +61,13 @@ export default {
     },
     methods: {
         update() {
-            this.form.post(`/users/${this.user.id}`, {
+            this.form.post(`/dashboard/admin/users/${this.user.id}`, {
                 onSuccess: () => this.form.reset('password', 'photo'),
             })
         },
         destroy() {
             if (confirm('Are you sure you want to delete this user?')) {
-                this.$inertia.delete(`/users/${this.user.id}`)
+                this.$inertia.delete(`/dashboard/admin/users/${this.user.id}`)
             }
         },
         restore() {

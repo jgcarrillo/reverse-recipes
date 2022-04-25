@@ -39,6 +39,8 @@ Route::middleware([
     // Users
     Route::get('dashboard/admin/users', [UsersController::class, 'index'])->name('users');
     Route::get('dashboard/admin/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('dashboard/admin/users/{user}', [UsersController::class, 'update'])->name('users.update');
+    Route::delete('dashboard/admin/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 
     // Images
     Route::get('/storage/{path}', [ImagesController::class, 'show'])

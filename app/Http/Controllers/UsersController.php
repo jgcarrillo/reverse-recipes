@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -52,13 +54,34 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        //
+        (new Request)->validate([
+            'name' => ['required', 'max:50'],
+            'last_name' => ['required', 'max:50'],
+            'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
+            'password' => ['nullable'],
+            'photo' => ['nullable', 'image'],
+        ]);
+
+        $user->update((new Request)->only('name', 'last_name', 'email'));
+
+        if ((new Request)->file('photo')) {
+            $user->update(['profile_photo_path' => (new Request)->file('photo')->store('users')]);
+        }
+
+        if ((new Request)->get('password')) {
+            $user->update(['password' => (new Request)->get('password')]);
+        }
+
+        return Redirect::back();
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return Redirect::route('users');
+        // return Redirect::back()->with('success', 'User deleted.');
     }
 }
