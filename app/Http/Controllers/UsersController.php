@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\UpdateUserPassword;
+use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Actions\Jetstream\DeleteUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -29,19 +33,12 @@ class UsersController extends Controller
         return Inertia::render('Users/Create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        User::create(
-            (new Request)->validate([
-                'name' => ['required', 'max:50'],
-                'last_name' => ['required', 'max:50'],
-                'email' => ['required', 'max:50', 'email', Rule::unique('users')],
-                'password' => ['nullable'],
-                'photo' => ['nullable', 'image'],
-            ])
-        );
+        $newUser = new CreateNewUser();
+        $user = $newUser->create($request->only(['name', 'last_name', 'email', 'password']));
 
-        return Redirect::route('recipes');
+        return Redirect::route('users');
     }
 
     public function edit(User $user)
@@ -57,24 +54,14 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(User $user)
+    public function update(User $user, Request $request)
     {
-        (new Request)->validate([
-            'name' => ['required', 'max:50'],
-            'last_name' => ['required', 'max:50'],
-            'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
-            'password' => ['nullable'],
-            'photo' => ['nullable', 'image'],
-        ]);
+        $updateUser = new UpdateUserProfileInformation();
+        $updateUser->update($user, $request->all());
 
-        $user->update((new Request)->only('name', 'last_name', 'email'));
-
-        if ((new Request)->file('photo')) {
-            $user->update(['profile_photo_path' => (new Request)->file('photo')->store('users')]);
-        }
-
-        if ((new Request)->get('password')) {
-            $user->update(['password' => (new Request)->get('password')]);
+        $updatePassword = new UpdateUserPassword();
+        if($request->has('password') !== null and !empty($request->input('password'))) {
+            $updatePassword->update($user, [$request->input('password')]);
         }
 
         return Redirect::route('users');
@@ -82,9 +69,9 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
-        $user->delete();
+        $userDelete = new DeleteUser();
+        $userDelete->delete($user);
 
         return Redirect::route('users');
-        // return Redirect::back()->with('success', 'User deleted.');
     }
 }
