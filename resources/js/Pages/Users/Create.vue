@@ -8,7 +8,7 @@
         <div class="max-w-3xl bg-slate-800 rounded-md shadow overflow-hidden">
             <form @submit.prevent="store">
                 <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-                    <text-input v-model="form.first_name" class="pb-8 pr-6 w-full lg:w-1/2" label="First name" />
+                    <text-input v-model="form.name" class="pb-8 pr-6 w-full lg:w-1/2" label="First name" />
                     <text-input v-model="form.last_name" class="pb-8 pr-6 w-full lg:w-1/2" label="Last name" />
                     <text-input v-model="form.email" class="pb-8 pr-6 w-full lg:w-1/2" label="Email" />
                     <text-input v-model="form.password" class="pb-8 pr-6 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Password" />
@@ -52,7 +52,7 @@ export default {
     },
     methods: {
         store() {
-            this.form.post('/users')
+            this.form.post('/dashboard/admin/users')
         },
     },
 }

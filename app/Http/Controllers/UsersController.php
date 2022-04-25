@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Fortify\CreateNewUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
-use Inertia\Response;
-use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class UsersController extends Controller
 {
@@ -30,6 +27,21 @@ class UsersController extends Controller
     public function create()
     {
         return Inertia::render('Users/Create');
+    }
+
+    public function store()
+    {
+        User::create(
+            (new Request)->validate([
+                'name' => ['required', 'max:50'],
+                'last_name' => ['required', 'max:50'],
+                'email' => ['required', 'max:50', 'email', Rule::unique('users')],
+                'password' => ['nullable'],
+                'photo' => ['nullable', 'image'],
+            ])
+        );
+
+        return Redirect::route('recipes');
     }
 
     public function edit(User $user)
@@ -65,7 +77,7 @@ class UsersController extends Controller
             $user->update(['password' => (new Request)->get('password')]);
         }
 
-        return Redirect::back();
+        return Redirect::route('users');
     }
 
     public function destroy(User $user)
