@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class UsersController extends Controller
 {
@@ -28,17 +29,7 @@ class UsersController extends Controller
 
     public function create()
     {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
+        return Inertia::render('Users/Create');
     }
 
     public function edit(User $user)

@@ -3,8 +3,8 @@
         <Head :title="`${form.name} ${form.last_name}`" />
         <div class="flex justify-start mb-8 max-w-3xl">
             <h1 class="text-3xl font-lora">
-                <Link class="text-indigo-400 hover:text-indigo-600" href="/dashboard/admin/users">Users</Link>
-                <span class="text-indigo-400"> /</span>
+                <Link class="text-indigo-300 hover:text-white" href="/dashboard/admin/users">Users</Link>
+                <span class="text-indigo-300"> /</span>
                 {{ form.name }} {{ form.last_name }}
             </h1>
             <img v-if="user.photo" alt="user photo" class="block ml-4 w-8 h-8 rounded-full" :src="user.photo" />

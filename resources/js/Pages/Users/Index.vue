@@ -4,7 +4,7 @@
 
     <div class="flex items-center justify-between mb-6">
         <search-filter class="mr-4 w-full max-w-md"></search-filter>
-        <Link class="font-lora px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0" href="">
+        <Link class="font-lora px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0" href="/dashboard/admin/users/create">
             <span>Create</span>
             <span class="hidden md:inline">&nbsp;User</span>
         </Link>
