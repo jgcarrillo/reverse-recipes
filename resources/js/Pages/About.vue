@@ -9,7 +9,7 @@
             </div>
 
             <div class="text-center text-gray-800 bg-gray-50 p-10 md:py-14">
-                <p class="font-lora text-3xl md:px-24">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A sequi suscipit vel! Beatae consequuntur delectus dolore dolorem error, et expedita itaque minima nostrum officia quibusdam quis, reiciendis sapiente similique temporibus?</p>
+                <p class="font-lora text-3xl md:px-24">Reverse recipes is a project developed by three engineers, so the business model is based on a SaaS (Software as a Service). We started as a team of three people and now we are more than ten! We hope you feel comfortable using our website and that it is useful for you to find the recipes that best suit your lifestyle.</p>
             </div>
 
             <the-pricing></the-pricing>
