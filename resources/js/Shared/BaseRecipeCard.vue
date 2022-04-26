@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 sm:w-1/2 lg:w-1/3 transition hover:-translate-y-2 duration">
+    <Link :href="route('recipeone')" class="p-4 sm:w-1/2 lg:w-1/3 transition hover:-translate-y-2 duration cursor-pointer">
         <div class="h-full border border-gray-200 rounded-lg overflow-hidden shadow-md">
             <slot name="image">
                 <img
@@ -52,14 +52,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </Link>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import { Link } from '@inertiajs/inertia-vue3';
 
 export default defineComponent({
-
+    components: {
+        Link
+    }
 });
 </script>
 

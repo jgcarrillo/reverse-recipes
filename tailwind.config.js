@@ -17,6 +17,11 @@ module.exports = {
                 mono: ["'DM Mono'", ...defaultTheme.fontFamily.mono],
                 monse: "'Montserrat', serif",
             },
+            flex: {
+                '2': '1 1 25%',
+                '3': '1 1 75%',
+                '4': '0 0 50%'
+            }
         },
     },
 

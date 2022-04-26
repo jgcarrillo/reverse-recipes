@@ -61,3 +61,7 @@ Route::get('/explore', function() {
 Route::get('/about', function() {
     return Inertia::render('About');
 })->name('about');
+
+Route::get('/explore/recipe/1', function() {
+    return Inertia::render('Recipes/Examples/RecipeOne');
+})->name('recipeone');
