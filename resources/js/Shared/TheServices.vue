@@ -19,10 +19,8 @@
                 </template>
                 <template #content>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur
-                        <code class="bg-yellow-400 px-1 py-0.5 rounded text-yellow-700 font-mono italic">adipisicing</code> elit.
-                        Aperiam modi, expedita quos doloremque autem ipsum itaque incidunt ipsam reprehenderit fuga! Dolores quisquam
-                        eius cum accusamus?
+                        Looking for recipes for DIY foods? Reverse recipes has more than 1000 recipes
+                        <code class="bg-yellow-400 px-1 py-0.5 rounded text-yellow-700 font-mono italic">for dishes</code> like homemade pasta and sausages, ingredients like self-rising flour and spice blends, and jams and jellies, cheeses--even ketchup and mustard.
                     </p>
                 </template>
             </base-card>
@@ -40,9 +38,8 @@
                 </template>
                 <template #content>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam modi, expedita quos doloremque
-                        <code class="bg-yellow-400 px-1 py-0.5 rounded text-yellow-700 font-mono italic">autem</code> ipsum itaque
-                        incidunt ipsam reprehenderit fuga! Dolores quisquam eius cum accusamus?
+                        They say abs are made in the kitchen, and so is healthy, delicious and nourishing food. Have fun creating superfood smoothies,
+                        <code class="bg-yellow-400 px-1 py-0.5 rounded text-yellow-700 font-mono italic">seasonal dishes</code> and more tasty recipes from this collection. Whatever you decide to whip up, we hope these recipes make cooking at home more inspiring, enjoyable and, of course, delicious!
                     </p>
                 </template>
             </base-card>

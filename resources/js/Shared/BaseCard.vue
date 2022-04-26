@@ -16,10 +16,8 @@
 
                 <p class="font-monse leading-relaxed mb-3">
                     <slot name="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam modi, expedita quos doloremque autem ipsum
-                        itaque incidunt ipsam reprehenderit fuga!
-                        <code class="bg-yellow-400 px-1 py-0.5 rounded text-yellow-700 font-mono italic">Dolores</code> quisquam eius
-                        cum accusamus?
+                        Reverse Recipe's largest selection of recipes & drink ideas featuring over
+                        <code class="bg-yellow-400 px-1 py-0.5 rounded text-yellow-700 font-mono italic">1000</code> instructional recipes. Here you will find fresh family recipes everyone will enjoy. We’ve pulled together some recipes that make it easy to enjoy new takes on breakfast, family dinners and more.
                     </slot>
                 </p>
             </div>
