@@ -36,7 +36,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $newUser = new CreateNewUser();
-        $user = $newUser->create($request->only(['name', 'last_name', 'email', 'password']));
+        $user = $newUser->create($request->only(['name', 'last_name', 'email', 'password', 'password_confirmation']));
 
         return Redirect::route('users');
     }
