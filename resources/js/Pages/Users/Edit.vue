@@ -12,11 +12,10 @@
         <div class="max-w-3xl bg-slate-800 rounded-md shadow overflow-hidden">
             <form @submit.prevent="update">
                 <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-                    <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="First name" id="name" />
-                    <text-input v-model="form.last_name" :error="form.errors.last_name" class="pb-8 pr-6 w-full lg:w-1/2" label="Last name" id="last_name" />
-                    <text-input v-model="form.email" :error="form.errors.email" class="pb-8 pr-6 w-full lg:w-1/2" label="Email" id="email"/>
-                    <text-input v-model="form.password" :error="form.errors.password" class="pb-8 pr-6 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Password" id="password" />
-                    <file-input v-model="form.photo" :error="form.errors.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
+                    <text-input v-model="form.name" :error="errors.updateProfileInformation?.name" class="pb-8 pr-6 w-full lg:w-1/2" label="First name" id="name" />
+                    <text-input v-model="form.last_name" :error="errors.updateProfileInformation?.last_name" class="pb-8 pr-6 w-full lg:w-1/2" label="Last name" id="last_name" />
+                    <text-input v-model="form.email" :error="errors.updateProfileInformation?.email" class="pb-8 pr-6 w-full lg:w-1/2" label="Email" id="email"/>
+                    <file-input v-model="form.photo" :error="errors.updateProfileInformation?.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
                 </div>
                 <div class="flex items-center px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
                     <button class="px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black transition duration-500 hover:underline" tabindex="-1" type="button" @click="destroy">Delete User</button>
@@ -45,6 +44,7 @@ export default {
     layout: AppLayout,
     props: {
         user: Object,
+        errors: ''
     },
     remember: 'form',
     data() {
@@ -54,7 +54,6 @@ export default {
                 name: this.user.name,
                 last_name: this.user.last_name,
                 email: this.user.email,
-                password: '',
                 photo: null,
             }),
         }

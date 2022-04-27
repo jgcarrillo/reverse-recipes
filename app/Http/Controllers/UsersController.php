@@ -59,11 +59,6 @@ class UsersController extends Controller
         $updateUser = new UpdateUserProfileInformation();
         $updateUser->update($user, $request->all());
 
-        $updatePassword = new UpdateUserPassword();
-        if($request->has('password') !== null and !empty($request->input('password'))) {
-            $updatePassword->update($user, [$request->input('password')]);
-        }
-
         return Redirect::route('users');
     }
 
