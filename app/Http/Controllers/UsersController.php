@@ -19,16 +19,20 @@ class UsersController extends Controller
     public function index()
     {
         return Inertia::render('Users/Index', [
-            'filters' => Request::all('search'),
-            'users' => User::all()->filter(function($value) {
-                return Request('search') == $value->name;
-            })->map(fn ($user) => [
+            'filters' => Request::only(['search']),
+            'users' => User::query()
+                ->when(Request::input('search'), function($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->paginate(5)
+            ->withQueryString()
+            ->through(fn ($user) => [
                 'id' => $user->id,
                 'name' => $user->name,
                 'last_name' => $user->last_name,
                 'email' => $user->email,
                 'photo' => $user->profile_photo_path ? URL::route('image', ['path' => $user->profile_photo_path, 'w' => 40, 'h' => 40, 'fit' => 'crop']) : null,
-            ])
+            ]),
         ]);
     }
 

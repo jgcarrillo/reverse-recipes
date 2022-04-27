@@ -16,7 +16,7 @@
                 <th class="pb-4 pt-6 px-6">Email</th>
                 <th class="pb-4 pt-6 px-6" colspan="2">Role</th>
             </tr>
-            <tr v-for="user in users" :key="user.id" class="hover:bg-slate-600 focus-within:bg-gray-100 font-monse">
+            <tr v-for="user in users.data" :key="user.id" class="hover:bg-slate-600 focus-within:bg-gray-100 font-monse">
                 <td class="border-t border-gray-900">
                     <Link class="flex items-center px-6 py-4" :href="`/dashboard/admin/users/${user.id}/edit`">
                         <img v-if="user.photo" alt="user photo" class="block -my-2 mr-2 w-5 h-5 rounded-full" :src="user.photo" />
@@ -47,6 +47,9 @@
             </tr>
         </table>
     </div>
+
+    <pagination class="mt-6" :links="users.links"></pagination>
+
 </template>
 
 <script>
@@ -56,10 +59,11 @@ import mapValues from 'lodash/mapValues';
 import SearchFilter from "@/Shared/SearchFilter";
 import pickBy from 'lodash/pickBy';
 import throttle from 'lodash/throttle';
+import Pagination from '../../Shared/Pagination';
 
 export default {
     props: {
-        users: Array,
+        users: Object,
         filters: Object,
     },
     data() {
@@ -72,7 +76,8 @@ export default {
     components: {
         Head,
         Link,
-        SearchFilter
+        SearchFilter,
+        Pagination
     },
     methods: {
         reset() {
