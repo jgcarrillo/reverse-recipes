@@ -6,6 +6,9 @@ import JetButton from '@/Jetstream/Button.vue';
 import JetInput from '@/Jetstream/Input.vue';
 import JetLabel from '@/Jetstream/Label.vue';
 import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
+import Customlabel from '@/Shared/CustomLabel.vue';
+import BaseButton from '@/Shared/BaseButton';
+import ProfileInput from '@/Shared/ProfileInput.vue';
 
 const props = defineProps({
     email: String,
@@ -38,8 +41,8 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <JetLabel for="email" value="Email" />
-                <JetInput
+                <customlabel for="email" value="Email" class="text-black"/>
+                <profile-input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -50,8 +53,8 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <JetLabel for="password" value="Password" />
-                <JetInput
+                <customlabel for="password" value="Password" class="text-black" />
+                <profile-input
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -62,8 +65,8 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <JetLabel for="password_confirmation" value="Confirm Password" />
-                <JetInput
+                <customlabel for="password_confirmation" value="Confirm Password" class="text-black" />
+                <profile-input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -73,10 +76,10 @@ const submit = () => {
                 />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <div class="flex items-center justify-end mt-4 font-lora">
+                <base-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="p-2">
                     Reset Password
-                </JetButton>
+                </base-button>
             </div>
         </form>
     </JetAuthenticationCard>
