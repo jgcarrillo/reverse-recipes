@@ -7,10 +7,11 @@ use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Actions\Jetstream\DeleteUser;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class UsersController extends Controller
@@ -18,7 +19,10 @@ class UsersController extends Controller
     public function index()
     {
         return Inertia::render('Users/Index', [
-            'users' => User::all()->map(fn ($user) => [
+            'filters' => Request::all('search'),
+            'users' => User::all()->filter(function($value) {
+                return Request('search') == $value->name;
+            })->map(fn ($user) => [
                 'id' => $user->id,
                 'name' => $user->name,
                 'last_name' => $user->last_name,
