@@ -62,10 +62,10 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(User $user, Request $request)
+    public function update(User $user)
     {
         $updateUser = new UpdateUserProfileInformation();
-        $updateUser->update($user, $request->all());
+        $updateUser->update($user, Request::all());
 
         return Redirect::route('users');
     }
