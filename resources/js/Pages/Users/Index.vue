@@ -59,7 +59,7 @@ import mapValues from 'lodash/mapValues';
 import SearchFilter from "@/Shared/SearchFilter";
 import pickBy from 'lodash/pickBy';
 import throttle from 'lodash/throttle';
-import Pagination from '../../Shared/Pagination';
+import Pagination from '@/Shared/Pagination';
 
 export default {
     props: {
