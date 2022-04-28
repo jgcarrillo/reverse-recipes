@@ -3,7 +3,14 @@
     <h1 class="mb-8 text-3xl font-bold font-lora">Users</h1>
 
     <div class="flex items-center justify-between mb-6">
-        <search-filter v-model="form.search" @reset="reset" class="mr-4 w-full max-w-md"></search-filter>
+        <search-filter v-model="form.search" @reset="reset" class="mr-4 w-full max-w-md">
+            <label class="block text-gray-700">Role:</label>
+            <select v-model="form.role" class="form-select mt-1 w-full">
+                <option :value="null" />
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </search-filter>
         <Link class="font-lora px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0" href="/dashboard/admin/users/create">
             <span>Create</span>
             <span class="hidden md:inline">&nbsp;User</span>
@@ -30,8 +37,7 @@
                 </td>
                 <td class="border-t border-gray-900">
                     <Link class="flex items-center px-6 py-4" :href="`/dashboard/admin/users/${user.id}/edit`" tabindex="-1">
-                        User
-                        <!-- {{ user.owner ? 'Owner' : 'User' }} -->
+                        {{ user.owner ? 'Admin' : 'User' }}
                     </Link>
                 </td>
                 <td class="w-px border-t border-gray-900">
@@ -70,6 +76,7 @@ export default {
         return {
             form: {
                 search: this.filters.search,
+                role: this.filters.role,
             },
         }
     },

@@ -19,11 +19,14 @@ class UsersController extends Controller
     public function index()
     {
         return Inertia::render('Users/Index', [
-            'filters' => Request::only(['search']),
+            'filters' => Request::only(['search', 'role']),
             'users' => User::query()
                 ->when(Request::input('search'), function($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
             })
+                ->when(Request::input('role'), function($query, $search) {
+                    $query->where('owner', '==', "{$search}");
+                })
             ->paginate(5)
             ->withQueryString()
             ->through(fn ($user) => [
@@ -31,6 +34,7 @@ class UsersController extends Controller
                 'name' => $user->name,
                 'last_name' => $user->last_name,
                 'email' => $user->email,
+                'owner' => $user->owner,
                 'photo' => $user->profile_photo_path ? URL::route('image', ['path' => $user->profile_photo_path, 'w' => 40, 'h' => 40, 'fit' => 'crop']) : null,
             ]),
         ]);
@@ -44,7 +48,7 @@ class UsersController extends Controller
     public function store()
     {
         $newUser = new CreateNewUser();
-        $user = $newUser->create(Request::only(['name', 'last_name', 'email', 'password', 'password_confirmation']));
+        $user = $newUser->create(Request::only(['name', 'last_name', 'email', 'owner', 'password', 'password_confirmation']));
 
         return Redirect::route('users')->with('success', 'User created.');
     }
@@ -56,6 +60,7 @@ class UsersController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'last_name' => $user->last_name,
+                'owner' => $user->owner,
                 'email' => $user->email,
                 'photo' => $user->profile_photo_path ? URL::route('image', ['path' => $user->profile_photo_path, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
             ],

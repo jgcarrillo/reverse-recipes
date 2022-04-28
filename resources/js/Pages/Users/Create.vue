@@ -11,6 +11,10 @@
                     <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="First name" />
                     <text-input v-model="form.last_name" :error="form.errors.last_name" class="pb-8 pr-6 w-full lg:w-1/2" label="Last name" />
                     <text-input v-model="form.email" :error="form.errors.email" class="pb-8 pr-6 w-full lg:w-1/2" label="Email" />
+                    <select-input v-model="form.owner" :error="form.errors.owner" class="pb-8 pr-6 w-full lg:w-1/2" label="Owner">
+                        <option :value="true">Yes</option>
+                        <option :value="false">No</option>
+                    </select-input>
                     <text-input v-model="form.password" :error="form.errors.password" class="pb-8 pr-6 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Password" />
                     <text-input v-model="form.password_confirmation" :error="form.errors.password_confirmation" class="pb-8 pr-6 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Password Confirmation" />
                 </div>
@@ -28,6 +32,7 @@ import AppLayout from '@/Shared/AppLayout.vue';
 import TextInput from '@/Shared/TextInput.vue';
 import FileInput from '@/Shared/FileInput.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
+import SelectInput from '@/Shared/SelectInput';
 
 export default {
     components: {
@@ -36,6 +41,7 @@ export default {
         Link,
         LoadingButton,
         TextInput,
+        SelectInput
     },
     layout: AppLayout,
     remember: 'form',
@@ -45,6 +51,7 @@ export default {
                 name: '',
                 last_name: '',
                 email: '',
+                owner: false,
                 password: '',
                 password_confirmation: '',
                 photo: '',

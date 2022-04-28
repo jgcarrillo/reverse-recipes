@@ -15,6 +15,10 @@
                     <text-input v-model="form.name" :error="errors.updateProfileInformation?.name" class="pb-8 pr-6 w-full lg:w-1/2" label="First name" id="name" />
                     <text-input v-model="form.last_name" :error="errors.updateProfileInformation?.last_name" class="pb-8 pr-6 w-full lg:w-1/2" label="Last name" id="last_name" />
                     <text-input v-model="form.email" :error="errors.updateProfileInformation?.email" class="pb-8 pr-6 w-full lg:w-1/2" label="Email" id="email"/>
+                    <select-input v-model="form.owner" :error="errors.updateProfileInformation?.owner" class="pb-8 pr-6 w-full lg:w-1/2" label="Owner">
+                        <option :value="true">Yes</option>
+                        <option :value="false">No</option>
+                    </select-input>
                     <file-input v-model="form.photo" :error="errors.updateProfileInformation?.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
                 </div>
                 <div class="flex items-center px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
@@ -32,6 +36,7 @@ import AppLayout from '@/Shared/AppLayout.vue';
 import TextInput from '@/Shared/TextInput.vue';
 import FileInput from '@/Shared/FileInput.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
+import SelectInput from '@/Shared/SelectInput';
 
 export default {
     components: {
@@ -40,6 +45,7 @@ export default {
         Link,
         LoadingButton,
         TextInput,
+        SelectInput
     },
     layout: AppLayout,
     props: {
@@ -53,6 +59,7 @@ export default {
                 _method: 'put',
                 name: this.user.name,
                 last_name: this.user.last_name,
+                owner: this.user.owner,
                 email: this.user.email,
                 photo: null,
             }),
