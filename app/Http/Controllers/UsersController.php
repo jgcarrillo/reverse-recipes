@@ -41,12 +41,12 @@ class UsersController extends Controller
         return Inertia::render('Users/Create');
     }
 
-    public function store(Request $request)
+    public function store()
     {
         $newUser = new CreateNewUser();
-        $user = $newUser->create($request->only(['name', 'last_name', 'email', 'password', 'password_confirmation']));
+        $user = $newUser->create(Request::only(['name', 'last_name', 'email', 'password', 'password_confirmation']));
 
-        return Redirect::route('users');
+        return Redirect::route('users')->with('success', 'User created.');
     }
 
     public function edit(User $user)
@@ -67,7 +67,7 @@ class UsersController extends Controller
         $updateUser = new UpdateUserProfileInformation();
         $updateUser->update($user, Request::all());
 
-        return Redirect::route('users');
+        return Redirect::back()->with('success', 'User updated.');
     }
 
     public function destroy(User $user)
@@ -75,6 +75,6 @@ class UsersController extends Controller
         $userDelete = new DeleteUser();
         $userDelete->delete($user);
 
-        return Redirect::route('users');
+        return Redirect::route('users')->with('success', 'User deleted.');
     }
 }
