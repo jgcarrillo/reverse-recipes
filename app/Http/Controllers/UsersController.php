@@ -24,8 +24,8 @@ class UsersController extends Controller
                 ->when(Request::input('search'), function($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
             })
-                ->when(Request::input('role'), function($query, $search) {
-                    $query->where('owner', '==', "{$search}");
+                ->when(Request::input('role'), function($query, $role) {
+                    $query->where('owner', '=', $role == 'admin');
                 })
             ->paginate(5)
             ->withQueryString()
