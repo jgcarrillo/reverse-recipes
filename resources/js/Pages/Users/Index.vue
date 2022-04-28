@@ -48,7 +48,7 @@
                     </Link>
                 </td>
             </tr>
-            <tr v-if="users.length === 0" class="font-monse">
+            <tr v-if="users.data.length === 0" class="font-monse">
                 <td class="px-6 py-4 border-t" colspan="4">No users found.</td>
             </tr>
         </table>
