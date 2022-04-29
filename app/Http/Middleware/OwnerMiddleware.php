@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class OwnerMiddleware
 {
@@ -21,6 +23,6 @@ class OwnerMiddleware
             return $next($request);
         }
 
-        return route('dashboard');
+        return Redirect::route('dashboard');
     }
 }
