@@ -18,6 +18,7 @@ const form = useForm({
     _method: 'PUT',
     name: props.user.name,
     last_name: props.user.last_name,
+    owner: props.user.owner,
     email: props.user.email,
     photo: null,
 });
