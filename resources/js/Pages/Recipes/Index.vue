@@ -10,25 +10,45 @@
         </Link>
     </div>
 
+    <base-three-grid color="bg-gray-900">
+        <base-recipe-card v-for="recipe in recipes">
+            <template #type>{{ recipe.type }} • {{ recipe.difficulty }}</template>
+            <template #recipe>{{ recipe.name }}</template>
+            <template #time>{{ recipe.time }} minutes</template>
+
+            <template #ing>{{ recipe.ingredient_id }}</template>
+            <template #people>{{ recipe.persons }}</template>
+            <template #user>{{ user.name }} {{ user.last_name }}</template>
+        </base-recipe-card>
+    </base-three-grid>
+
+    <h1 v-if="recipes.length === 0">No hay recetas</h1>
+
 </template>
 
 <script>
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Shared/AppLayout';
 import SearchBar from '@/Shared/SearchBar';
-import SearchFilter from '../../Shared/SearchFilter';
+import SearchFilter from '@/Shared/SearchFilter';
 import mapValues from 'lodash/mapValues';
+import BaseThreeGrid from "@/Shared/BaseThreeGrid";
+import BaseRecipeCard from "@/Shared/BaseRecipeCard";
 
 export default {
     components: {
         Head,
         Link,
         SearchBar,
-        SearchFilter
+        SearchFilter,
+        BaseThreeGrid,
+        BaseRecipeCard
     },
     props: {
         users: Object,
         filters: Object,
+        recipes: Object,
+        user: Object
     },
     methods: {
         reset() {

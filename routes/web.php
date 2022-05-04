@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,12 @@ Route::middleware([
         return Inertia::render('Dashboard/Index');
     })->name('dashboard');
 
+    /*
     Route::get('dashboard/recipes', function() {
         return Inertia::render('Recipes/Index');
     })->name('recipes');
+    */
+    Route::get('dashboard/recipes', [RecipeController::class, 'index'])->name('recipes');
 
     Route::get('dashboard/favorites', function() {
         return Inertia::render('Recipes/Favorites');

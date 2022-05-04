@@ -15,7 +15,7 @@
                 <template #default>
                     <base-recipe-card></base-recipe-card>
 
-                    <base-recipe-card>
+                    <base-recipe-card color="bg-gray-100">
                         <template #image>
                             <img
                                 class="lg:h-72 md:h-48 w-full object-cover object-center"

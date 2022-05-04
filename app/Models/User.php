@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Receta;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -74,8 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
-    //Relacion ManyToMany
-    public function recetas(){
-        return $this->belongsToMany(Receta::class, 'user_id', 'receta_id');
+    public function recipes(){
+        return $this->belongsToMany(Recipe::class);
     }
 }

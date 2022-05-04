@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-100 pb-8">
+    <div class="pb-8" :class="color">
         <section class="md:h-full flex items-center text-gray-800">
             <div class="container mx-auto px-5 py-25 text-gray-800">
                 <div class="text-center mb-12">
@@ -19,7 +19,9 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-
+    props: {
+        color: String
+    }
 });
 </script>
 
