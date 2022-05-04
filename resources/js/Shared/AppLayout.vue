@@ -44,7 +44,7 @@
                 </div>
                 <div class="md:flex md:flex-grow md:overflow-hidden">
                     <main-menu class="hidden flex-shrink-0 p-12 w-56 bg-slate-800 overflow-y-auto md:block" />
-                    <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto bg-gray-900 text-white h-screen" scroll-region>
+                    <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto bg-gray-900 text-white" scroll-region>
                         <flash-messages></flash-messages>
                         <slot />
                     </div>
