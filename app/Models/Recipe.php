@@ -20,7 +20,8 @@ class Recipe extends Model
         'time',
         'difficulty',
         'persons',
-        'type'
+        'type',
+        'favorite'
     ];
 
     public function ingredients()

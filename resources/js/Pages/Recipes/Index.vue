@@ -14,10 +14,11 @@
         <base-recipe-card v-for="recipe in recipes">
             <template #type>{{ recipe.type }} • {{ recipe.difficulty }}</template>
             <template #recipe>{{ recipe.name }}</template>
-            <template #time>{{ recipe.time }} minutes</template>
+            <template #time>{{ recipe.time }} {{ recipe.time == 1 ? 'minute' : 'minutes' }}</template>
 
             <template #ing>{{ recipe.ingredient_id }}</template>
             <template #people>{{ recipe.persons }}</template>
+
             <template #user>{{ user.name }} {{ user.last_name }}</template>
         </base-recipe-card>
     </base-three-grid>
