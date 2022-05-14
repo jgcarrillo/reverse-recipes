@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('persons');
             $table->string('type');
             $table->string('recipe_photo_path', 2048)->nullable();
-            $table->unsignedBigInteger('ingredient_id');
+            // $table->unsignedBigInteger('ingredient_id');
             $table->timestamps();
 
-            $table->foreign('ingredient_id')->references('id')->on('ingredients');
+            // $table->foreign('ingredient_id')->references('id')->on('ingredients');
         });
     }
 

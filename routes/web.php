@@ -34,11 +34,6 @@ Route::middleware([
         return Inertia::render('Recipes/Index');
     })->name('recipes');
     */
-    Route::get('dashboard/recipes', [RecipeController::class, 'index'])->name('recipes');
-
-    Route::get('dashboard/favorites', function() {
-        return Inertia::render('Recipes/Favorites');
-    })->name('favorites');
 
     Route::middleware([
         'owner'
@@ -51,6 +46,12 @@ Route::middleware([
         Route::put('dashboard/admin/users/{user}', [UsersController::class, 'update'])->name('users.update');
         Route::delete('dashboard/admin/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
     });
+
+    // Recipes
+    Route::get('dashboard/recipes', [RecipeController::class, 'index'])->name('recipes');
+    Route::get('dashboard/recipes/favorites', [RecipeController::class, 'favorites'])->name('recipes.favorites');
+    Route::get('dashboard/recipes/create', [RecipeController::class, 'create'])->name('recipes.create');
+    Route::post('dashboard/recipes', [RecipeController::class, 'store'])->name('recipes.store');
 
     // Images
     Route::get('/storage/{path}', [ImagesController::class, 'show'])

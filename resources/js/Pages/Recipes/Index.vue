@@ -4,26 +4,13 @@
 
     <div class="flex items-center justify-between mb-6">
         <search-filter class="mr-4 w-full max-w-md"></search-filter>
-        <Link class="font-lora px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0" href="">
+        <Link class="font-lora px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0" href="/dashboard/recipes/create">
             <span>Create</span>
             <span class="hidden md:inline">&nbsp;Recipe</span>
         </Link>
     </div>
 
-    <base-three-grid color="bg-gray-900">
-        <base-recipe-card v-for="recipe in recipes">
-            <template #type>{{ recipe.type }} • {{ recipe.difficulty }}</template>
-            <template #recipe>{{ recipe.name }}</template>
-            <template #time>{{ recipe.time }} {{ recipe.time == 1 ? 'minute' : 'minutes' }}</template>
-
-            <template #ing>{{ recipe.ingredient_id }}</template>
-            <template #people>{{ recipe.persons }}</template>
-
-            <template #user>{{ user.name }} {{ user.last_name }}</template>
-        </base-recipe-card>
-    </base-three-grid>
-
-    <h1 v-if="recipes.length === 0">No hay recetas</h1>
+    <h1 class="my-8 text-3xl text-center font-bold font-lora">There are no recipes at the moment</h1>
 
 </template>
 
