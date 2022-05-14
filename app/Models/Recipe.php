@@ -18,10 +18,9 @@ class Recipe extends Model
         'name',
         'description',
         'time',
-        'difficulty',
-        'persons',
-        'type',
-        'favorite'
+        'difficulty_id',
+        'persons_id',
+        'type_id',
     ];
 
     public function ingredients()
@@ -32,5 +31,20 @@ class Recipe extends Model
     public function users()
     {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    public function difficulty()
+    {
+        return $this->belongsToMany(Difficulty::class);
+    }
+
+    public function persons()
+    {
+        return $this->belongsToMany(Persons::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsToMany(Type::class);
     }
 }

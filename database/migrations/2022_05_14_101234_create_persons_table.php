@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_receta', function (Blueprint $table) {
+        Schema::create('persons', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('receta_id')->nullable();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('receta_id')->references('id')->on('recetas')->onDelete('cascade');
-
+            $table->string('persons');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_receta');
+        Schema::dropIfExists('persons');
     }
 };

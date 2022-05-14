@@ -11,9 +11,15 @@
                     <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="Name" />
                     <text-input v-model="form.description" :error="form.errors.description" class="pb-8 pr-6 w-full lg:w-1/2" label="Description" />
                     <text-input v-model="form.time" :error="form.errors.time" class="pb-8 pr-6 w-full lg:w-1/2" label="Time" />
-                    <text-input v-model="form.difficulty" :error="form.errors.difficulty" class="pb-8 pr-6 w-full lg:w-1/2" label="Difficulty" />
-                    <text-input v-model="form.persons" :error="form.errors.persons" class="pb-8 pr-6 w-full lg:w-1/2" label="Persons" />
-                    <text-input v-model="form.type" :error="form.errors.type" class="pb-8 pr-6 w-full lg:w-1/2" label="Type" />
+                    <select-input v-model="form.difficulty" :error="form.errors.difficulty" class="pb-8 pr-6 w-full lg:w-1/2" label="Difficulty">
+                        <option v-for="diff in difficulty" :key="diff.id" :value="diff.id">{{ diff.difficulty }}</option>
+                    </select-input>
+                    <select-input v-model="form.persons" :error="form.errors.persons" class="pb-8 pr-6 w-full lg:w-1/2" label="Persons">
+                        <option v-for="per in persons" :key="per.id" :value="per.id">{{ per.persons }}</option>
+                    </select-input>
+                    <select-input v-model="form.type" :error="form.errors.type" class="pb-8 pr-6 w-full lg:w-1/2" label="Type">
+                        <option v-for="tp in type" :key="tp.id" :value="tp.id">{{ tp.type }}</option>
+                    </select-input>
                 </div>
                 <div class="flex items-center justify-end px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
                     <loading-button :loading="form.processing" class="px-4 py-2 ml-auto rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Create Recipe</loading-button>
@@ -39,6 +45,11 @@ export default {
         LoadingButton,
         TextInput,
         SelectInput
+    },
+    props: {
+        difficulty: Array,
+        persons: Array,
+        type: Array
     },
     layout: AppLayout,
     remember: 'form',

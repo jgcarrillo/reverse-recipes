@@ -18,14 +18,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('time');
-            $table->string('difficulty');
-            $table->string('persons');
-            $table->string('type');
+            $table->unsignedBigInteger('difficulty_id')->nullable();
+            $table->unsignedBigInteger('persons_id')->nullable();
+            $table->unsignedBigInteger('type_id')->nullable();
             $table->string('recipe_photo_path', 2048)->nullable();
-            // $table->unsignedBigInteger('ingredient_id');
             $table->timestamps();
 
-            // $table->foreign('ingredient_id')->references('id')->on('ingredients');
+            $table->foreign('difficulty_id')->references('id')->on('difficulty')->onDelete('set null');
+            $table->foreign('persons_id')->references('id')->on('persons')->onDelete('set null');
+            $table->foreign('type_id')->references('id')->on('type')->onDelete('set null');
         });
     }
 

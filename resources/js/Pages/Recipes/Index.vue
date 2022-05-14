@@ -3,7 +3,7 @@
     <h1 class="mb-8 text-3xl font-bold font-lora">Recipes</h1>
 
     <div class="flex items-center justify-between mb-6">
-        <search-filter class="mr-4 w-full max-w-md"></search-filter>
+        <search-filter class="mr-4 w-full max-w-md" v-model="form.search" @reset="reset"></search-filter>
         <Link class="font-lora px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0" href="/dashboard/recipes/create">
             <span>Create</span>
             <span class="hidden md:inline">&nbsp;Recipe</span>
@@ -37,6 +37,13 @@ export default {
         filters: Object,
         recipes: Object,
         user: Object
+    },
+    data() {
+        return {
+            form: {
+                search: '',
+            },
+        }
     },
     methods: {
         reset() {

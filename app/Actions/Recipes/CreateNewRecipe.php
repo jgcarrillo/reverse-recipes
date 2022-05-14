@@ -22,18 +22,18 @@ class CreateNewRecipe
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
             'time' => ['required', 'string', 'max:255'],
-            'difficulty' => ['required', 'string', 'max:255'],
-            'persons' => ['required', 'string', 'max:255'],
-            'type' => ['required', 'string', 'max:255'],
+            'difficulty' => ['required', 'integer'],
+            'persons' => ['required', 'integer'],
+            'type' => ['required', 'integer'],
         ])->validate();
 
         return Recipe::create([
             'name' => $input['name'],
             'description' => $input['description'],
             'time' => $input['time'],
-            'difficulty' => $input['difficulty'],
-            'persons' => $input['persons'],
-            'type' => $input['type'],
+            'difficulty_id' => $input['difficulty'],
+            'persons_id' => $input['persons'],
+            'type_id' => $input['type'],
         ]);
     }
 }
