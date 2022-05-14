@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->string('time');
+            $table->unsignedBigInteger('time_id')->nullable();
             $table->unsignedBigInteger('difficulty_id')->nullable();
             $table->unsignedBigInteger('persons_id')->nullable();
             $table->unsignedBigInteger('type_id')->nullable();
             $table->string('recipe_photo_path', 2048)->nullable();
             $table->timestamps();
 
+            $table->foreign('time_id')->references('id')->on('time')->onDelete('set null');
             $table->foreign('difficulty_id')->references('id')->on('difficulty')->onDelete('set null');
             $table->foreign('persons_id')->references('id')->on('persons')->onDelete('set null');
             $table->foreign('type_id')->references('id')->on('type')->onDelete('set null');

@@ -17,7 +17,7 @@ class Recipe extends Model
     protected $fillable = [
         'name',
         'description',
-        'time',
+        'time_id',
         'difficulty_id',
         'persons_id',
         'type_id',
@@ -46,5 +46,10 @@ class Recipe extends Model
     public function type()
     {
         return $this->belongsToMany(Type::class);
+    }
+
+    public function time()
+    {
+        return $this->belongsToMany(Time::class);
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Head title="Create User" />
+        <Head title="Create Recipe" />
         <h1 class="mb-8 text-3xl font-lora">
             <Link class="text-indigo-300 hover:text-white" href="/dashboard/recipes">Recipes</Link>
             <span class="text-indigo-300"> /</span> Create
@@ -10,7 +10,9 @@
                 <div class="flex flex-wrap -mb-8 -mr-6 p-8">
                     <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="Name" />
                     <text-input v-model="form.description" :error="form.errors.description" class="pb-8 pr-6 w-full lg:w-1/2" label="Description" />
-                    <text-input v-model="form.time" :error="form.errors.time" class="pb-8 pr-6 w-full lg:w-1/2" label="Time" />
+                    <select-input v-model="form.time" :error="form.errors.time" class="pb-8 pr-6 w-full lg:w-1/2" label="Time">
+                        <option v-for="tm in time" :key="tm.id" :value="tm.id">{{ tm.time }}</option>
+                    </select-input>
                     <select-input v-model="form.difficulty" :error="form.errors.difficulty" class="pb-8 pr-6 w-full lg:w-1/2" label="Difficulty">
                         <option v-for="diff in difficulty" :key="diff.id" :value="diff.id">{{ diff.difficulty }}</option>
                     </select-input>
@@ -49,7 +51,8 @@ export default {
     props: {
         difficulty: Array,
         persons: Array,
-        type: Array
+        type: Array,
+        time: Array
     },
     layout: AppLayout,
     remember: 'form',

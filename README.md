@@ -10,6 +10,7 @@
 - [🚀 Git Workflow](#-git-workflow)
 - [🕸️ How to contribute](#-how-to-contribute)
 - [🚩 Cheatsheet](#-cheatsheet)
+- [🔒 Database](#-database)
 
 ## ✨ How to install
 
@@ -57,6 +58,10 @@ If you want to make changes into the project, do the following:
 - Push tag to Github: `git push origin <tag>`
 
 To create the **storage link** you need to type `php artisan storage:link` and then change the current `APP_URL` inside `.env` file to `APP_URL=http://localhost:8000` or whatever you use.
+
+## 🔒 Database
+
+In order to create database you need to run `php artisan migrate`. After that, execute `php artisan db:seed`. Make sure you only execute that last command **once**.
 
 
 

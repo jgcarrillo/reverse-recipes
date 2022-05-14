@@ -21,7 +21,7 @@ class CreateNewRecipe
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'time' => ['required', 'string', 'max:255'],
+            'time' => ['required', 'integer'],
             'difficulty' => ['required', 'integer'],
             'persons' => ['required', 'integer'],
             'type' => ['required', 'integer'],
@@ -30,7 +30,7 @@ class CreateNewRecipe
         return Recipe::create([
             'name' => $input['name'],
             'description' => $input['description'],
-            'time' => $input['time'],
+            'time_id' => $input['time'],
             'difficulty_id' => $input['difficulty'],
             'persons_id' => $input['persons'],
             'type_id' => $input['type'],
