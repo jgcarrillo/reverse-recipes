@@ -47,6 +47,7 @@
                     <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto bg-gray-900 text-white" scroll-region>
                         <flash-messages></flash-messages>
                         <slot />
+                        <!-- <div class="h-screen max-h-60"></div> -->
                     </div>
                 </div>
             </div>
@@ -74,6 +75,6 @@ export default {
         Link,
         MainMenu,
         FlashMessages
-    },
+    }
 }
 </script>

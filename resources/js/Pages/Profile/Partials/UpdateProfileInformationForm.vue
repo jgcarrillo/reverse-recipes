@@ -20,7 +20,6 @@ const form = useForm({
     last_name: props.user.last_name,
     owner: props.user.owner,
     email: props.user.email,
-    owner: props.user.owner,
     photo: null,
 });
 
