@@ -10,7 +10,7 @@
         </Link>
     </div>
 
-    <h1 class="my-8 text-3xl text-center font-bold font-lora">There are no recipes at the moment</h1>
+    <h1 class="my-8 text-3xl text-center font-bold font-lora">There are no recipes at the moment. Search or Filter to fetch data</h1>
 
 </template>
 

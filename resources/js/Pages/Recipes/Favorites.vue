@@ -6,7 +6,7 @@
         <base-recipe-card v-for="recipe in recipes">
             <template #type>{{ recipe.type_id }} • {{ recipe.difficulty_id}}</template>
             <template #recipe>{{ recipe.name }}</template>
-            <template #time>{{ recipe.time }} {{ recipe.time == 1 ? 'minute' : 'minutes' }}</template>
+            <template #time>{{ recipe.time_id }} {{ recipe.time == 1 ? 'minute' : 'minutes' }}</template>
 
             <template #ing>{{ recipe.ingredient_id }}</template>
             <template #people>{{ recipe.persons_id }}</template>
