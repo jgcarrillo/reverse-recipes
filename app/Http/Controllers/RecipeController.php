@@ -58,24 +58,25 @@ class RecipeController extends Controller
 
     public function favorites()
     {
-        $difficulty = DB::table('recipes')
+        $data = DB::table('recipe_user')
+            ->join('recipes', 'recipe_user.recipe_id', '=', 'recipes.id')
             ->join('difficulty', 'recipes.difficulty_id', '=', 'difficulty.id')
-            ->get(['difficulty.id', 'difficulty.difficulty']);
-
-        $type = DB::table('recipes')
             ->join('type', 'recipes.type_id', '=', 'type.id')
-            ->get(['type.id', 'type.type']);
-
-        $persons = DB::table('recipes')
             ->join('persons', 'recipes.persons_id', '=', 'persons.id')
-            ->get(['persons.id', 'persons.persons']);
+            ->join('time', 'recipes.time_id', '=', 'time.id')
+            ->where('recipe_user.user_id', '=', Auth::id())
+            ->get([
+                'recipes.name',
+                'recipes.description',
+                'difficulty.difficulty',
+                'type.type',
+                'persons.persons',
+                'time.time'
+            ]);
 
         return Inertia::render('Recipes/Favorites', [
             'user'=> Auth::user(),
-            'recipes' => User::query()->find(Auth::id())->recipes()->get(),
-            'difficulty' => $difficulty,
-            'type' => $type,
-            'persons' => $persons
+            'data' => $data
         ]);
     }
 }

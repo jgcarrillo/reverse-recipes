@@ -28,13 +28,13 @@ class TimeSeeder extends Seeder
         ]);
 
         DB::table('time')->insert([
-            'time' => '10',
+            'time' => '15',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         DB::table('time')->insert([
-            'time' => '15',
+            'time' => '20',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
