@@ -66,9 +66,7 @@ Route::get('/', function() {
 
 Route::post('/send-contact', [ContactController::class, 'store'])->name('contact.store');
 
-Route::get('message-success', function () {
-    return Inertia::render('ContactMessageView');
-})->name('message.success');
+Route::get('message-success', [ContactController::class, 'success'])->name('message.success');
 
 Route::get('/explore', function() {
     return Inertia::render('Explore');
