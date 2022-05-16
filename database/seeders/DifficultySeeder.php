@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class DifficultySeeder extends Seeder
 {
+    protected $difficulty = [
+        'Easy',
+        'Mid',
+        'Hard'
+    ];
+
     /**
      * Run the database seeds.
      *
@@ -15,22 +21,12 @@ class DifficultySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('difficulty')->insert([
-            'difficulty' => 'Easy',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('difficulty')->insert([
-            'difficulty' => 'Mid',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('difficulty')->insert([
-            'difficulty' => 'Hard',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
+        foreach ($this->difficulty as $diff) {
+            DB::table('difficulty')->insert([
+                'difficulty' => $diff,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ]);
+        }
     }
 }

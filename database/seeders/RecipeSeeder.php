@@ -12,6 +12,25 @@ use Illuminate\Support\Facades\DB;
 
 class RecipeSeeder extends Seeder
 {
+    protected $recipes = [
+        [
+            'name' => 'Coca Cola Premium',
+            'description' => 'Lorem lorem lorem lorem',
+        ],
+        [
+            'name' => 'Clear Coffe',
+            'description' => 'Lorem lorem lorem lorem',
+        ],
+        [
+            'name' => 'Awesome Bowl',
+            'description' => 'Lorem lorem lorem lorem',
+        ],
+        [
+            'name' => 'Migas Realfood',
+            'description' => 'Lorem lorem lorem lorem',
+        ],
+    ];
+
     /**
      * Run the database seeds.
      *
@@ -19,48 +38,17 @@ class RecipeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('recipes')->insert([
-            'name' => 'Coca Cola Premium',
-            'description' => 'lorem lorem lorem lorem',
-            'time_id' => Time::all()->random()->id,
-            'difficulty_id' => Difficulty::all()->random()->id,
-            'persons_id' => Persons::all()->random()->id,
-            'type_id' => Type::all()->random()->id,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('recipes')->insert([
-            'name' => 'Clear Coffe',
-            'description' => 'lorem lorem lorem lorem',
-            'time_id' => Time::all()->random()->id,
-            'difficulty_id' => Difficulty::all()->random()->id,
-            'persons_id' => Persons::all()->random()->id,
-            'type_id' => Type::all()->random()->id,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('recipes')->insert([
-            'name' => 'Awesome Bowl',
-            'description' => 'lorem lorem lorem lorem',
-            'time_id' => Time::all()->random()->id,
-            'difficulty_id' => Difficulty::all()->random()->id,
-            'persons_id' => Persons::all()->random()->id,
-            'type_id' => Type::all()->random()->id,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('recipes')->insert([
-            'name' => 'Migas Realfood',
-            'description' => 'lorem lorem lorem lorem',
-            'time_id' => Time::all()->random()->id,
-            'difficulty_id' => Difficulty::all()->random()->id,
-            'persons_id' => Persons::all()->random()->id,
-            'type_id' => Type::all()->random()->id,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
+        foreach ($this->recipes as $recipe) {
+            DB::table('recipes')->insert([
+                'name' => $recipe['name'],
+                'description' => $recipe['description'],
+                'time_id' => Time::all()->random()->id,
+                'difficulty_id' => Difficulty::all()->random()->id,
+                'persons_id' => Persons::all()->random()->id,
+                'type_id' => Type::all()->random()->id,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ]);
+        }
     }
 }

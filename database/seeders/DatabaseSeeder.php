@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             TimeSeeder::class,
             PersonsSeeder::class,
             TypeSeeder::class,
-            RecipeSeeder::class
+            RecipeSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

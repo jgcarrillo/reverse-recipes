@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class TypeSeeder extends Seeder
 {
+    protected $type = [
+        'Food',
+        'Drink',
+        'Fruit'
+    ];
+
     /**
      * Run the database seeds.
      *
@@ -15,22 +21,12 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('type')->insert([
-            'type' => 'Food',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('type')->insert([
-            'type' => 'Drink',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('type')->insert([
-            'type' => 'Fruit',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
+        foreach ($this->type as $tp) {
+            DB::table('type')->insert([
+                'type' => $tp,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ]);
+        }
     }
 }

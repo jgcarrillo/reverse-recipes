@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class PersonsSeeder extends Seeder
 {
+    protected $persons = [
+        '2',
+        '4',
+        '6',
+        '8'
+    ];
+
     /**
      * Run the database seeds.
      *
@@ -15,28 +22,12 @@ class PersonsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('persons')->insert([
-            'persons' => '2',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('persons')->insert([
-            'persons' => '4',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('persons')->insert([
-            'persons' => '6',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
-
-        DB::table('persons')->insert([
-            'persons' => '8',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ]);
+        foreach ($this->persons as $person) {
+            DB::table('persons')->insert([
+                'persons' => $person,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ]);
+        }
     }
 }
