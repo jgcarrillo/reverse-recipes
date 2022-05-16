@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UsersController;
@@ -62,6 +63,12 @@ Route::middleware([
 Route::get('/', function() {
     return Inertia::render('Welcome');
 })->name('home');
+
+Route::post('/send-contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('message-success', function () {
+    return Inertia::render('ContactMessageView');
+})->name('message.success');
 
 Route::get('/explore', function() {
     return Inertia::render('Explore');

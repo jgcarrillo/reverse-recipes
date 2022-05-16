@@ -3,10 +3,7 @@
 namespace App\Actions\Recipes;
 
 use App\Models\Recipe;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Laravel\Jetstream\Jetstream;
 
 class CreateNewRecipe
 {

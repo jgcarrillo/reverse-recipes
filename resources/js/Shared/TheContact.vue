@@ -4,61 +4,46 @@
             <div class="text-center mb-12">
                 <h1 class="font-lora text-4xl md:text-5xl text-gray-800 font-bold">Contact</h1>
             </div>
-            <form>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="form-group mb-6">
-                        <input
-                            type="text"
-                            class="form-control font-monse block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-gray-300 rounded transition duration-500 m-0 focus:text-gray-800 focus:border-yellow-300 focus:outline-none"
-                            id="exampleInput123"
-                            aria-describedby=""
-                            placeholder="Name"
-                        />
-                    </div>
-                    <div class="form-group mb-6">
-                        <input
-                            type="email"
-                            class="form-control font-monse block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-gray-300 rounded transition duration-500 m-0 focus:text-gray-800 focus:border-yellow-400 focus:outline-none"
-                            id="exampleInput124"
-                            aria-describedby=""
-                            placeholder="E-mail"
-                        />
-                    </div>
-                </div>
-                <div class="form-group mb-6">
-                    <input
-                        type="text"
-                        class="form-control font-monse block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-gray-300 rounded transition duration-500 m-0 focus:text-gray-800 focus:border-yellow-400 focus:outline-none"
-                        id="exampleInput125"
-                        placeholder="Subject"
-                    />
-                </div>
-                <div class="form-group mb-6">
-          <textarea
-              class="form-control font-monse block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-gray-300 rounded transition duration-500 m-0 focus:text-gray-800 focus:border-yellow-400 focus:outline-none"
-              name=""
-              id=""
-              placeholder="Message"
-          ></textarea>
+            <form @submit.prevent="store">
+                <div class="flex flex-wrap -mb-8 -mr-6 p-8">
+                    <text-input v-model="form.name" :error="form.errors.name" class="pr-6 w-full lg:w-1/2" label="Name" placeholder="Your Name" />
+                    <text-input v-model="form.email" :error="form.errors.email" class="pr-6 w-full lg:w-1/2" label="Email" placeholder="Your Email" />
+                    <text-input v-model="form.subject" :error="form.errors.subject" class="pr-6 w-full lg:w-1/2" label="Subject" placeholder="Your Subject" />
+                    <text-input v-model="form.message" :error="form.errors.message" class="pr-6 w-full lg:w-1/2" label="Message" placeholder="Your Message" />
                 </div>
 
-                <button
-                    type="submit"
-                    class="w-full px-6 py-2.5 font-bold bg-yellow-400 uppercase rounded shadow-md hover:bg-yellow-300 hover:shadow-lg focus:border-yellow-300 focus:shadow-lg active:shadow-lg transition duration-500"
-                >
-                    Send
-                </button>
+                <loading-button :loading="form.processing" class="px-4 mt-8 w-full justify-center py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Send</loading-button>
             </form>
         </div>
     </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import TextInput from '@/Shared/TextInput.vue';
+import LoadingButton from '@/Shared/LoadingButton.vue';
 
-export default defineComponent({
-
-});
+export default {
+    remember: 'form',
+    components: {
+        TextInput,
+        LoadingButton
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                name: '',
+                email: '',
+                subject: '',
+                message: '',
+            }),
+        }
+    },
+    methods: {
+        store() {
+            this.form.post('/send-contact')
+        },
+    },
+}
 </script>
 
 <style></style>
