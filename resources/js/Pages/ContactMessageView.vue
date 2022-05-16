@@ -12,6 +12,8 @@
                 >Back Home</Link
                 >
             </div>
+
+            <the-services></the-services>
         </template>
     </layout>
 </template>
@@ -23,12 +25,14 @@
 import { defineComponent } from 'vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import Layout from "@/Shared/Layout";
+import TheServices from '@/Shared/TheServices';
 
 export default defineComponent({
     components: {
         Head,
         Link,
-        Layout
+        Layout,
+        TheServices
     },
 })
 </script>

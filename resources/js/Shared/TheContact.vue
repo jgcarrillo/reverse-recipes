@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto">
         <div class="p-8 rounded-lg max-w-4xl mx-auto">
-            <div class="text-center mb-12">
+            <div class="text-center">
                 <h1 class="font-lora text-4xl md:text-5xl text-gray-800 font-bold">Contact</h1>
             </div>
             <form @submit.prevent="store">
