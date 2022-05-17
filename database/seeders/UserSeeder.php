@@ -37,9 +37,14 @@ class UserSeeder extends Seeder
             'email' => 'jonathan@pruebajonathan.es',
         ],
         [
-            'name' => 'Artem',
-            'last_name' => 'Ukraniam',
-            'email' => 'artem@pruebaartem.es',
+            'name' => 'Wenses',
+            'last_name' => 'Gomez',
+            'email' => 'wenses@pruebawenses.es',
+        ],
+        [
+            'name' => 'P',
+            'last_name' => 'Ballesta',
+            'email' => 'ballesta@pruebaballesta.es',
         ],
     ];
 
