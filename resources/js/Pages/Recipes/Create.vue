@@ -22,7 +22,7 @@
                     <select-input v-model="form.type" :error="form.errors.type" class="pb-8 pr-6 w-full lg:w-1/2" label="Type">
                         <option v-for="tp in type" :key="tp.id" :value="tp.id">{{ tp.type }}</option>
                     </select-input>
-                    <file-input v-model="form.photo" :error="form.errors" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
+                    <file-input v-model="form.photo" :error="form.errors.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
                 </div>
                 <div class="flex items-center justify-end px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
                     <loading-button :loading="form.processing" class="px-4 py-2 ml-auto rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Create Recipe</loading-button>

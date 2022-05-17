@@ -39,7 +39,7 @@ class CreateNewRecipe
             'difficulty_id' => $input['difficulty'],
             'persons_id' => $input['persons'],
             'type_id' => $input['type'],
-            'recipe_photo_path' => $input['photo']->getClientOriginalName() ?? null,
+            'recipe_photo_path' => url('storage/images/recipes/' . $input['photo']->getClientOriginalName())  ?? null,
         ]);
     }
 }

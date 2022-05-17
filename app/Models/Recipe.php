@@ -24,10 +24,6 @@ class Recipe extends Model
         'recipe_photo_path'
     ];
 
-    public function getPathAttribute () {
-        return storage_path('images/recipes/' . $this->recipe_photo_path);
-    }
-
     public function ingredients()
     {
         return $this->belongsToMany(Ingredient::class)->withTimestamps();
