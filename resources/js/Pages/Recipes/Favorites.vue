@@ -4,6 +4,13 @@
 
     <base-three-grid color="bg-gray-900">
         <base-recipe-card v-for="recipe in data">
+            <template #image>
+                <img
+                    class="lg:h-72 md:h-48 w-full object-cover object-center"
+                    :src="recipe.recipe_photo_path"
+                    :alt="recipe.name"
+                />
+            </template>
             <template #type>{{ recipe.type }} • {{ recipe.difficulty }}</template>
             <template #recipe>{{ recipe.name }}</template>
             <template #time>{{ recipe.time }} {{ recipe.time == 1 ? 'minute' : 'minutes' }}</template>
@@ -39,7 +46,7 @@ export default {
         users: Object,
         filters: Object,
         user: Object,
-        data: Object
+        data: Object,
     },
     layout: AppLayout,
 }

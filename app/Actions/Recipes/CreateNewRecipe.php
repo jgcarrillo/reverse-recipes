@@ -22,7 +22,15 @@ class CreateNewRecipe
             'difficulty' => ['required', 'integer'],
             'persons' => ['required', 'integer'],
             'type' => ['required', 'integer'],
+            'photo' => ['required', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validate();
+
+        if(isset($input['photo'])) {
+            $destination_path = 'public/images/recipes';
+            $image = $input['photo'];
+            $image_name = $image->getClientOriginalName();
+            $path = $input['photo']->storeAs($destination_path, $image_name);
+        }
 
         return Recipe::create([
             'name' => $input['name'],
@@ -31,6 +39,7 @@ class CreateNewRecipe
             'difficulty_id' => $input['difficulty'],
             'persons_id' => $input['persons'],
             'type_id' => $input['type'],
+            'recipe_photo_path' => $input['photo']->getClientOriginalName() ?? null,
         ]);
     }
 }

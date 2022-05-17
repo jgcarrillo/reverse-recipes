@@ -48,7 +48,7 @@ class RecipeController extends Controller
     public function store()
     {
         $newRecipe = new CreateNewRecipe();
-        $recipe = $newRecipe->create(Request::only(['name', 'description', 'time', 'difficulty', 'persons', 'type']));
+        $recipe = $newRecipe->create(Request::only(['name', 'description', 'time', 'difficulty', 'persons', 'type', 'photo']));
 
         $user = Auth::user();
         $user->recipes()->attach($recipe->getAttribute('id'));
@@ -66,8 +66,10 @@ class RecipeController extends Controller
             ->join('time', 'recipes.time_id', '=', 'time.id')
             ->where('recipe_user.user_id', '=', Auth::id())
             ->get([
+                'recipes.id',
                 'recipes.name',
                 'recipes.description',
+                'recipes.recipe_photo_path',
                 'difficulty.difficulty',
                 'type.type',
                 'persons.persons',
@@ -76,7 +78,7 @@ class RecipeController extends Controller
 
         return Inertia::render('Recipes/Favorites', [
             'user'=> Auth::user(),
-            'data' => $data
+            'data' => $data,
         ]);
     }
 }

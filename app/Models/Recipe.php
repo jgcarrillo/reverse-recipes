@@ -21,7 +21,12 @@ class Recipe extends Model
         'difficulty_id',
         'persons_id',
         'type_id',
+        'recipe_photo_path'
     ];
+
+    public function getPathAttribute () {
+        return storage_path('images/recipes/' . $this->recipe_photo_path);
+    }
 
     public function ingredients()
     {
