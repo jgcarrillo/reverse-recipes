@@ -5,7 +5,9 @@
         <template #default>
             <the-jumbo></the-jumbo>
             <the-services></the-services>
-            <the-contact></the-contact>
+            <div class="bg-white">
+                <the-contact></the-contact>
+            </div>
         </template>
     </layout>
 </template>

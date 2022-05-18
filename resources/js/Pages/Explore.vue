@@ -3,7 +3,7 @@
 
     <layout>
         <template #default>
-            <div class="text-center text-gray-800 p-5 md:pt-14">
+            <div class="text-center text-gray-800 p-5 md:pt-14 bg-white">
                 <h1 class="font-lora text-7xl font-bold mt-0 mb-6">Explore</h1>
                 <h3 class="font-lora text-4xl font-bold mb-8">See what you can discover</h3>
             </div>

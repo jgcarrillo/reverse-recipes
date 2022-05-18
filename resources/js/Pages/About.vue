@@ -3,7 +3,7 @@
 
     <layout>
         <template #default>
-            <div class="text-center text-gray-800 p-5 md:pt-14">
+            <div class="text-center text-gray-800 p-5 md:pt-14 bg-white">
                 <h1 class="font-lora text-7xl font-bold mt-0 mb-6">About</h1>
                 <h3 class="font-lora text-4xl font-bold mb-8">Know more about the project</h3>
             </div>
@@ -12,7 +12,9 @@
                 <p class="font-lora text-3xl md:px-24">Reverse recipes is a project developed by three engineers, so the business model is based on a SaaS (Software as a Service). We started as a team of three people and now we are more than ten! We hope you feel comfortable using our website and that it is useful for you to find the recipes that best suit your lifestyle.</p>
             </div>
 
-            <the-pricing></the-pricing>
+            <div class="bg-white">
+                <the-pricing></the-pricing>
+            </div>
         </template>
     </layout>
 </template>
