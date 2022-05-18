@@ -1,7 +1,7 @@
 ![image](docs/images/cover.JPG)
 
 <div align="center">
-    <b>🍕🍔🍟 Reverse recipes. A basic web app to manage a database of recipes 🍕🍔🍟.</b>
+    <b>🍕🍔🍟 Reverse recipes. A basic web app to manage a database of recipes 🍕🍔🍟</b>
 </div>
 
 ## Table of contents 👇
@@ -11,6 +11,7 @@
 - [🕸️ How to contribute](#-how-to-contribute)
 - [🚩 Cheatsheet](#-cheatsheet)
 - [🔒 Database](#-database)
+- [🔥 Production mode](#-production-mode)
 
 ## ✨ How to install
 
@@ -63,5 +64,14 @@ To create the **storage link** you need to type `php artisan storage:link` and t
 
 In order to create database you need to run `php artisan migrate`. After that, execute `php artisan db:seed`. Make sure you only execute that last command **once**.
 
+## 🔥 Production mode 
+
+To test the app in production mode set those variables in `.env` file:
+```env
+APP_ENV=production
+APP_DEBUG=false
+```
+
+Restart the server to apply the changes.
 
 
