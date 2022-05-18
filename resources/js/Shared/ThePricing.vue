@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-3xl mx-auto py-10 bg-white">
+    <div class="max-w-3xl mx-auto py-10">
         <div class="flex flex-col md:flex-row px-2 md:px-0">
             <div
                 class="w-full md:w-1/3 bg-white rounded-lg shadow hover:shadow-xl transition duration-500 ease-in-out p-6 md:mr-4 mb-10 md:mb-0"

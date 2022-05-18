@@ -1,6 +1,6 @@
 <template>
     <!-- border-t for hr separator -->
-    <footer class="text-center text-white bg-white">
+    <footer class="text-center text-white">
         <div class="container mx-auto pt-9">
             <div class="flex justify-center mb-9 space-x-6">
                 <a href="https://es-es.facebook.com/IesJosePlanes/" target="_blank" class="text-gray-800">

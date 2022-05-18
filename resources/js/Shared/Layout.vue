@@ -1,10 +1,11 @@
 <template>
-    <the-navbar></the-navbar>
+    <div class="bg-white">
+        <the-navbar></the-navbar>
 
-    <slot name="default"></slot>
+        <slot name="default"></slot>
 
-    <the-footer></the-footer>
-
+        <the-footer></the-footer>
+    </div>
 </template>
 
 <script>
