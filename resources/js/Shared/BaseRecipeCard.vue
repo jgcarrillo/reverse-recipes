@@ -1,5 +1,5 @@
 <template>
-    <Link class="p-4 sm:w-1/2 lg:w-1/3 transition hover:-translate-y-2 duration cursor-pointer">
+    <Link :href="`/dashboard/recipes/${recipeId}/edit`" class="p-4 sm:w-1/2 lg:w-1/3 transition hover:-translate-y-2 duration cursor-pointer">
         <div class="h-full border border-gray-200 rounded-lg overflow-hidden shadow-md">
             <slot name="image">
                 <img
@@ -62,6 +62,9 @@ import { Link } from '@inertiajs/inertia-vue3';
 export default defineComponent({
     components: {
         Link
+    },
+    props: {
+        recipeId: Number
     }
 });
 </script>

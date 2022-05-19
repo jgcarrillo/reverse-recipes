@@ -8,13 +8,13 @@ use App\Models\Persons;
 use App\Models\Recipe;
 use App\Models\Time;
 use App\Models\Type;
-use App\Models\User;
+use Faker\Core\Number;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request;
-use SebastianBergmann\Diff\Diff;
 
 class RecipeController extends Controller
 {
@@ -80,5 +80,62 @@ class RecipeController extends Controller
             'user'=> Auth::user(),
             'data' => $data,
         ]);
+    }
+
+    public function edit(Recipe $recipe)
+    {
+        $difficulty = DB::table('difficulty')
+            ->join('recipes', 'difficulty.id', '=', 'recipes.difficulty_id')
+            ->where('recipes.id', '=', $recipe->id)
+            ->get(['difficulty.id', 'difficulty.difficulty']);
+        $person = DB::table('persons')
+            ->join('recipes', 'persons.id', '=', 'recipes.persons_id')
+            ->where('recipes.id', '=', $recipe->id)
+            ->get(['persons.id', 'persons.persons']);
+        $type = DB::table('type')
+            ->join('recipes', 'type.id', '=', 'recipes.type_id')
+            ->where('recipes.id', '=', $recipe->id)
+            ->get(['type.id', 'type.type']);
+        $time = DB::table('time')
+            ->join('recipes', 'time.id', '=', 'recipes.time_id')
+            ->where('recipes.id', '=', $recipe->id)
+            ->get(['time.id', 'time.time']);
+
+        $user_recipe = DB::table('recipes')
+            ->join('recipe_user', 'recipes.id', 'recipe_user.recipe_id')
+            ->where('recipes.id', '=', $recipe->id)
+            ->get('recipe_user.id');
+
+        $difficulties = Difficulty::all();
+        $persons = Persons::all();
+        $types = Type::all();
+        $times = Time::all();
+
+        return Inertia::render('Recipes/Edit', [
+            'recipe' => [
+                'id' => $recipe->id,
+                'name' => $recipe->name,
+                'description' => $recipe->description,
+                'difficulty' => $difficulty,
+                'person' => $person,
+                'type' => $type,
+                'time' => $time,
+                'photo' => '',
+                'times' => $times,
+                'difficulties' => $difficulties,
+                'persons' => $persons,
+                'types' => $types,
+                'user_recipe' => $user_recipe
+            ],
+        ]);
+    }
+
+    public function destroy(String $id)
+    {
+        DB::table('recipe_user')
+            ->where('recipe_user.id', '=', $id)
+            ->delete();
+
+        return Redirect::route('recipes')->with('success', 'Recipe deleted.');
     }
 }

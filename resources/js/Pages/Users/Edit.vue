@@ -76,11 +76,6 @@ export default {
                 this.$inertia.delete(`/dashboard/admin/users/${this.user.id}`)
             }
         },
-        restore() {
-            if (confirm('Are you sure you want to restore this user?')) {
-                this.$inertia.put(`/users/${this.user.id}/restore`)
-            }
-        },
     },
 }
 </script>

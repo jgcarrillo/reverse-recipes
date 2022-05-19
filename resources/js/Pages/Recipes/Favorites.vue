@@ -3,7 +3,7 @@
     <h1 class="mb-8 text-3xl font-bold font-lora">Favorites</h1>
 
     <base-three-grid color="bg-gray-900">
-        <base-recipe-card v-for="recipe in data">
+        <base-recipe-card v-for="recipe in data" :key="recipe.id" :recipeId="recipe.id">
             <template #image>
                 <img
                     class="lg:h-72 md:h-48 w-full object-cover object-center"
