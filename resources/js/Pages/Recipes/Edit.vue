@@ -3,7 +3,7 @@
         <Head :title="`${form.name}`" />
         <div class="flex justify-start mb-8 max-w-3xl">
             <h1 class="text-3xl font-lora">
-                <Link class="text-indigo-300 hover:text-white" href="/dashboard/recipes/favorites">Recipes</Link>
+                <Link class="text-indigo-300 hover:text-white" href="/dashboard/recipes/favorites">Favorites</Link>
                 <span class="text-indigo-300"> /</span>
                 {{ form.name }}
             </h1>
@@ -14,7 +14,7 @@
                     <text-input v-model="form.name"  class="pb-8 pr-6 w-full lg:w-1/2" label="Name" id="name" />
                     <text-input v-model="form.description"  class="pb-8 pr-6 w-full lg:w-1/2" label="Description" id="description" />
                     <select-input v-model="form.time"  class="pb-8 pr-6 w-full lg:w-1/2" label="Time">
-                        <option v-for="time in recipe.times" :key="time.id" :value="time.id">{{ time.time }}</option>
+                        <option v-for="time in recipe.times" :key="time.id" :value="time.id">{{ time.time }} {{ time.time == 1 ? 'minute' : 'minutes' }}</option>
                     </select-input>
                     <select-input v-model="form.difficulty"  class="pb-8 pr-6 w-full lg:w-1/2" label="Difficulty">
                         <option v-for="diff in recipe.difficulties" :key="diff.id" :value="diff.id">{{ diff.difficulty }}</option>

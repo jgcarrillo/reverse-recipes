@@ -18,6 +18,9 @@
             <template #ing>{{ recipe.ingredient }}</template>
             <template #people>{{ recipe.persons }}</template>
 
+            <template #user-img>
+                <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" :style="{ backgroundImage: 'url(' + user.profile_photo_url + ')' }"></div>
+            </template>
             <template #user>{{ user.name }} {{ user.last_name }}</template>
         </base-recipe-card>
     </base-three-grid>
