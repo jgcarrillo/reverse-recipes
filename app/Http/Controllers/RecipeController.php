@@ -136,6 +136,6 @@ class RecipeController extends Controller
             ->where('recipe_user.id', '=', $id)
             ->delete();
 
-        return Redirect::route('recipes')->with('success', 'Recipe deleted.');
+        return Redirect::route('recipes.favorites')->with('success', 'Recipe deleted.');
     }
 }
