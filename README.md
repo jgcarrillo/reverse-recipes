@@ -12,6 +12,7 @@
 - [🚩 Cheatsheet](#-cheatsheet)
 - [🔒 Database](#-database)
 - [🔥 Production mode](#-production-mode)
+- [🌎 Test the app in your phone](#-test-the-app-in-your-phone)
 
 ## ✨ How to install
 
@@ -73,5 +74,9 @@ APP_DEBUG=false
 ```
 
 Restart the server to apply the changes.
+
+## 🌎 Test the app in your phone
+
+Run a local serve with: `php artisan serve --host [YOUR IP] --port 8000`. Now, you will be able to access from *http://[YOUR IP]:8000*.
 
 
