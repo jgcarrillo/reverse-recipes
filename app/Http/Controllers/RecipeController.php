@@ -107,6 +107,10 @@ class RecipeController extends Controller
             ->where('recipes.id', '=', $recipe->id)
             ->get('recipe_user.id');
 
+        $user_recipe_photo_path = DB::table('recipes')
+            ->where('recipes.id', '=', $recipe->id)
+            ->get('recipes.recipe_photo_path');
+
         $difficulties = Difficulty::all();
         $persons = Persons::all();
         $types = Type::all();
@@ -121,7 +125,7 @@ class RecipeController extends Controller
                 'person' => $person,
                 'type' => $type,
                 'time' => $time,
-                'photo' => '',
+                'photo' => $user_recipe_photo_path,
                 'times' => $times,
                 'difficulties' => $difficulties,
                 'persons' => $persons,

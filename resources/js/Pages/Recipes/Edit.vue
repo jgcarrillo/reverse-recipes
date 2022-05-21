@@ -7,6 +7,7 @@
                 <span class="text-indigo-300"> /</span>
                 {{ form.name }}
             </h1>
+            <img v-if="recipe.photo[0].recipe_photo_path" alt="recipe photo" class="block ml-4 w-8 h-8 rounded-full" :src="recipe.photo[0].recipe_photo_path" />
         </div>
         <div class="max-w-3xl bg-slate-800 rounded-md shadow overflow-hidden">
             <form @submit.prevent="update">
