@@ -11,21 +11,21 @@
         <div class="max-w-3xl bg-slate-800 rounded-md shadow overflow-hidden">
             <form @submit.prevent="update">
                 <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-                    <text-input v-model="form.name"  class="pb-8 pr-6 w-full lg:w-1/2" label="Name" id="name" />
-                    <text-input v-model="form.description"  class="pb-8 pr-6 w-full lg:w-1/2" label="Description" id="description" />
-                    <select-input v-model="form.time"  class="pb-8 pr-6 w-full lg:w-1/2" label="Time">
+                    <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="Name" id="name" />
+                    <text-input v-model="form.description" :error="form.errors.description" class="pb-8 pr-6 w-full lg:w-1/2" label="Description" id="description" />
+                    <select-input v-model="form.time" :error="form.errors.time" class="pb-8 pr-6 w-full lg:w-1/2" label="Time">
                         <option v-for="time in recipe.times" :key="time.id" :value="time.id">{{ time.time }} {{ time.time == 1 ? 'minute' : 'minutes' }}</option>
                     </select-input>
-                    <select-input v-model="form.difficulty"  class="pb-8 pr-6 w-full lg:w-1/2" label="Difficulty">
+                    <select-input v-model="form.difficulty" :error="form.errors.difficulty" class="pb-8 pr-6 w-full lg:w-1/2" label="Difficulty">
                         <option v-for="diff in recipe.difficulties" :key="diff.id" :value="diff.id">{{ diff.difficulty }}</option>
                     </select-input>
-                    <select-input v-model="form.person"  class="pb-8 pr-6 w-full lg:w-1/2" label="Persons">
+                    <select-input v-model="form.persons" :error="form.errors.persons" class="pb-8 pr-6 w-full lg:w-1/2" label="Persons">
                         <option v-for="per in recipe.persons" :key="per.id" :value="per.id">{{ per.persons }}</option>
                     </select-input>
-                    <select-input v-model="form.type"  class="pb-8 pr-6 w-full lg:w-1/2" label="Types">
+                    <select-input v-model="form.type" :error="form.errors.type" class="pb-8 pr-6 w-full lg:w-1/2" label="Types">
                         <option v-for="tp in recipe.types" :key="tp.id" :value="tp.id">{{ tp.type }}</option>
                     </select-input>
-                    <file-input v-model="form.photo"  class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
+                    <file-input v-model="form.photo" :error="form.errors.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
                 </div>
                 <div class="flex items-center px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
                     <button class="px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black transition duration-500 hover:underline" tabindex="-1" type="button" @click="destroy">Delete recipe</button>
@@ -66,7 +66,7 @@ export default {
                 name: this.recipe.name,
                 description: this.recipe.description,
                 difficulty: this.recipe.difficulty,
-                person: this.recipe.person,
+                persons: this.recipe.person,
                 type: this.recipe.type,
                 time: this.recipe.time,
                 photo: null,
@@ -75,8 +75,8 @@ export default {
     },
     methods: {
         update() {
-            this.form.post(`/dashboard/admin/users/${this.user.id}`, {
-                onSuccess: () => this.form.reset('password', 'photo'),
+            this.form.post(`/dashboard/recipes/${this.recipe.id}`, {
+                onSuccess: () => this.form.reset('photo'),
             })
         },
         destroy() {

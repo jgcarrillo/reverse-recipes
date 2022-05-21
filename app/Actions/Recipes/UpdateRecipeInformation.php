@@ -3,8 +3,6 @@
 namespace App\Actions\Recipes;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateRecipeInformation
 {
@@ -25,6 +23,21 @@ class UpdateRecipeInformation
             'persons' => ['required', 'integer'],
             'type' => ['required', 'integer'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-        ])->validateWithBag('updateRecipeInformation');
+        ])->validate();
+
+        /*
+        if (isset($input['photo'])) {
+            // Actualizar foto y borrar la anterior
+        }
+        */
+
+        $recipe->forceFill([
+            'name' => $input['name'],
+            'description' => $input['description'],
+            'time_id' => $input['time'],
+            'difficulty_id' => $input['difficulty'],
+            'persons_id' => $input['persons'],
+            'type_id' => $input['type'],
+        ])->save();
     }
 }

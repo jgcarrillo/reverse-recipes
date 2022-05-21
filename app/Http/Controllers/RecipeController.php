@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Recipes\CreateNewRecipe;
+use App\Actions\Recipes\UpdateRecipeInformation;
 use App\Models\Difficulty;
 use App\Models\Persons;
 use App\Models\Recipe;
@@ -137,5 +138,13 @@ class RecipeController extends Controller
             ->delete();
 
         return Redirect::route('recipes.favorites')->with('success', 'Recipe deleted.');
+    }
+
+    public function update(Recipe $recipe)
+    {
+        $updateRecipe = new UpdateRecipeInformation();
+        $updateRecipe->update($recipe, Request::all());
+
+        return Redirect::route('recipes.favorites')->with('success', 'Recipe updated.');
     }
 }
