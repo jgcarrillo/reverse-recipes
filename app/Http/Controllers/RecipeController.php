@@ -151,4 +151,9 @@ class RecipeController extends Controller
 
         return Redirect::route('recipes.favorites')->with('success', 'Recipe updated.');
     }
+
+    public function generate()
+    {
+        // TODO
+    }
 }

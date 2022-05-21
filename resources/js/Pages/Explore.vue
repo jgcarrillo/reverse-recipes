@@ -27,7 +27,7 @@
                         <template #recipe>Creative Coffee</template>
                         <template #time>10 minutes</template>
 
-                        <template #ing>1</template>
+                        <template #ing>2</template>
                         <template #people>1</template>
 
                         <template #user-img>

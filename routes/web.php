@@ -50,6 +50,7 @@ Route::middleware([
     Route::get('dashboard/recipes/{recipe}/edit', [RecipeController::class, 'edit'])->name('recipes.edit');
     Route::put('dashboard/recipes/{recipe}', [RecipeController::class, 'update'])->name('recipes.update');
     Route::delete('dashboard/recipes/{recipe}', [RecipeController::class, 'destroy'])->name('recipes.destroy');
+    Route::get('dashboard/recipes/generate', [RecipeController::class, 'generate'])->name('recipes.generate');
 
     // Images
     Route::get('/storage/{path}', [ImagesController::class, 'show'])
