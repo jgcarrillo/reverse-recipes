@@ -40,7 +40,7 @@ export default {
     },
     methods: {
         store() {
-            this.form.post('/send-contact')
+            this.form.post('/send-contact');
         },
     },
 }

@@ -9,11 +9,12 @@ use App\Models\Persons;
 use App\Models\Recipe;
 use App\Models\Time;
 use App\Models\Type;
-use Faker\Core\Number;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request;
 
@@ -152,8 +153,14 @@ class RecipeController extends Controller
         return Redirect::route('recipes.favorites')->with('success', 'Recipe updated.');
     }
 
-    public function generate()
+    public function generate($id)
     {
-        // TODO
+        $recipe = DB::table('recipes')
+            ->where('recipes.id', '=', $id)
+            ->get();
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream('recipe.pdf');
     }
 }

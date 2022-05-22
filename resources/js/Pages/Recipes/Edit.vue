@@ -31,7 +31,7 @@
                 <div class="flex items-center px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
                     <button class="px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black transition duration-500 hover:underline" tabindex="-1" type="button" @click="destroy">Delete recipe</button>
                     <loading-button :loading="form.processing" class="px-4 py-2 ml-auto rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Update Recipe</loading-button>
-                    <button class="px-4 py-2 ml-4 rounded rounded text-white bg-red-500 hover:bg-red-400 transition duration-500" tabindex="-1" type="button" @click="generatePDF">Export to PDF</button>
+                    <a :href="`/dashboard/recipes/generate/${recipe.id}`" target="_blank" class="px-4 py-2 ml-4 rounded rounded text-white bg-red-500 hover:bg-red-400 transition duration-500" tabindex="-1" type="button">Export to PDF</a>
                 </div>
             </form>
         </div>
@@ -86,9 +86,6 @@ export default {
                 this.$inertia.delete(`/dashboard/recipes/${this.recipe.user_recipe[0].id}`)
             }
         },
-        generatePDF() {
-            this.$inertia.get(`/dashboard/recipes/generate`);
-        }
     },
 }
 </script>
