@@ -10,8 +10,7 @@ use App\Models\Recipe;
 use App\Models\Time;
 use App\Models\Type;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Dompdf\Dompdf;
-use Illuminate\Support\Facades\App;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -150,12 +149,13 @@ class RecipeController extends Controller
         $updateRecipe = new UpdateRecipeInformation();
         $updateRecipe->update($recipe, Request::all());
 
-        return Redirect::route('recipes.favorites')->with('success', 'Recipe updated.');
+        return Redirect::back()->with('success', 'Recipe updated.');
     }
 
     public function generate($id)
     {
         $recipe_data = [];
+        $date = Carbon::now()->toDateTimeString();
 
         $recipe = DB::table('recipes')
             ->where('recipes.id', '=', $id)
@@ -177,6 +177,14 @@ class RecipeController extends Controller
             ->where('recipes.id', '=', $id)
             ->get(['time.id', 'time.time'])->toArray();
 
+        // Logo encode to base64
+        $path = public_path('logo.png');
+        $type_photo = pathinfo($path, PATHINFO_EXTENSION);
+        $data_img = file_get_contents($path);
+        $base64 = 'data:image/' . $type_photo . ';base64,' . base64_encode($data_img);
+
+        $recipe_photo = explode('/', $recipe[0]->recipe_photo_path);
+
         $recipe_data = [
             'name' => $recipe[0]->name,
             'description' => $recipe[0]->description,
@@ -184,13 +192,14 @@ class RecipeController extends Controller
             'difficulty' => $difficulty[0]->difficulty,
             'persons' => $person[0]->persons,
             'type' => $type[0]->type,
-            'photo' => $recipe[0]->recipe_photo_path
+            'photo' => $recipe_photo[6]
         ];
 
-        var_dump($recipe_data);
-
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>' . $recipe_data['name'] . '</h1>');
-        return $pdf->stream('recipe.pdf');
+        $pdf = PDF::loadView('pdf', [
+            'recipe_data' => $recipe_data,
+            'logo' => $base64,
+            'date' => $date
+        ])->setPaper('letter');
+        return $pdf->stream();
     }
 }
