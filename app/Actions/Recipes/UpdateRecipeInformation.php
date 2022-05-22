@@ -2,6 +2,7 @@
 
 namespace App\Actions\Recipes;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class UpdateRecipeInformation
@@ -25,11 +26,22 @@ class UpdateRecipeInformation
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validate();
 
-        /*
-        if (isset($input['photo'])) {
-            // Actualizar foto y borrar la anterior
+        if(isset($input['photo'])) {
+            $destination_path = 'public/images/recipes';
+
+            $image = $input['photo'];
+            $image_name = $image->getClientOriginalName();
+
+            if(File::exists($destination_path . $image_name)) {
+                File::delete($destination_path . $image_name);
+            }
+
+            $path = $input['photo']->storeAs($destination_path, $image_name);
+
+            $recipe->forceFill([
+                'recipe_photo_path' => url('storage/images/recipes/' . $input['photo']->getClientOriginalName())  ?? null,
+            ])->save();
         }
-        */
 
         $recipe->forceFill([
             'name' => $input['name'],
