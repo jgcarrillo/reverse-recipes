@@ -13,6 +13,7 @@
 - [🔒 Database](#-database)
 - [🔥 Production mode](#-production-mode)
 - [🌎 Test the app in your phone](#-test-the-app-in-your-phone)
+- [🔧 PHP GD library](#-php-gd-library)
 
 ## ✨ How to install
 
@@ -78,5 +79,9 @@ Restart the server to apply the changes.
 ## 🌎 Test the app in your phone
 
 Run a local serve with: `php artisan serve --host [YOUR IP] --port 8000`. Now, you will be able to access from *http://[YOUR IP]:8000*.
+
+## 🔧 PHP GD Library
+
+If you are a Windows user and you are using XAMPP, in order to see the images when you export a recipe as PDF you need to go to your *PHP folder* inside XAMPP, open `php.ini` and uncomment the option `;extension=gd`.
 
 

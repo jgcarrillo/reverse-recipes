@@ -73,7 +73,6 @@
             text-align: right;
             margin-top: 1.5rem;
             font-size: 0.8rem;
-            margin-right: 5rem;
         }
 
         .recipe {
@@ -85,7 +84,7 @@
 <header>
     <h1 class="header__h1">
         <img class="logo__img" src="{{ $logo }}" alt="Reverse Recipes Logo">
-        Reverse Recipes
+        {{ $recipe_data['name'] }}
         <img class="logo__img" src="{{ $logo }}" alt="Reverse Recipes Logo">
     </h1>
 </header>
