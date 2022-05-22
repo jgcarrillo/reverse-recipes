@@ -155,12 +155,42 @@ class RecipeController extends Controller
 
     public function generate($id)
     {
+        $recipe_data = [];
+
         $recipe = DB::table('recipes')
             ->where('recipes.id', '=', $id)
             ->get();
+        $difficulty = DB::table('difficulty')
+            ->join('recipes', 'difficulty.id', '=', 'recipes.difficulty_id')
+            ->where('recipes.id', '=', $id)
+            ->get(['difficulty.id', 'difficulty.difficulty'])->toArray();
+        $person = DB::table('persons')
+            ->join('recipes', 'persons.id', '=', 'recipes.persons_id')
+            ->where('recipes.id', '=', $id)
+            ->get(['persons.id', 'persons.persons'])->toArray();
+        $type = DB::table('type')
+            ->join('recipes', 'type.id', '=', 'recipes.type_id')
+            ->where('recipes.id', '=', $id)
+            ->get(['type.id', 'type.type'])->toArray();
+        $time = DB::table('time')
+            ->join('recipes', 'time.id', '=', 'recipes.time_id')
+            ->where('recipes.id', '=', $id)
+            ->get(['time.id', 'time.time'])->toArray();
+
+        $recipe_data = [
+            'name' => $recipe[0]->name,
+            'description' => $recipe[0]->description,
+            'time' => $time[0]->time,
+            'difficulty' => $difficulty[0]->difficulty,
+            'persons' => $person[0]->persons,
+            'type' => $type[0]->type,
+            'photo' => $recipe[0]->recipe_photo_path
+        ];
+
+        var_dump($recipe_data);
 
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
+        $pdf->loadHTML('<h1>' . $recipe_data['name'] . '</h1>');
         return $pdf->stream('recipe.pdf');
     }
 }
