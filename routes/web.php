@@ -19,8 +19,24 @@ use Inertia\Inertia;
 |
 */
 
-// Auth
+// General
+Route::get('/', function() {
+    return Inertia::render('Welcome');
+})->name('home');
 
+Route::post('/send-contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('message-success', [ContactController::class, 'success'])->name('message.success');
+
+Route::get('/explore', function() {
+    return Inertia::render('Explore');
+})->name('explore');
+
+Route::get('/about', function() {
+    return Inertia::render('About');
+})->name('about');
+
+// Auth
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -57,23 +73,3 @@ Route::middleware([
         ->where('path', '.*')
         ->name('image');
 });
-
-Route::get('/', function() {
-    return Inertia::render('Welcome');
-})->name('home');
-
-Route::post('/send-contact', [ContactController::class, 'store'])->name('contact.store');
-
-Route::get('message-success', [ContactController::class, 'success'])->name('message.success');
-
-Route::get('/explore', function() {
-    return Inertia::render('Explore');
-})->name('explore');
-
-Route::get('/about', function() {
-    return Inertia::render('About');
-})->name('about');
-
-Route::get('/explore/recipe/1', function() {
-    return Inertia::render('Recipes/Examples/RecipeOne');
-})->name('recipeone');
