@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class RecipeController extends Controller
 {
@@ -52,8 +53,19 @@ class RecipeController extends Controller
     public function store()
     {
         $newRecipe = new CreateNewRecipe();
-        $recipe = $newRecipe->create(Request::only(['name', 'description', 'time', 'difficulty', 'persons', 'type', 'photo', 'ingredients']));
 
+        $request = [
+            'name' => Request('name'),
+            'description' => Request('description'),
+            'time' => Request('time'),
+            'difficulty' => Request('difficulty'),
+            'persons' => Request('persons'),
+            'type' => Request('type'),
+            'photo' => Request('photo'),
+            'ingredients' => Request('ingredients') && is_array(Request('ingredients')) !== null ? implode(", ", Request('ingredients')) : []
+        ];
+
+        $recipe = $newRecipe->create($request);
         $user = Auth::user();
         $user->recipes()->attach($recipe->getAttribute('id'));
 
