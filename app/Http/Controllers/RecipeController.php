@@ -138,7 +138,7 @@ class RecipeController extends Controller
                 'id' => $recipe->id,
                 'name' => $recipe->name,
                 'description' => $recipe->description,
-                'ingredients' => $recipe->ingredients,
+                'ingredients' => explode(", ", $recipe->ingredients),
                 'difficulty' => $difficulty,
                 'person' => $person,
                 'type' => $type,
@@ -165,8 +165,19 @@ class RecipeController extends Controller
 
     public function update(Recipe $recipe)
     {
+        $request = [
+            'name' => Request('name'),
+            'description' => Request('description'),
+            'time' => Request('time'),
+            'difficulty' => Request('difficulty'),
+            'persons' => Request('persons'),
+            'type' => Request('type'),
+            'photo' => Request('photo'),
+            'ingredients' => Request('ingredients') && is_array(Request('ingredients')) !== null ? implode(", ", Request('ingredients')) : []
+        ];
+
         $updateRecipe = new UpdateRecipeInformation();
-        $updateRecipe->update($recipe, Request::all());
+        $updateRecipe->update($recipe, $request);
 
         return Redirect::back()->with('success', 'Recipe updated.');
     }

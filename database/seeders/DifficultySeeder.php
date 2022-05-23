@@ -10,7 +10,7 @@ class DifficultySeeder extends Seeder
 {
     protected $difficulty = [
         'Easy',
-        'Mid',
+        'Medium',
         'Hard'
     ];
 
