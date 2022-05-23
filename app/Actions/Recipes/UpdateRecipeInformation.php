@@ -23,6 +23,7 @@ class UpdateRecipeInformation
             'difficulty' => ['required', 'integer'],
             'persons' => ['required', 'integer'],
             'type' => ['required', 'integer'],
+            'ingredients' => ['nullable', 'string'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validate();
 
@@ -50,6 +51,7 @@ class UpdateRecipeInformation
             'difficulty_id' => $input['difficulty'],
             'persons_id' => $input['persons'],
             'type_id' => $input['type'],
+            'ingredients' => $input['ingredients']
         ])->save();
     }
 }

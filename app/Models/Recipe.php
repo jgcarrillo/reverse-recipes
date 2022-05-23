@@ -21,13 +21,9 @@ class Recipe extends Model
         'difficulty_id',
         'persons_id',
         'type_id',
+        'ingredients',
         'recipe_photo_path'
     ];
-
-    public function ingredients()
-    {
-        return $this->belongsToMany(Ingredient::class)->withTimestamps();
-    }
 
     public function users()
     {

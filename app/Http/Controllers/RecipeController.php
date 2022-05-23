@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Recipes\CreateNewRecipe;
 use App\Actions\Recipes\UpdateRecipeInformation;
 use App\Models\Difficulty;
+use App\Models\Ingredient;
 use App\Models\Persons;
 use App\Models\Recipe;
 use App\Models\Time;
@@ -37,19 +38,21 @@ class RecipeController extends Controller
         $persons = Persons::all();
         $types = Type::all();
         $time = Time::all();
+        $ingredients = Ingredient::all();
 
         return Inertia::render('Recipes/Create', [
             'difficulty' => $difficulty,
             'persons' => $persons,
             'type' => $types,
-            'time' => $time
+            'time' => $time,
+            'ingredients' => $ingredients
         ]);
     }
 
     public function store()
     {
         $newRecipe = new CreateNewRecipe();
-        $recipe = $newRecipe->create(Request::only(['name', 'description', 'time', 'difficulty', 'persons', 'type', 'photo']));
+        $recipe = $newRecipe->create(Request::only(['name', 'description', 'time', 'difficulty', 'persons', 'type', 'photo', 'ingredients']));
 
         $user = Auth::user();
         $user->recipes()->attach($recipe->getAttribute('id'));

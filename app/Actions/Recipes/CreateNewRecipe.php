@@ -22,6 +22,7 @@ class CreateNewRecipe
             'difficulty' => ['required', 'integer'],
             'persons' => ['required', 'integer'],
             'type' => ['required', 'integer'],
+            'ingredients' => ['required', 'string'],
             'photo' => ['required', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validate();
 
@@ -39,6 +40,7 @@ class CreateNewRecipe
             'difficulty_id' => $input['difficulty'],
             'persons_id' => $input['persons'],
             'type_id' => $input['type'],
+            'ingredients' => $input['ingredients'],
             'recipe_photo_path' => url('storage/images/recipes/' . $input['photo']->getClientOriginalName())  ?? null,
         ]);
     }

@@ -23,6 +23,9 @@
                         <option v-for="tp in type" :key="tp.id" :value="tp.id">{{ tp.type }}</option>
                     </select-input>
                     <file-input v-model="form.photo" :error="form.errors.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
+                    <select-input multiple v-model="form.ingredients" :error="form.errors.ingredients" class="pb-8 pr-6 w-full lg:w-1/2" label="Ingredients" name="ingredients[]">
+                        <option v-for="ingredient in ingredients" :key="ingredient.id" :value="ingredient.name">{{ ingredient.name }}</option>
+                    </select-input>
                 </div>
                 <div class="flex items-center justify-end px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
                     <loading-button :loading="form.processing" class="px-4 py-2 ml-auto rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Create Recipe</loading-button>
@@ -53,7 +56,8 @@ export default {
         difficulty: Array,
         persons: Array,
         type: Array,
-        time: Array
+        time: Array,
+        ingredients: Array
     },
     layout: AppLayout,
     remember: 'form',
@@ -66,7 +70,8 @@ export default {
                 difficulty: '',
                 persons: '',
                 type: '',
-                photo: null
+                photo: null,
+                ingredients: ''
             }),
         }
     },

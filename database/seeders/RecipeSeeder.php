@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Difficulty;
+use App\Models\Ingredient;
 use App\Models\Persons;
 use App\Models\Time;
 use App\Models\Type;
@@ -38,7 +39,11 @@ class RecipeSeeder extends Seeder
      */
     public function run()
     {
+        $collection = Ingredient::all();
+
         foreach ($this->recipes as $recipe) {
+            $plucked = $collection->pluck('name')->shuffle()->take(3)->implode(', ', ", ");
+
             DB::table('recipes')->insert([
                 'name' => $recipe['name'],
                 'description' => $recipe['description'],
@@ -46,6 +51,7 @@ class RecipeSeeder extends Seeder
                 'difficulty_id' => Difficulty::all()->random()->id,
                 'persons_id' => Persons::all()->random()->id,
                 'type_id' => Type::all()->random()->id,
+                'ingredients' => $plucked,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);

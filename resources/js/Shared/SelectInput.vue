@@ -22,7 +22,7 @@ export default {
         },
         error: String,
         label: String,
-        modelValue: [String, Number, Boolean, Array],
+        modelValue: [String, Number, Boolean, Array, String],
     },
     emits: ['update:modelValue'],
     data() {

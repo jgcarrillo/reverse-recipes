@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('difficulty_id')->nullable();
             $table->unsignedBigInteger('persons_id')->nullable();
             $table->unsignedBigInteger('type_id')->nullable();
+            $table->string('ingredients');
             $table->string('recipe_photo_path', 2048)->nullable();
             $table->timestamps();
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Ingredient extends Model
 {
@@ -18,8 +19,9 @@ class Ingredient extends Model
         'name',
     ];
 
-    public function recipes()
-    {
-        return $this->belongsToMany(Recipe::class);
+    public function getName($id) {
+        DB::table('ingredients')
+            ->where('ingredients.id', '=', $id)
+            ->get('name');
     }
 }
