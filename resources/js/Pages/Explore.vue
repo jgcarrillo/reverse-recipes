@@ -27,8 +27,8 @@
                         <template #recipe>Creative Coffee</template>
                         <template #time>10 minutes</template>
 
-                        <template #ing>2</template>
-                        <template #people>1</template>
+                        <template #ing>2 Ingredients</template>
+                        <template #people>1 Person</template>
 
                         <template #user-img>
                             <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://picsum.photos/id/433/4752/3168)"></div>
@@ -48,8 +48,8 @@
                         <template #recipe>Vegetarian Bowl</template>
                         <template #time>15 minutes</template>
 
-                        <template #ing>5</template>
-                        <template #people>2</template>
+                        <template #ing>5 Ingredients</template>
+                        <template #people>2 Persons</template>
 
                         <template #user-img>
                             <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://picsum.photos/id/447/1280/853)"></div>

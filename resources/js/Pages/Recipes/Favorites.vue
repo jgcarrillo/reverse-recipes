@@ -15,8 +15,8 @@
             <template #recipe>{{ recipe.name }}</template>
             <template #time>{{ recipe.time }} {{ recipe.time == 1 ? 'minute' : 'minutes' }}</template>
 
-            <template #ing>{{ convertToArray(recipe.ingredients) }} {{ recipe.ingredient }}</template>
-            <template #people>{{ recipe.persons }}</template>
+            <template #ing>{{ convertToArray(recipe.ingredients) }} {{ (convertToArray(recipe.ingredients)) == 1 ? 'Ingredient' : 'Ingredients' }}</template>
+            <template #people>{{ (recipe.persons) }} {{ (recipe.persons) == 1 ? 'Person' : 'Persons' }}</template>
 
             <template #user-img>
                 <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" :style="{ backgroundImage: 'url(' + user.profile_photo_url + ')' }"></div>
