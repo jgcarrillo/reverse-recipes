@@ -14,6 +14,7 @@
 - [🔥 Production mode](#-production-mode)
 - [🌎 Test the app in your phone](#-test-the-app-in-your-phone)
 - [🔧 PHP GD library](#-php-gd-library)
+- [📧 Email verification](#-email-verification)
 
 ## ✨ How to install
 
@@ -83,5 +84,22 @@ Run a local serve with: `php artisan serve --host [YOUR IP] --port 8000`. Now, y
 ## 🔧 PHP GD Library
 
 If you are a Windows user and you are using XAMPP, in order to see the images when you export a recipe as PDF you need to go to your *PHP folder* inside XAMPP, open `php.ini` and uncomment the option `;extension=gd`.
+
+## 📧 Email verification
+
+You need to configure your `.env` file with something like this (if you are using Gmail):
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=<Enter your Gmail address>
+MAIL_PASSWORD=<Enter your Gmail password>
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=<Enter your custon address>
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+In Gmail configuration, you need to activate the `Less secure app access`.
 
 
