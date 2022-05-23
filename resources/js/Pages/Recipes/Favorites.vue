@@ -15,7 +15,7 @@
             <template #recipe>{{ recipe.name }}</template>
             <template #time>{{ recipe.time }} {{ recipe.time == 1 ? 'minute' : 'minutes' }}</template>
 
-            <template #ing>{{ recipe.ingredient }}</template>
+            <template #ing>{{ convertToArray(recipe.ingredients) }} {{ recipe.ingredient }}</template>
             <template #people>{{ recipe.persons }}</template>
 
             <template #user-img>
@@ -50,6 +50,11 @@ export default {
         filters: Object,
         user: Object,
         data: Object,
+    },
+    methods: {
+        convertToArray(ingredients) {
+            return ingredients.split(", ").length;
+        }
     },
     layout: AppLayout,
 }

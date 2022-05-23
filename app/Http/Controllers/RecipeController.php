@@ -89,7 +89,8 @@ class RecipeController extends Controller
                 'difficulty.difficulty',
                 'type.type',
                 'persons.persons',
-                'time.time'
+                'time.time',
+                'recipes.ingredients'
             ]);
 
         return Inertia::render('Recipes/Favorites', [
