@@ -131,12 +131,14 @@ class RecipeController extends Controller
         $persons = Persons::all();
         $types = Type::all();
         $times = Time::all();
+        $all_ingredients = Ingredient::all();
 
         return Inertia::render('Recipes/Edit', [
             'recipe' => [
                 'id' => $recipe->id,
                 'name' => $recipe->name,
                 'description' => $recipe->description,
+                'ingredients' => $recipe->ingredients,
                 'difficulty' => $difficulty,
                 'person' => $person,
                 'type' => $type,
@@ -146,7 +148,8 @@ class RecipeController extends Controller
                 'difficulties' => $difficulties,
                 'persons' => $persons,
                 'types' => $types,
-                'user_recipe' => $user_recipe
+                'user_recipe' => $user_recipe,
+                'allIngredients' => $all_ingredients
             ],
         ]);
     }

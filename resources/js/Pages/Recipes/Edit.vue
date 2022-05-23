@@ -27,6 +27,9 @@
                         <option v-for="tp in recipe.types" :key="tp.id" :value="tp.id">{{ tp.type }}</option>
                     </select-input>
                     <file-input v-model="form.photo" :error="form.errors.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
+                    <select-input multiple name="ingredients[]" v-model="form.allIngredients" :error="form.errors.allIngredients" class="pb-8 pr-6 w-full lg:w-1/2" label="Ingredients">
+                        <option v-for="ing in recipe.allIngredients" :key="ing.id" :value="ing.name">{{ ing.name }}</option>
+                    </select-input>
                 </div>
                 <div class="flex items-center px-8 py-4 bg-slate-800 border-t border-gray-100 font-lora">
                     <button class="px-4 py-2 border rounded text-white border-white hover:bg-white hover:text-black transition duration-500 hover:underline" tabindex="-1" type="button" @click="destroy">Delete recipe</button>
@@ -67,10 +70,12 @@ export default {
                 _method: 'put',
                 name: this.recipe.name,
                 description: this.recipe.description,
+                ingredients: this.recipe.ingredients,
                 difficulty: this.recipe.difficulty[0].id,
                 persons: this.recipe.person[0].id,
                 type: this.recipe.type[0].id,
                 time: this.recipe.time[0].id,
+                allIngredients: this.recipe.allIngredients,
                 photo: null,
             }),
         }
