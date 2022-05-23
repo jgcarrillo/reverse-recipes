@@ -23,7 +23,7 @@ class UpdateRecipeInformation
             'difficulty' => ['required', 'integer'],
             'persons' => ['required', 'integer'],
             'type' => ['required', 'integer'],
-            'ingredients' => ['nullable', 'string'],
+            'ingredients' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validate();
 

@@ -27,7 +27,7 @@
                         <option v-for="tp in recipe.types" :key="tp.id" :value="tp.id">{{ tp.type }}</option>
                     </select-input>
                     <file-input v-model="form.photo" :error="form.errors.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" id="photo" />
-                    <select-input multiple name="ingredients[]" v-model="form.ingredients" :error="form.errors.allIngredients" class="pb-8 pr-6 w-full lg:w-1/2" label="Ingredients">
+                    <select-input multiple name="ingredients[]" v-model="form.ingredients" :error="form.errors.ingredients" class="pb-8 pr-6 w-full lg:w-1/2" label="Ingredients">
                         <option v-for="ing in recipe.allIngredients" :key="ing.id" :value="ing.name">{{ ing.name }}</option>
                     </select-input>
                 </div>

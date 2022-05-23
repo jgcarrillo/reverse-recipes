@@ -22,7 +22,7 @@ class CreateNewRecipe
             'difficulty' => ['required', 'integer'],
             'persons' => ['required', 'integer'],
             'type' => ['required', 'integer'],
-            'ingredients' => ['required', 'string'],
+            'ingredients' => ['required', 'string', 'max:255'],
             'photo' => ['required', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validate();
 

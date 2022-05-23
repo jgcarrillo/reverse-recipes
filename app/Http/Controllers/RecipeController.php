@@ -206,6 +206,9 @@ class RecipeController extends Controller
             ->join('recipes', 'time.id', '=', 'recipes.time_id')
             ->where('recipes.id', '=', $id)
             ->get(['time.id', 'time.time'])->toArray();
+        $ingredients = DB::table('recipes')
+            ->where('recipes.id', '=', $id)
+            ->get('recipes.ingredients')->toArray();
 
         // Logo encode to base64
         $path = public_path('logo.png');
@@ -222,6 +225,7 @@ class RecipeController extends Controller
             'difficulty' => $difficulty[0]->difficulty,
             'persons' => $person[0]->persons,
             'type' => $type[0]->type,
+            'ingredients' => $ingredients[0]->ingredients,
             'photo' => $recipe_photo[6]
         ];
 

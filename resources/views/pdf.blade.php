@@ -102,6 +102,7 @@
         <th>Difficulty</th>
         <th>Persons</th>
         <th>Type</th>
+        <th>Ingredients</th>
     </tr>
     </thead>
     <tbody>
@@ -112,6 +113,7 @@
         <td>{{ $recipe_data['difficulty'] }}</td>
         <td>{{ $recipe_data['persons'] }}</td>
         <td>{{ $recipe_data['type'] }}</td>
+        <td>{{ $recipe_data['ingredients'] }}</td>
     </tr>
     </tbody>
 </table>
