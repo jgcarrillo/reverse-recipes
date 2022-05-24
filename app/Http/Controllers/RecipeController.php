@@ -44,7 +44,7 @@ class RecipeController extends Controller
                 ->when(Request::input('time'), function($query, $time) {
                     $query->where('time_id', '=', $time);
                 })
-                ->paginate(5)
+                ->paginate(8)
                 ->withQueryString()
                 ->through(fn ($recipe) => [
                     'id' => $recipe->id,
