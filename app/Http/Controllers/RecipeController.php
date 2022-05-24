@@ -55,10 +55,16 @@ class RecipeController extends Controller
                     'persons' => $recipe->persons->persons,
                     'type' => $recipe->type->type,
                     'photo' => $recipe->recipe_photo_path ?? null,
-                    'user' => $recipe->users
                 ]),
             'types' => Type::all(),
             'times' => Time::all(),
+        ]);
+    }
+
+    public function show(Recipe $recipe)
+    {
+        return Inertia::render('Recipes/Show', [
+            'recipe' => $recipe
         ]);
     }
 

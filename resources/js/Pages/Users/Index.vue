@@ -16,6 +16,8 @@
             <span class="hidden md:inline">&nbsp;User</span>
         </Link>
     </div>
+
+    <!-- TABLE -->
     <div class="bg-slate-800 rounded-md shadow overflow-x-auto">
         <table class="w-full whitespace-nowrap">
             <tr class="text-left text-xl font-lora">

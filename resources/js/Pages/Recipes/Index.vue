@@ -21,6 +21,8 @@
             <span class="hidden md:inline">&nbsp;Recipe</span>
         </Link>
     </div>
+
+    <!-- TABLE -->
     <div class="bg-slate-800 rounded-md shadow overflow-x-auto">
         <table class="w-full whitespace-nowrap">
             <tr class="text-left text-xl font-lora">
