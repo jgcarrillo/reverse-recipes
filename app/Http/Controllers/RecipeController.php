@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\URL;
 
 class RecipeController extends Controller
 {
@@ -51,11 +50,12 @@ class RecipeController extends Controller
                     'id' => $recipe->id,
                     'name' => $recipe->name,
                     'description' => $recipe->description,
-                    'time' => $recipe->time_id,
-                    'difficulty' => $recipe->difficulty_id,
-                    'persons' => $recipe->persons_id,
-                    'type' => $recipe->type_id,
+                    'time' => $recipe->time->time,
+                    'difficulty' => $recipe->difficulty->difficulty,
+                    'persons' => $recipe->persons->persons,
+                    'type' => $recipe->type->type,
                     'photo' => $recipe->recipe_photo_path ?? null,
+                    'user' => $recipe->users
                 ]),
             'types' => Type::all(),
             'times' => Time::all(),
@@ -255,7 +255,7 @@ class RecipeController extends Controller
             'persons' => $person[0]->persons,
             'type' => $type[0]->type,
             'ingredients' => $ingredients[0]->ingredients,
-            'photo' => $recipe_photo[6], // When explode it's the photo name is the #6
+            'photo' => $recipe_photo[6], // When explode the photo name is the #6
         ];
 
         $pdf = PDF::loadView('pdf', [

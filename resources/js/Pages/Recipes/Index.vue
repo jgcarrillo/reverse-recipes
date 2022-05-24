@@ -13,7 +13,7 @@
             <label class="block text-gray-700">Time:</label>
             <select v-model="form.time" class="form-select mt-1 w-full">
                 <option :value="null" />
-                <option v-for="time in times" :key="time.id" :value="time.id">{{ time.time }} persons</option>
+                <option v-for="time in times" :key="time.id" :value="time.id">{{ time.time }} minutes</option>
             </select>
         </search-filter>
         <Link class="font-lora px-4 py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500 mt-4 md:mt-0" href="/dashboard/recipes/create">
@@ -39,7 +39,7 @@
                 </td>
                 <td class="border-t border-gray-900">
                     <Link class="flex items-center px-6 py-4" :href="`/dashboard/recipes/${recipe.id}/edit`" tabindex="-1">
-                        {{ recipe.time }}
+                        {{ recipe.time }} {{ (recipe.time == 1 ? 'minute' : 'minutes') }}
                     </Link>
                 </td>
                 <td class="border-t border-gray-900">
@@ -49,7 +49,7 @@
                 </td>
                 <td class="border-t border-gray-900">
                     <Link class="flex items-center px-6 py-4" :href="`/dashboard/recipes/${recipe.id}/edit`" tabindex="-1">
-                        {{ recipe.persons }}
+                        {{ recipe.persons }} {{ (recipe.persons == 1 ? 'person' : 'persons') }}
                     </Link>
                 </td>
                 <td class="border-t border-gray-900">

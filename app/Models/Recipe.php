@@ -32,21 +32,23 @@ class Recipe extends Model
 
     public function difficulty()
     {
-        return $this->belongsToMany(Difficulty::class);
+        return $this->belongsTo(Difficulty::class);
     }
 
     public function persons()
     {
-        return $this->belongsToMany(Persons::class);
+        return $this->belongsTo(Persons::class);
     }
 
     public function type()
     {
-        return $this->belongsToMany(Type::class);
+        return $this->belongsTo(Type::class);
     }
+
 
     public function time()
     {
-        return $this->belongsToMany(Time::class);
+        return $this->belongsTo(Time::class);
     }
+
 }
