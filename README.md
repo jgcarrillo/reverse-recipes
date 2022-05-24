@@ -96,10 +96,10 @@ MAIL_PORT=465
 MAIL_USERNAME=<Enter your Gmail address>
 MAIL_PASSWORD=<Enter your Gmail password>
 MAIL_ENCRYPTION=ssl
-MAIL_FROM_ADDRESS=<Enter your custon address>
+MAIL_FROM_ADDRESS=<Enter your custom address>
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
-In Gmail configuration, you need to activate the `Less secure app access`.
+In Gmail configuration, you need to activate the `Less secure app access` option.
 
 
