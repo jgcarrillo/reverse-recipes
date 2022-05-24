@@ -55,7 +55,7 @@
                     </Link>
                 </td>
                 <td class="border-t border-gray-900">
-                    <Link class="flex items-center px-6 py-4" :href="`/dashboard/recipes/${recipe.id}/edit`" tabindex="-1">
+                    <Link class="flex items-center px-6 py-4" tabindex="-1">
                         {{ recipe.type }}
                     </Link>
                 </td>
