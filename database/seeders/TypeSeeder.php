@@ -9,9 +9,15 @@ use Illuminate\Support\Facades\DB;
 class TypeSeeder extends Seeder
 {
     protected $type = [
-        'Food',
-        'Drink',
-        'Fruit'
+        'Appetizers and Snacks',
+        'Bread Recipes',
+        'Breakfast and Brunch',
+        'Desserts',
+        'Dinner Recipes',
+        'Drinks',
+        'Everyday Cooking',
+        'Holiday and Events',
+        'Lunch Recipes'
     ];
 
     /**

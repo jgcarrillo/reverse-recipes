@@ -15,20 +15,24 @@ class RecipeSeeder extends Seeder
 {
     protected $recipes = [
         [
-            'name' => 'Coca Cola Premium',
-            'description' => 'Lorem lorem lorem lorem',
+            'name' => 'Farro Salad with Asparagus and Parmesan',
+            'description' => 'A light and delicious way to get your whole grains. Perfect salad for picnics, baby or bridal showers or just because!',
+            'photo_url' => 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F4500968.jpg'
         ],
         [
-            'name' => 'Clear Coffe',
-            'description' => 'Lorem lorem lorem lorem',
+            'name' => 'Avocado Deviled Eggs',
+            'description' => 'This is a twist on the traditional deviled egg. I usually use 1 or 2 fewer yolks for the filling.',
+            'photo_url' => 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F8782921.jpg'
         ],
         [
-            'name' => 'Awesome Bowl',
-            'description' => 'Lorem lorem lorem lorem',
+            'name' => 'Salmon Curry',
+            'description' => 'A family favorite for salmon lovers! Serve hot with rice or roti, topped with cilantro if you like.',
+            'photo_url' => 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9146205.jpg'
         ],
         [
-            'name' => 'Migas Realfood',
-            'description' => 'Lorem lorem lorem lorem',
+            'name' => 'Creamy Pulled Pork Soup',
+            'description' => 'This creamy soup can be made with leftover pulled pork.',
+            'photo_url' => 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9146205.jpg'
         ],
     ];
 
@@ -52,6 +56,7 @@ class RecipeSeeder extends Seeder
                 'persons_id' => Persons::all()->random()->id,
                 'type_id' => Type::all()->random()->id,
                 'ingredients' => $plucked,
+                'recipe_photo_path' => $recipe['photo_url'],
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
