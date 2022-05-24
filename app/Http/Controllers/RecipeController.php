@@ -255,7 +255,7 @@ class RecipeController extends Controller
             'persons' => $person[0]->persons,
             'type' => $type[0]->type,
             'ingredients' => $ingredients[0]->ingredients,
-            'photo' => $recipe_photo[6]
+            'photo' => $recipe_photo[6], // When explode it's the photo name is the #6
         ];
 
         $pdf = PDF::loadView('pdf', [
