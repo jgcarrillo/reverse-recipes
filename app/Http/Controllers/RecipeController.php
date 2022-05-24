@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request;
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use Illuminate\Support\Facades\URL;
 
 class RecipeController extends Controller
 {
@@ -30,7 +30,36 @@ class RecipeController extends Controller
 
     public function index()
     {
-        return Inertia::render('Recipes/Index');
+        return Inertia::render('Recipes/Index', [
+            'filters' => Request::only(['ingredient', 'search', 'type', 'time']),
+            'recipes' => Recipe::query()
+                ->when(Request::input('ingredient'), function($query, $ingredient) {
+                    $query->where('ingredients', 'like', "%{$ingredient}%");
+                })
+                ->when(Request::input('search'), function($query, $search) {
+                    $query->where('name', 'like', "%{$search}%");
+                })
+                ->when(Request::input('type'), function($query, $type) {
+                    $query->where('type_id', '=', $type);
+                })
+                ->when(Request::input('time'), function($query, $time) {
+                    $query->where('time_id', '=', $time);
+                })
+                ->paginate(5)
+                ->withQueryString()
+                ->through(fn ($recipe) => [
+                    'id' => $recipe->id,
+                    'name' => $recipe->name,
+                    'description' => $recipe->description,
+                    'time' => $recipe->time_id,
+                    'difficulty' => $recipe->difficulty_id,
+                    'persons' => $recipe->persons_id,
+                    'type' => $recipe->type_id,
+                    'photo' => $recipe->recipe_photo_path ?? null,
+                ]),
+            'types' => Type::all(),
+            'times' => Time::all(),
+        ]);
     }
 
     public function create()
