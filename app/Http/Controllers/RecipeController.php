@@ -269,6 +269,7 @@ class RecipeController extends Controller
             'logo' => $base64,
             'date' => $date
         ])->setPaper('letter');
+
         return $pdf->stream('Recipe - ' . $recipe_data['name']);
     }
 }

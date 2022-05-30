@@ -109,7 +109,7 @@ export default {
             form: {
                 search: this.filters.search,
                 type: this.filters.type,
-                time: '',
+                time: this.filters.time,
                 ingredient: this.filters.ingredient
             },
         }
