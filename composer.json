@@ -9,7 +9,7 @@
         "barryvdh/laravel-dompdf": "^1.0",
         "dompdf/dompdf": "^1.2",
         "guzzlehttp/guzzle": "^7.2",
-        "inertiajs/inertia-laravel": "^0.5.2",
+        "inertiajs/inertia-laravel": "^0.6.2",
         "laravel/framework": "^9.2",
         "laravel/jetstream": "^2.7",
         "laravel/sanctum": "^2.14.1",
