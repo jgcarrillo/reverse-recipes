@@ -9,7 +9,12 @@
                     class="lg:h-72 md:h-48 w-full object-cover object-center"
                     :src="recipe.recipe_photo_path"
                     :alt="recipe.name"
+                    @load="onLoaded"
+                    v-show="loaded"
                 />
+                <div class="lg:h-72 md:h-48 w-full bg-gray-200 w-full animate-pulse"
+                     v-show="loaded === false">
+                </div>
             </template>
             <template #type>{{ recipe.type }} • {{ recipe.difficulty }}</template>
             <template #recipe>{{ recipe.name }}</template>
@@ -41,6 +46,11 @@ export default {
         BaseThreeGrid,
         BaseRecipeCard
     },
+    data() {
+        return {
+            loaded: false,
+        }
+    },
     props: {
         users: Object,
         filters: Object,
@@ -50,7 +60,10 @@ export default {
     methods: {
         convertToArray(ingredients) {
             return ingredients.split(", ").length;
-        }
+        },
+        onLoaded() {
+            this.loaded = true;
+        },
     },
     layout: AppLayout,
 }

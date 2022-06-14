@@ -6,7 +6,12 @@
                     class="lg:h-72 md:h-48 w-full object-cover object-center"
                     src="https://picsum.photos/id/326/4928/3264"
                     alt="blog"
+                    @load="onLoaded"
+                    v-show="loaded"
                 />
+                <div class="lg:h-72 md:h-48 w-full bg-gray-200 w-full animate-pulse"
+                     v-show="loaded === false">
+                </div>
             </slot>
 
             <div class="bg-white p-6">
@@ -65,6 +70,16 @@ export default defineComponent({
     },
     props: {
         recipeId: Number
+    },
+    data() {
+        return {
+            loaded: false,
+        }
+    },
+    methods: {
+        onLoaded() {
+            this.loaded = true;
+        },
     }
 });
 </script>

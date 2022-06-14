@@ -21,7 +21,12 @@
                                 class="lg:h-72 md:h-48 w-full object-cover object-center"
                                 src="https://picsum.photos/id/425/959/635"
                                 alt="blog"
+                                @load="onLoaded"
+                                v-show="loaded"
                             />
+                            <div class="lg:h-72 md:h-48 w-full bg-gray-200 w-full animate-pulse"
+                                 v-show="loaded === false">
+                            </div>
                         </template>
                         <template #type>Drinks • Easy</template>
                         <template #recipe>Creative Coffee</template>
@@ -42,7 +47,12 @@
                                 class="lg:h-72 md:h-48 w-full object-cover object-center"
                                 src="https://picsum.photos/id/488/1772/1181"
                                 alt="blog"
+                                @load="onLoaded"
+                                v-show="loaded"
                             />
+                            <div class="lg:h-72 md:h-48 w-full bg-gray-200 w-full animate-pulse"
+                                 v-show="loaded === false">
+                            </div>
                         </template>
                         <template #type>Fast Food • Medium</template>
                         <template #recipe>Vegetarian Bowl</template>
@@ -77,6 +87,16 @@ export default defineComponent({
         BaseRecipeCardExplore,
         Layout,
     },
+    data() {
+        return {
+            loaded: false,
+        }
+    },
+    methods: {
+        onLoaded() {
+            this.loaded = true;
+        },
+    }
 });
 </script>
 

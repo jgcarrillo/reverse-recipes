@@ -12,7 +12,12 @@
                         class="lg:h-72 md:h-48 w-full object-cover object-center"
                         src="https://picsum.photos/id/292/3852/2556"
                         alt="blog"
+                        @load="onLoaded"
+                        v-show="loaded"
                     />
+                    <div class="lg:h-72 md:h-48 w-full bg-gray-200 w-full animate-pulse"
+                         v-show="loaded === false">
+                    </div>
                 </template>
                 <template #title>
                     <h1>Easy DIY</h1>
@@ -31,7 +36,12 @@
                         class="lg:h-72 md:h-48 w-full object-cover object-center"
                         src="https://picsum.photos/id/312/3888/2592"
                         alt="blog"
+                        @load="onLoaded"
+                        v-show="loaded"
                     />
+                    <div class="lg:h-72 md:h-48 w-full bg-gray-200 w-full animate-pulse"
+                         v-show="loaded === false">
+                    </div>
                 </template>
                 <template #title>
                     <h1>24/7 Recipes</h1>
@@ -53,7 +63,17 @@ import BaseCard from "@/Shared/BaseCard";
 import BaseThreeGrid from "@/Shared/BaseThreeGrid";
 
 export default defineComponent({
-    components: { BaseCard, BaseThreeGrid }
+    components: { BaseCard, BaseThreeGrid },
+    data() {
+        return {
+            loaded: false,
+        }
+    },
+    methods: {
+        onLoaded() {
+            this.loaded = true;
+        },
+    }
 });
 </script>
 

@@ -6,7 +6,12 @@
                     class="lg:h-72 md:h-48 w-full object-cover object-center"
                     src="https://picsum.photos/id/1080/6858/4574"
                     alt="blog"
+                    @load="onLoaded"
+                    v-show="loaded"
                 />
+                <div class="lg:h-72 md:h-48 w-full bg-gray-200 w-full animate-pulse"
+                     v-show="loaded === false">
+                </div>
             </slot>
 
             <div class="p-6">
@@ -29,7 +34,16 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-
+    data() {
+        return {
+            loaded: false,
+        }
+    },
+    methods: {
+        onLoaded() {
+            this.loaded = true;
+        },
+    }
 });
 </script>
 
