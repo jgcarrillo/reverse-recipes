@@ -31,8 +31,6 @@
 <script>
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Shared/AppLayout';
-import SearchBar from '@/Shared/SearchBar';
-import SearchFilter from '@/Shared/SearchFilter';
 import BaseThreeGrid from "@/Shared/BaseThreeGrid";
 import BaseRecipeCard from "@/Shared/BaseRecipeCard";
 
@@ -40,8 +38,6 @@ export default {
     components: {
         Head,
         Link,
-        SearchBar,
-        SearchFilter,
         BaseThreeGrid,
         BaseRecipeCard
     },

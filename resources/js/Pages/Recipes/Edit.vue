@@ -12,8 +12,8 @@
         <div class="max-w-3xl bg-slate-800 rounded-md shadow overflow-hidden">
             <form @submit.prevent="update">
                 <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-                    <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="Name" id="name" />
-                    <text-input v-model="form.description" :error="form.errors.description" class="pb-8 pr-6 w-full lg:w-1/2" label="Description" id="description" />
+                    <text-input v-model="form.name" maxlength="30" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="Name" id="name" />
+                    <text-input v-model="form.description" maxlength="30" :error="form.errors.description" class="pb-8 pr-6 w-full lg:w-1/2" label="Description" id="description" />
                     <select-input v-model="form.time" :error="form.errors.time" class="pb-8 pr-6 w-full lg:w-1/2" label="Time">
                         <option v-for="time in recipe.times" :key="time.id" :value="time.id">{{ time.time }} {{ time.time == 1 ? 'minute' : 'minutes' }}</option>
                     </select-input>

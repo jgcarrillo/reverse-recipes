@@ -28,7 +28,5 @@ class Favorites extends Model
     {
         return $this->belongsToMany(Recipe::class)->withTimestamps();
     }
-
-
 }
 

@@ -15,7 +15,7 @@ class RecipeSeeder extends Seeder
 {
     protected $recipes = [
         [
-            'name' => 'Farro Salad with Asparagus and Parmesan',
+            'name' => 'Farro Salad with Asparagus',
             'description' => 'A light and delicious way to get your whole grains. Perfect salad for picnics, baby or bridal showers or just because!',
             'photo_url' => 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F4500968.jpg'
         ],

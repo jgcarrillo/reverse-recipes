@@ -8,8 +8,8 @@
         <div class="max-w-3xl bg-slate-800 rounded-md shadow overflow-hidden">
             <form @submit.prevent="store">
                 <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-                    <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="Name" />
-                    <text-input v-model="form.description" :error="form.errors.description" class="pb-8 pr-6 w-full lg:w-1/2" label="Description" />
+                    <text-input v-model="form.name" maxlength="30" :error="form.errors.name" class="pb-8 pr-6 w-full lg:w-1/2" label="Name" />
+                    <text-input v-model="form.description" maxlength="30" :error="form.errors.description" class="pb-8 pr-6 w-full lg:w-1/2" label="Description" />
                     <select-input v-model="form.time" :error="form.errors.time" class="pb-8 pr-6 w-full lg:w-1/2" label="Time">
                         <option v-for="tm in time" :key="tm.id" :value="tm.id">{{ tm.time }} {{ tm.time == 1 ? 'minute' : 'minutes' }}</option>
                     </select-input>

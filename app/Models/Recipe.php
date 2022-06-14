@@ -49,10 +49,8 @@ class Recipe extends Model
         return $this->belongsTo(Type::class);
     }
 
-
     public function time()
     {
         return $this->belongsTo(Time::class);
     }
-
 }

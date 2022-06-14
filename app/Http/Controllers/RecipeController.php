@@ -11,7 +11,6 @@ use App\Models\Persons;
 use App\Models\Recipe;
 use App\Models\Time;
 use App\Models\Type;
-use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +59,8 @@ class RecipeController extends Controller
                 ]),
             'types' => Type::all(),
             'times' => Time::all(),
+            'favorites' => Favorites::all(),
+            'user' => Auth::user()
         ]);
     }
 
@@ -136,20 +137,18 @@ class RecipeController extends Controller
         ]);
     }
 
-    public function addFav($id){
+    public function addFav($id)
+    {
 
         //COMPROBACION DE QUE YA ESTA AÑADIDO O NO
-
-
         $checkFav = DB::table('favorites')
         ->join('users', 'favorites.user_id', '=', 'users.id')
         ->join('recipes', 'favorites.recipe_id', '=', 'recipes.id')
         ->where('favorites.user_id', '=', Auth::id())
-        ->where('favorites.recipe_id', '=', $id)    
+        ->where('favorites.recipe_id', '=', $id)
         ->get(
             'recipes.id'
-        ); 
-        
+        );
         $array = $checkFav->toArray();
 
         if(count($array) == 0)
@@ -161,20 +160,19 @@ class RecipeController extends Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
-        }
-        else
-        {
+        } else {
             //DELETE
             DB::table('favorites')
             ->where('favorites.user_id', '=', Auth::id())
             ->where('favorites.recipe_id', '=', $id)
             ->delete();
-        } 
+        }
 
+        return Redirect::route('recipes.favs')->with('success', 'Recipe added to favorites.');
     }
 
-    public function favs(){
-
+    public function favs()
+    {
         $data = DB::table('favorites')
             ->join('users', 'favorites.user_id', '=', 'users.id')
             ->join('recipes', 'favorites.recipe_id', '=', 'recipes.id')
@@ -195,11 +193,10 @@ class RecipeController extends Controller
                 'recipes.ingredients'
             ]);
 
-        return Inertia::render('Recipes/Favorites', [
+        return Inertia::render('Recipes/MyFavorites', [
             'user'=> Auth::user(),
             'data' => $data,
         ]);
-        
     }
 
     public function edit(Recipe $recipe)

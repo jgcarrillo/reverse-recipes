@@ -1,7 +1,7 @@
 <template>
     <Head title="Recipes" />
     <h1 class="mb-8 text-3xl font-bold font-lora">Recipes</h1>
-    <h2 class="mb-8 text-3xl font-bold font-lora">Search Recipes by Ingredients </h2>
+    <h2 class="mb-8 text-2xl font-bold font-lora">Search Recipes by Ingredients </h2>
 
     <!-- If you want to search for recipe name just simple change form.ingredient to form.search -->
     <div class="flex items-center justify-between mb-6">
@@ -62,7 +62,7 @@
                 </td>
                 <td class="w-px border-t border-gray-900">
                     <Link :href="`/dashboard/recipes/${recipe.id}/addFav`" class="flex items-center px-4" tabindex="-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="heart block h-6 w-6" fill="true" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:fill-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                     </Link>
@@ -104,6 +104,8 @@ export default {
         recipes: Object,
         types: Object,
         times: Object,
+        favorites: Object,
+        user: Object
     },
     data() {
         return {
@@ -131,7 +133,3 @@ export default {
     layout: AppLayout,
 }
 </script>
-
-<style>
-
-</style>
