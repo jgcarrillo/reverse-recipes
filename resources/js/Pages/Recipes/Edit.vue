@@ -3,7 +3,7 @@
         <Head :title="`${form.name}`" />
         <div class="flex justify-start mb-8 max-w-3xl">
             <h1 class="text-3xl font-lora">
-                <Link class="text-indigo-300 hover:text-white" href="/dashboard/recipes/favorites">My Recipes</Link>
+                <Link class="text-indigo-300 hover:text-white" href="/dashboard/recipes/mine">My Recipes</Link>
                 <span class="text-indigo-300"> /</span>
                 {{ form.name }}
             </h1>

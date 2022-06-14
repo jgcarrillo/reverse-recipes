@@ -66,7 +66,7 @@ export default {
             return { 'text-white': this.$page.url === '/dashboard/recipes' }
         },
         isFavorite(){
-            return { 'text-white': this.$page.url === '/dashboard/recipes/favorites' }
+            return { 'text-white': this.$page.url === '/dashboard/recipes/mine' }
         },
         isFavs(){
             return { 'text-white': this.$page.url === '/dashboard/recipes/favs' }

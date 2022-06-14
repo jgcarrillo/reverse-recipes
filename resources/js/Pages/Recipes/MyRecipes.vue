@@ -1,5 +1,5 @@
 <template>
-    <Head title="Favorites" />
+    <Head title="My Recipes" />
     <h1 class="mb-8 text-3xl font-bold font-lora">My Recipes</h1>
 
     <base-three-grid color="bg-gray-900">

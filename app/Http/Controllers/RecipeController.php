@@ -160,15 +160,17 @@ class RecipeController extends Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
+
+            return Redirect::route('recipes.favs')->with('success', 'Recipe added to favorites.');
         } else {
             //DELETE
             DB::table('favorites')
             ->where('favorites.user_id', '=', Auth::id())
             ->where('favorites.recipe_id', '=', $id)
             ->delete();
-        }
 
-        return Redirect::route('recipes.favs')->with('success', 'Recipe added to favorites.');
+            return Redirect::route('recipes.favs')->with('success', 'Recipe deleted successfully.');
+        }
     }
 
     public function favs()
