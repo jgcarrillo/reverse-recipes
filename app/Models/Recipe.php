@@ -30,6 +30,10 @@ class Recipe extends Model
         return $this->belongsToMany(User::class)->withTimestamps();
     }
 
+    public function favorites(){
+        return $this->belongsToMany(Favorites::class)->withTimestamps();
+    }
+
     public function difficulty()
     {
         return $this->belongsTo(Difficulty::class);

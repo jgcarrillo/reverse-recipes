@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Actions\Recipes\CreateNewRecipe;
 use App\Actions\Recipes\UpdateRecipeInformation;
 use App\Models\Difficulty;
+use App\Models\Favorites;
 use App\Models\Ingredient;
 use App\Models\Persons;
 use App\Models\Recipe;
 use App\Models\Time;
 use App\Models\Type;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -104,10 +106,10 @@ class RecipeController extends Controller
         $user = Auth::user();
         $user->recipes()->attach($recipe->getAttribute('id'));
 
-        return Redirect::route('recipes.favorites')->with('success', 'Recipe created.');
+        return Redirect::route('recipes.mine')->with('success', 'Recipe created.');
     }
 
-    public function favorites()
+    public function myRecipes()
     {
         $data = DB::table('recipe_user')
             ->join('recipes', 'recipe_user.recipe_id', '=', 'recipes.id')
@@ -128,10 +130,76 @@ class RecipeController extends Controller
                 'recipes.ingredients'
             ]);
 
+        return Inertia::render('Recipes/MyRecipes', [
+            'user'=> Auth::user(),
+            'data' => $data,
+        ]);
+    }
+
+    public function addFav($id){
+
+        //COMPROBACION DE QUE YA ESTA AÑADIDO O NO
+
+
+        $checkFav = DB::table('favorites')
+        ->join('users', 'favorites.user_id', '=', 'users.id')
+        ->join('recipes', 'favorites.recipe_id', '=', 'recipes.id')
+        ->where('favorites.user_id', '=', Auth::id())
+        ->where('favorites.recipe_id', '=', $id)    
+        ->get(
+            'recipes.id'
+        ); 
+        
+        $array = $checkFav->toArray();
+
+        if(count($array) == 0)
+        {
+            //INSERCION
+            DB::table('favorites')->insert([
+                'recipe_id' => $id,
+                'user_id' => Auth::id(),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ]);
+        }
+        else
+        {
+            //DELETE
+            DB::table('favorites')
+            ->where('favorites.user_id', '=', Auth::id())
+            ->where('favorites.recipe_id', '=', $id)
+            ->delete();
+        } 
+
+    }
+
+    public function favs(){
+
+        $data = DB::table('favorites')
+            ->join('users', 'favorites.user_id', '=', 'users.id')
+            ->join('recipes', 'favorites.recipe_id', '=', 'recipes.id')
+            ->join('difficulty', 'recipes.difficulty_id', '=', 'difficulty.id')
+            ->join('type', 'recipes.type_id', '=', 'type.id')
+            ->join('persons', 'recipes.persons_id', '=', 'persons.id')
+            ->join('time', 'recipes.time_id', '=', 'time.id')
+            ->where('favorites.user_id', '=', Auth::id())
+            ->get([
+                'recipes.id',
+                'recipes.name',
+                'recipes.description',
+                'recipes.recipe_photo_path',
+                'difficulty.difficulty',
+                'type.type',
+                'persons.persons',
+                'time.time',
+                'recipes.ingredients'
+            ]);
+
         return Inertia::render('Recipes/Favorites', [
             'user'=> Auth::user(),
             'data' => $data,
         ]);
+        
     }
 
     public function edit(Recipe $recipe)
@@ -195,7 +263,7 @@ class RecipeController extends Controller
             ->where('recipe_user.id', '=', $id)
             ->delete();
 
-        return Redirect::route('recipes.favorites')->with('success', 'Recipe deleted.');
+        return Redirect::route('recipes.mine')->with('success', 'Recipe deleted.');
     }
 
     public function update(Recipe $recipe)

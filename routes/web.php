@@ -61,7 +61,9 @@ Route::middleware([
     // Recipes
     Route::get('dashboard/recipes', [RecipeController::class, 'index'])->name('recipes');
     Route::get('dashboard/recipes/{recipe}/show', [RecipeController::class, 'show'])->name('recipes.show');
-    Route::get('dashboard/recipes/favorites', [RecipeController::class, 'favorites'])->name('recipes.favorites');
+    Route::get('dashboard/recipes/mine', [RecipeController::class, 'myRecipes'])->name('recipes.mine');
+    Route::get('dashboard/recipes/favs', [RecipeController::class, 'favs'])->name('recipes.favs');
+    Route::get('dashboard/recipes/{id}/addFav', [RecipeController::class, 'addFav'])->name('recipes.addFav');
     Route::get('dashboard/recipes/create', [RecipeController::class, 'create'])->name('recipes.create');
     Route::post('dashboard/recipes', [RecipeController::class, 'store'])->name('recipes.store');
     Route::get('dashboard/recipes/{recipe}/edit', [RecipeController::class, 'edit'])->name('recipes.edit');

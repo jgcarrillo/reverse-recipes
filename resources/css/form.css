@@ -36,3 +36,6 @@
 .form-error {
     @apply text-yellow-400 mt-2 text-sm;
 }
+.heart:hover{fill: red;}
+.heart:checked{fill: red;}
+
