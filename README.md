@@ -16,6 +16,8 @@
 - [🔧 PHP GD library](#-php-gd-library)
 - [📧 Email verification](#-email-verification)
 - [🎢 Deploymment](#-deployment)
+- [😖 Throubleshooting with deployment](#-throubleshooting-with-deployment)
+- [💣 Graphical access to Heroku Database](#-graphical-access-to-heroku-database)
 
 ## ✨ How to install
 
@@ -136,25 +138,86 @@ In Gmail configuration, you need to activate the `Less secure app access` option
 
 Add the project to Heroku using the Heroku CLI or by connecting the project to GitHub. Follow the steps shown in Heroku documentation. For a Laravel/Vue project do:
 
-1. Add Node JS buildpack using Heroku interface or running in Heroku CLI this command: `heroku buildpacks:add heroku/nodejs`.
-2. Go inside console in Activity > Open app > Run console and execute the `Heroku run bash`. Then do a `php artisan key:generate --show`.
-3. Add database plugin, in this case, **ClearDB**. Probably you will need to add a credit card (but it's free).
-4. Add variables:
+1. Create `Procfile` for Laravel with `web: vendor/bin/heroku-php-apache2 public/` inside of it. See [documentation](https://devcenter.heroku.com/articles/getting-started-with-laravel) for more info.
+2. Add Node JS buildpack using Heroku interface or running in Heroku CLI this command: `heroku buildpacks:add heroku/nodejs`.
+3. Go inside console in Activity > Open app > Run console and execute the `Heroku run bash`. Then do a `php artisan key:generate --show`.
+4. Add database plugin, in this case, **ClearDB**. Probably you will need to add a credit card (but it's free).
+5. Add variables without **double quotes**.
 
-| Variable name     | Value               |
-|-------------------|---------------------|
-| APP_NAME          | Reverse Recipes     |
-| APP_ENV           | production          |
-| APP_DEBUG         | true                |
-| APP_KEY           | base:...            |
-| DATABASE_URL      | your cleardb url    |
-| MAIL_MAILER       | smtp                |
-| MAIL_HOST         | smtp.mailtrap.io    |
-| MAIL_PORT         | 2525                |
-| MAIL_USERNAME     | your username       |
-| MAIL_PASSWORD     | your password       |
-| MAIL_ENCRYPTION   | tls                 |
-| MAIL_FROM_ADDRESS | your custom address |
-| MAIL_FROM_NAME    | your app name       |
+| Variable name     | Value                        |
+|-------------------|------------------------------|
+| APP_NAME          | Reverse Recipes              |
+| APP_ENV           | production                   |
+| APP_DEBUG         | true                         |
+| APP_KEY           | the key of step 2 (base:...) |
+| DATABASE_URL      | your cleardb url             |
+| MAIL_MAILER       | smtp                         |
+| MAIL_HOST         | smtp.mailtrap.io             |
+| MAIL_PORT         | 2525                         |
+| MAIL_USERNAME     | your username                |
+| MAIL_PASSWORD     | your password                |
+| MAIL_ENCRYPTION   | tls                          |
+| MAIL_FROM_ADDRESS | your custom address          |
+| MAIL_FROM_NAME    | your app name                |
 
 5. In the Heroku console (see step 2) run `heroku run php artisan migrate`, `heroku run php artisan db:seed` and `heroku run php artisan storage:link`.
+
+## 😖 Throubleshooting with deployment
+
+### Add HTTPS
+
+In  `app/Provides/AppServiceProvider.php` add:
+
+```php
+use Illuminate\Support\Facades\URL;
+
+public function boot()
+{
+    if(env('APP_ENV') !== 'local') {
+        URL::forceScheme('https');
+    }
+}
+```
+
+### Post script
+
+In `packaje.json` add:
+
+```json
+{
+    "scripts": {
+        "postinstall": "npm run production"
+    }
+}
+```
+
+### Allow proxies
+
+In `app/Http/Middleware/TrustProxies.php` add:
+
+```php
+protected $proxies = '*';
+
+protected $headers =
+        Request::HEADER_X_FORWARDED_FOR |
+        Request::HEADER_X_FORWARDED_HOST |
+        Request::HEADER_X_FORWARDED_PORT |
+        Request::HEADER_X_FORWARDED_PROTO |
+        Request::HEADER_X_FORWARDED_AWS_ELB;
+```
+
+See [documentation](https://laravel.com/docs/5.7/requests#configuring-trusted-proxies) for more information at the end of the post.
+
+## 💣 Graphical access to Heroku database
+
+In order to use a graphical database interface (such as Heidi SQL) you need to run `heroku config --app=YOURAPPNAME` inside your project, then use the data in the `DATABASE_URL` variable as following to connect with Heidi SQL. This configuration was tested using **ClearDB** plugin inside Heroku.
+
+`mysql://<username>:<password>@<host>/<database>?reconnect=true`
+
+| Name       | Value        |
+|------------|--------------|
+| Host name  | `<host>`     |
+| User       | `<user>`     |
+| Password   | `<password>` |
+| Port       | 3306         |
+| Database   | `<database>` |
