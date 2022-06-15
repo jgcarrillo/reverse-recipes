@@ -15,6 +15,7 @@
 - [🌎 Test the app in your phone](#-test-the-app-in-your-phone)
 - [🔧 PHP GD library](#-php-gd-library)
 - [📧 Email verification](#-email-verification)
+- [🎢 Deploymment](#-deployment)
 
 ## ✨ How to install
 
@@ -87,19 +88,38 @@ If you are a Windows user and you are using XAMPP, in order to see the images wh
 
 ## 📧 Email verification
 
+**DEPRECATED**
+
+⚠️ Since May 2022 Google doesn't allow you to access third-party apps, so you can't set up *email verification* using Google Services. You need to use another provider such as Mailtrap. ⚠️
+
+The proper configuration is similar to this:
+
+```dotenv
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=<Your Mailtrap username>
+MAIL_PASSWORD=<Your Mailtrap password>
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="<Your custom address>"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
 You need to configure your `.env` file with something like this (if you are using Gmail):
 
-```env
+```dotenv
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=465
 MAIL_USERNAME=<Enter your Gmail address>
 MAIL_PASSWORD=<Enter your Gmail password>
 MAIL_ENCRYPTION=ssl
-MAIL_FROM_ADDRESS=<Enter your custom address>
+MAIL_FROM_ADDRESS="<Enter your custom address>"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 In Gmail configuration, you need to activate the `Less secure app access` option.
+
+## 🎢 Deployment
 
 
