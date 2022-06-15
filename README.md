@@ -85,6 +85,18 @@ Run a local serve with: `php artisan serve --host [YOUR IP] --port 8000`. Now, y
 
 If you are a Windows user and you are using XAMPP, in order to see the images when you export a recipe as PDF you need to go to your *PHP folder* inside XAMPP, open `php.ini` and uncomment the option `;extension=gd`.
 
+The set the GD extension available also in deployment, you need to add it into the `composer.json` file.
+
+```json
+{
+    "require": {
+        "ext-gd": "*"
+    }
+}
+```
+
+Then, run a `composer update` command.
+
 ## 📧 Email verification
 
 You need to configure your `.env` file with something like this (if you are using Gmail):
