@@ -206,6 +206,14 @@ protected $headers =
         Request::HEADER_X_FORWARDED_AWS_ELB;
 ```
 
+### Secure assets
+
+I'm not sure if this is mandatory, but we added the `secure_asset()` function in `app.blade.php` as follows. Probably it's necessary to add in `styles` and `scripts` too.
+
+```php
+<link rel="icon" type="image/x-icon" {{ secure_asset('./favicon.ico') }}>
+```
+
 See [documentation](https://laravel.com/docs/5.7/requests#configuring-trusted-proxies) for more information at the end of the post.
 
 ## 💣 Graphical access to Heroku database
