@@ -84,7 +84,7 @@ Run a local serve with: `php artisan serve --host [YOUR IP] --port 8000`. Now, y
 
 ## 🔧 PHP GD Library
 
-If you are a Windows user and you are using XAMPP, in order to see the images when you export a recipe as PDF you need to go to your *PHP folder* inside XAMPP, open `php.ini` and uncomment the option `;extension=gd`.
+If you are a Windows user, and you are using XAMPP, in order to see the images when you export a recipe as PDF you need to go to your *PHP folder* inside XAMPP, open `php.ini` and uncomment the option `;extension=gd`.
 
 The set the GD extension available also in deployment, you need to add it into the `composer.json` file.
 
@@ -134,4 +134,27 @@ In Gmail configuration, you need to activate the `Less secure app access` option
 
 ## 🎢 Deployment
 
+Add the project to Heroku using the Heroku CLI or by connecting the project to GitHub. Follow the steps shown in Heroku documentation. For a Laravel/Vue project do:
 
+1. Add Node JS buildpack using Heroku interface or running in Heroku CLI this command: `heroku buildpacks:add heroku/nodejs`.
+2. Go inside console in Activity > Open app > Run console and execute the `Heroku run bash`. Then do a `php artisan key:generate --show`.
+3. Add database plugin, in this case, **ClearDB**. Probably you will need to add a credit card (but it's free).
+4. Add variables:
+
+| Variable name     | Value               |
+|-------------------|---------------------|
+| APP_NAME          | Reverse Recipes     |
+| APP_ENV           | production          |
+| APP_DEBUG         | true                |
+| APP_KEY           | base:...            |
+| DATABASE_URL      | your cleardb url    |
+| MAIL_MAILER       | smtp                |
+| MAIL_HOST         | smtp.mailtrap.io    |
+| MAIL_PORT         | 2525                |
+| MAIL_USERNAME     | your username       |
+| MAIL_PASSWORD     | your password       |
+| MAIL_ENCRYPTION   | tls                 |
+| MAIL_FROM_ADDRESS | your custom address |
+| MAIL_FROM_NAME    | your app name       |
+
+5. In the Heroku console (see step 2) run `heroku run php artisan migrate` and `heroku run php artisan db:seed`.
