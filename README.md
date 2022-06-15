@@ -157,4 +157,4 @@ Add the project to Heroku using the Heroku CLI or by connecting the project to G
 | MAIL_FROM_ADDRESS | your custom address |
 | MAIL_FROM_NAME    | your app name       |
 
-5. In the Heroku console (see step 2) run `heroku run php artisan migrate` and `heroku run php artisan db:seed`.
+5. In the Heroku console (see step 2) run `heroku run php artisan migrate`, `heroku run php artisan db:seed` and `heroku run php artisan storage:link`.
