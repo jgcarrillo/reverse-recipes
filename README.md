@@ -208,6 +208,10 @@ protected $headers =
 
 See [documentation](https://laravel.com/docs/5.7/requests#configuring-trusted-proxies) for more information at the end of the post.
 
+### Storage
+
+Heroku doesn't persist images in storage folder due to [documentation](https://help.heroku.com/K1PPS2WM/why-are-my-file-uploads-missing-deleted-from-the-application), so you will need to set up, for example, an Amazon S3 service to storage files.
+
 ### Secure assets
 
 I'm not sure if this is mandatory, but we added the `secure_asset()` function in `app.blade.php` as follows. Probably it's necessary to add in `styles` and `scripts` too.
