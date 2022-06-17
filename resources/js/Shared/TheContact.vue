@@ -6,13 +6,13 @@
             </div>
             <form @submit.prevent="store">
                 <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-                    <text-input v-model="form.name" :error="form.errors.name" class="pr-6 w-full lg:w-1/2" label="Name" placeholder="Your Name" />
-                    <text-input v-model="form.email" :error="form.errors.email" class="pr-6 w-full lg:w-1/2" label="Email" placeholder="Your Email" />
-                    <text-input v-model="form.subject" :error="form.errors.subject" class="pr-6 w-full lg:w-1/2" label="Subject" placeholder="Your Subject" />
-                    <text-input v-model="form.message" :error="form.errors.message" class="pr-6 w-full lg:w-1/2" label="Message" placeholder="Your Message" />
+                    <text-input v-model="form.name" :error="form.errors.name" class="pr-6 w-full lg:w-1/2" aria-label="Your Name" label="Name" placeholder="Your Name" />
+                    <text-input v-model="form.email" :error="form.errors.email" class="pr-6 w-full lg:w-1/2" aria-label="Your Email" label="Email" placeholder="Your Email" />
+                    <text-input v-model="form.subject" :error="form.errors.subject" class="pr-6 w-full lg:w-1/2" aria-label="Your Subject" label="Subject" placeholder="Your Subject" />
+                    <text-input v-model="form.message" :error="form.errors.message" class="pr-6 w-full lg:w-1/2" aria-label="Your Message" label="Message" placeholder="Your Message" />
                 </div>
 
-                <loading-button :loading="form.processing" class="px-4 mt-8 w-full justify-center py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Send</loading-button>
+                <loading-button :loading="form.processing" aria-label="Send Message" class="px-4 mt-8 w-full justify-center py-2 rounded text-black bg-yellow-400 hover:bg-yellow-300 transition duration-500" type="submit">Send</loading-button>
             </form>
         </div>
     </div>
