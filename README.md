@@ -15,7 +15,7 @@
 - [🌎 Test the app in your phone](#-test-the-app-in-your-phone)
 - [🔧 PHP GD library](#-php-gd-library)
 - [📧 Email verification](#-email-verification)
-- [🎢 Deploymment](#-deployment)
+- [🎢 Deployment](#-deployment)
 - [😖 Throubleshooting with deployment](#-throubleshooting-with-deployment)
 - [💣 Graphical access to Heroku Database](#-graphical-access-to-heroku-database)
 
