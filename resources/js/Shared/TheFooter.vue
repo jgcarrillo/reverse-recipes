@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div class="text-center text-white bg-black p-4">© 2022 Recipes, Inc. All rights reserverd.</div>
+        <div class="text-center text-white bg-black p-4">Reverse Recipes - 2022</div>
     </footer>
 </template>
 

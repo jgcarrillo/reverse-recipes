@@ -19,7 +19,7 @@
 
         <div class="border-t mt-6"></div>
 
-        <div class="text-center p-4">© 2022 Recipes, Inc. All rights reserverd.</div>
+        <div class="text-center p-4">Reverse Recipes - 2022</div>
     </div>
 </template>
 
