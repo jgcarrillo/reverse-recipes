@@ -18,6 +18,7 @@
 - [🎢 Deployment](#-deployment)
 - [😖 Throubleshooting with deployment](#-throubleshooting-with-deployment)
 - [💣 Graphical access to Heroku Database](#-graphical-access-to-heroku-database)
+- [💘 Reset to a specific commit](#-reset-to-a-specific-commit)
 
 ## ✨ How to install
 
@@ -233,3 +234,7 @@ In order to use a graphical database interface (such as Heidi SQL) you need to r
 | Password   | `<password>` |
 | Port       | 3306         |
 | Database   | `<database>` |
+
+## 💘 Reset to a specific commit
+
+If you want to revert some changes do the following: `git reset --hard <commit-hash>` then push the changes with `git push -f <remote> <branch>`.
